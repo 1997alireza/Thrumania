@@ -1,0 +1,2 @@
+# thrumania
+Thrumania Strategic Game
