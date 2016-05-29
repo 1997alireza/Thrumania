@@ -12,24 +12,45 @@ public class GamePanel extends JPanel {
     public com.thrumania.src.menu.Panel menu_panel;
     public com.thrumania.src.mapEditor.Panel map_panel;
     public com.thrumania.src.game.Panel game_panel;
+    private GraphicHandler currentPanel;
     public enum STATE{
         MENU,MAP,GAME
     }
+    private Container container; // Frame Container ( Main Container )
+    private STATE state;
+    public GamePanel(Container container){
+        this.container = container;
 
-    public STATE state;
+        container.add(this);
 
-    public GamePanel(){
         state = STATE.MENU;
         menu_panel = new com.thrumania.src.menu.Panel(this,map_panel,game_panel);
     }
     @Override
     protected void paintComponent(Graphics g) {
-        if(state == STATE.MENU) {
-            menu_panel.render(g);
+        currentPanel.render(g);
+    }
 
-        }
-        else if( state == STATE.MAP){
+    private void updateComponents() {
 
+        while (container.getComponentCount() > 1)  // for removing all components from frame except main panel
+            container.remove(1);
+
+        currentPanel.addGameComponent(container);
+    }
+
+    public void changeState(STATE state){
+        this.state = state;
+        switch(state){
+            case MENU:
+                currentPanel = menu_panel;
+                break;
+            case MAP:
+                currentPanel = map_panel;
+                break;
+            default:    // It's for GAME state
+                currentPanel = game_panel;
         }
+        updateComponents();
     }
 }

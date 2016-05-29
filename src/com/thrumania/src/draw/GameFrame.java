@@ -16,7 +16,7 @@ public class GameFrame extends JFrame {
         setUndecorated(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        panel = new GamePanel();
+        panel = new GamePanel(this.getContentPane());
         panel.setSize(Constant.Screen_Dimension);
         this.getContentPane().add(panel);
 

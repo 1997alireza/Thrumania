@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import com.sun.prism.*;
 import com.thrumania.src.GraphicHandler;
 import res.values.*;
-public class Panel implements ActionListener , GraphicHandler{
+public class Panel implements GraphicHandler{
 
     private com.thrumania.src.draw.GamePanel drawPanel;private com.thrumania.src.mapEditor.Panel mapPanel;private com.thrumania.src.game.Panel gamePanel;
     private enum STATE{ // add states to this and to codeToState function and the buttons and background to render function
@@ -58,28 +58,15 @@ public class Panel implements ActionListener , GraphicHandler{
     public void addGameComponent (Container container){
 
     }
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        int code = ((menuButton)e.getSource()).getCode();
-        int stateCode = action(code);
-        state = codeToState(stateCode);
-    }
-    private int action(int code){
-        // must have automata and choose what to do
-        // automata : actions -> buttons code , states -> in witch section
-        return 1;// for clicking on one button
-    }
-}
-
-class menuButton extends JButton{
-    private int code;
-    private String value;
-    public menuButton(int code , String value){
-        super(value);
-        this.code = code;
-    }
-
-    public int getCode() {
-        return code;
-    }
+//    @Override
+//    public void actionPerformed(ActionEvent e) {
+//        int code = ((menuButton)e.getSource()).getCode();
+//        int stateCode = action(code);
+//        state = codeToState(stateCode);
+//    }
+//    private int action(int code){
+//        // must have automata and choose what to do
+//        // automata : actions -> buttons code , states -> in witch section
+//        return 1;// for clicking on one button
+//    }
 }
