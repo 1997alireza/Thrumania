@@ -13,32 +13,34 @@ public class GameButton extends Component implements MouseListener{
     private Image currentImage;
     private int x , y;
     private int width , height;
-
-    public GameButton(int x, int y, int width, int height, Image image){
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-        this.image = image;
-        image_MouseHover = image;
-        currentImage = image;
+    private String text;
+    private int code;
+    private com.thrumania.src.menu.Panel menu_panel;
+    public GameButton( com.thrumania.src.menu.Panel menu_panel , String text,int code,int x, int y, int width, int height, Image image){
+        this( menu_panel,text,code,x,y,width,height,image,image);
     }
-    public GameButton(int x,int y,int width,int height,Image image,Image image_MouseHover){     //Have a image for when mouse enter the component
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+    public GameButton( com.thrumania.src.menu.Panel menu_panel,String text,int code,int x,int y,int width,int height,Image image,Image image_MouseHover){     //Have a image for when mouse enter the component
+        setName(text);
+        this.text = text;
+        setLocation(x,y);
+        setSize(width,height);
+        this.code = code;
         this.image = image;
         this.image_MouseHover = image_MouseHover;
         currentImage = image;
+        this.menu_panel = menu_panel;
+        addMouseListener(this);
     }
 
-
-
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        g.drawString(text,0,0);
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {    //For action
-
+        menu_panel.pressButton(code);
     }
 
     @Override

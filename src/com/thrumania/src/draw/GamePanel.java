@@ -4,6 +4,7 @@ import javax.swing.*;
 import com.thrumania.src.*;
 
 import java.awt.*;
+import java.awt.event.ComponentEvent;
 
 /**
  * Created by AliReza on 23/05/2016.
@@ -18,13 +19,15 @@ public class GamePanel extends JPanel {
     }
     private Container container; // Frame Container ( Main Container )
     private STATE state;
-    public GamePanel(Container container){
+    public GamePanel(Container container /* =frame.getContentPane() */){
         this.container = container;
 
         container.add(this);
 
         state = STATE.MENU;
         menu_panel = new com.thrumania.src.menu.Panel(this,map_panel,game_panel);
+        currentPanel = menu_panel;
+        updateComponents();
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -44,13 +47,18 @@ public class GamePanel extends JPanel {
         switch(state){
             case MENU:
                 currentPanel = menu_panel;
+                map_panel = null;
                 break;
             case MAP:
                 currentPanel = map_panel;
                 break;
             default:    // It's for GAME state
                 currentPanel = game_panel;
+                menu_panel = null;
+                map_panel = null;
         }
         updateComponents();
     }
+
+
 }
