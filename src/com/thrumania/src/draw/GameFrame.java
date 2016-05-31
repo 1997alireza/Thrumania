@@ -12,6 +12,8 @@ public class GameFrame extends JFrame {
 
     public GameFrame(){
 
+        setLayout(null);
+        setLocation(0,0);
         setSize(Constant.Screen_Dimension);
         setUndecorated(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

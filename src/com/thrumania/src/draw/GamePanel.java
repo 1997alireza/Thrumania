@@ -5,39 +5,35 @@ import com.thrumania.src.*;
 
 import java.awt.*;
 import java.awt.event.ComponentEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 /**
  * Created by AliReza on 23/05/2016.
  */
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel implements MouseListener,MouseMotionListener {
     public com.thrumania.src.menu.Panel menu_panel;
     public com.thrumania.src.mapEditor.Panel map_panel;
     public com.thrumania.src.game.Panel game_panel;
     private GraphicHandler currentPanel;
+
     public enum STATE{
         MENU,MAP,GAME
     }
-    private Container container; // Frame Container ( Main Container )
     private STATE state;
     public GamePanel(){
-        container = this;
+        setLayout(null);
+
         state = STATE.MENU;
         menu_panel = new com.thrumania.src.menu.Panel(this,map_panel,game_panel);
         currentPanel = menu_panel;
-        updateComponents();
     }
     @Override
     protected void paintComponent(Graphics g) {
         currentPanel.render(g);
     }
 
-    private void updateComponents() {
-
-        while (container.getComponentCount() > 1)  // for removing all components from frame except main panel
-            container.remove(1);
-
-        currentPanel.addGameComponent(container);
-    }
 
     public void changeState(STATE state){
         switch(state){
@@ -53,8 +49,43 @@ public class GamePanel extends JPanel {
                 menu_panel = null;
                 map_panel = null;
         }
-        updateComponents();
     }
 
+
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
+    }
 
 }

@@ -14,13 +14,14 @@ import com.sun.prism.*;
 import com.thrumania.src.GraphicHandler;
 import com.thrumania.src.draw.GamePanel;
 import com.thrumania.src.objects.GameButton;
+import com.thrumania.src.objects.GameObject;
 import res.values.*;
 public class Panel implements GraphicHandler{
 
     private com.thrumania.src.draw.GamePanel drawPanel;private com.thrumania.src.mapEditor.Panel mapPanel;private com.thrumania.src.game.Panel gamePanel;
 
     private int state ;
-
+    private LinkedList <GameObject> objects;
     private final int [][] PT= {
             {110,1,2,6,-1,-1,-1,-1,-1,-1,-1},
             {0,-1,-1,-1,-1,-1,-1,-1,8,-1,101},
@@ -43,6 +44,7 @@ public class Panel implements GraphicHandler{
         this.mapPanel = mapPanel;
         this.gamePanel = gamePanel;
         state = 0;
+        objects = new LinkedList<GameObject>();
     }
     @Override
     public void render(Graphics g) {
@@ -52,28 +54,17 @@ public class Panel implements GraphicHandler{
         g.drawRect(50,50,Constant.Screen_Width-100,Constant.Screen_Height-100);
         switch (state){
             case 0:
+                objects.add(new GameButton(this,"Single Player",100,100,100,300,100,(new ImageIcon("src/res/images/1.png")).getImage() , (new ImageIcon("src/res/images/2.png")).getImage()));
                 break;
             case 1:
                 break;
 
 
         }
-    }
-    @Override
-    public void addGameComponent (Container container){
 
-        switch (state){
-            case 0:
-                GameButton singlePlayer = new GameButton(this,"Single Player",100,100,100,300,100,null);
-                container.add(singlePlayer);
-                break;
-            case 1:
-                GameButton play = new GameButton(this,"Play",1,100,100,300,100,null);
-                container.add(play);
-                break;
-
+        for(GameObject GO : objects){
+            g.drawImage(GO.getImage(),GO.getX(),GO.getY(),GO.getWidth(),GO.getHeight(),null);
         }
-
     }
 
     public void pressButton(int code){

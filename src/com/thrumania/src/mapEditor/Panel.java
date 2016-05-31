@@ -25,10 +25,7 @@ public class Panel implements GraphicHandler{
 
 
     }
-    @Override
-    public void addGameComponent (Container container){
 
-    }
 
         // on click on "finish" change state to menu and give the "ground" and "object" to menu.Panel.editMap(...)
 }

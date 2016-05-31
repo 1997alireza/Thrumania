@@ -22,8 +22,4 @@ public class Panel  implements GraphicHandler{
 
     }
 
-    @Override
-    public void addGameComponent(Container container) {
-
-    }
 }
