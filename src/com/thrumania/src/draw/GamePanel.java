@@ -19,11 +19,8 @@ public class GamePanel extends JPanel {
     }
     private Container container; // Frame Container ( Main Container )
     private STATE state;
-    public GamePanel(Container container /* =frame.getContentPane() */){
-        this.container = container;
-
-        container.add(this);
-
+    public GamePanel(){
+        container = this;
         state = STATE.MENU;
         menu_panel = new com.thrumania.src.menu.Panel(this,map_panel,game_panel);
         currentPanel = menu_panel;
@@ -43,7 +40,6 @@ public class GamePanel extends JPanel {
     }
 
     public void changeState(STATE state){
-        this.state = state;
         switch(state){
             case MENU:
                 currentPanel = menu_panel;

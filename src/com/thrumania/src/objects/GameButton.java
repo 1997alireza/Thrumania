@@ -29,12 +29,14 @@ public class GameButton extends Component implements MouseListener{
         this.image_MouseHover = image_MouseHover;
         currentImage = image;
         this.menu_panel = menu_panel;
+        repaint();
         addMouseListener(this);
     }
 
     @Override
     public void paint(Graphics g) {
         super.paint(g);
+        System.out.println("ASd");
         g.drawString(text,0,0);
     }
 

@@ -76,7 +76,7 @@ public class Panel implements GraphicHandler{
 
     }
 
-    public void pressButton(int code){  //in state 8 and 9 make "new mapEditor.Panel(...)"
+    public void pressButton(int code){
         state = PT[state][code];
         switch (state){
             case 8:
