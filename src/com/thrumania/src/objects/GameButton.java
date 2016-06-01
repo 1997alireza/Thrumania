@@ -1,7 +1,12 @@
 package com.thrumania.src.objects;
 
+import com.thrumania.src.GraphicHandler;
+import com.thrumania.src.gameSpace.*;
+import com.thrumania.src.gameSpace.Rectangle;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.util.LinkedList;
 
 /**
  * Created by AliReza on 29/05/2016.
@@ -15,12 +20,13 @@ public class GameButton implements GameObject{
     private int width , height;
     private String text;
     private int code;
-    private com.thrumania.src.menu.Panel menu_panel;
+    private GraphicHandler panel;
+    private Area area;
     public GameButton(com.thrumania.src.menu.Panel menu_panel, String text,int code,int x, int y, int width, int height, Image image){
         this(menu_panel,text,code,x,y,width,height,image,image);
     }
-    public GameButton(com.thrumania.src.menu.Panel menu_panel, String text,int code,int x,int y,int width,int height,Image image,Image image_MouseHover){     //Have a image for when mouse enter the component
-        this.menu_panel = menu_panel;
+    public GameButton(GraphicHandler panel, String text,int code,int x,int y,int width,int height,Image image,Image image_MouseHover){     //Have a image for when mouse enter the component
+        this.panel = panel;
         this.text = text;
         this.code = code;
         this.x = x;
@@ -30,12 +36,14 @@ public class GameButton implements GameObject{
         this.image = image;
         this.image_MouseHover = image_MouseHover;
         currentImage = image;
+        area = new Rectangle(x,y,width,height);
     }
 
     @Override
     public void mouseClicked(){     //For action
-        menu_panel.pressButton(code);
+        panel.pressButton(code);
     }
+
 
     public void mouseEntered() {    //For change image : entering
         currentImage = image_MouseHover;
@@ -69,6 +77,11 @@ public class GameButton implements GameObject{
     @Override
     public int getHeight() {
         return height;
+    }
+
+    @Override
+    public boolean isInArea(int x, int y) {
+        return area.isInArea(x,y);
     }
 
 }

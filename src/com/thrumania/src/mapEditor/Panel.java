@@ -2,6 +2,7 @@ package com.thrumania.src.mapEditor;
 
 import com.thrumania.src.GraphicHandler;
 import com.thrumania.src.draw.GamePanel;
+import com.thrumania.src.objects.GameObject;
 import res.values.Constant;
 
 import javax.swing.*;
@@ -26,6 +27,24 @@ public class Panel implements GraphicHandler{
 
     }
 
+    @Override
+    public void mouseClick(int x, int y) {
 
-        // on click on "finish" change state to menu and give the "ground" and "object" to menu.Panel.editMap(...)
+    }
+    @Override
+    public void mouseEnter(int x, int y) {
+
+    }
+
+    @Override
+    public void mouseExit(int x, int y) {
+
+    }
+
+    @Override
+    public void pressButton(int code) {
+            // inja code un dokme kenariaro migire va bar asase un migi harki chikar kone .
+    }
+
+    // on click on "finish" change state to menu and give the "ground" and "object" to menu.Panel.editMap(...)
 }

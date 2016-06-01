@@ -2,12 +2,14 @@ package com.thrumania.src.draw;
 
 import javax.swing.*;
 import com.thrumania.src.*;
+import com.thrumania.src.objects.GameObject;
 
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.LinkedList;
 
 /**
  * Created by AliReza on 23/05/2016.
@@ -18,6 +20,9 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
     public com.thrumania.src.game.Panel game_panel;
     private GraphicHandler currentPanel;
 
+    private LinkedList<GameObject> panelObjects;
+
+    private int lastMouseX , lastMouseY;
     public enum STATE{
         MENU,MAP,GAME
     }
@@ -25,9 +30,12 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
     public GamePanel(){
         setLayout(null);
 
-        state = STATE.MENU;
         menu_panel = new com.thrumania.src.menu.Panel(this,map_panel,game_panel);
-        currentPanel = menu_panel;
+        changeState(STATE.MENU);
+
+        lastMouseX = MouseInfo.getPointerInfo().getLocation().x;
+        lastMouseY = MouseInfo.getPointerInfo().getLocation().y;
+
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -49,12 +57,14 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
                 menu_panel = null;
                 map_panel = null;
         }
+
     }
 
 
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        currentPanel.mouseClick(e.getX() , e.getY());
 
     }
 
@@ -85,6 +95,10 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
 
     @Override
     public void mouseMoved(MouseEvent e) {
+        currentPanel.mouseExit(lastMouseX,lastMouseY);
+        currentPanel.mouseEnter(e.getX(),e.getY());
+        lastMouseX = e.getX();
+        lastMouseY = e.getY();
 
     }
 

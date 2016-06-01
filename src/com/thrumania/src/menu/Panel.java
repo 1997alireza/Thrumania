@@ -21,7 +21,10 @@ public class Panel implements GraphicHandler{
     private com.thrumania.src.draw.GamePanel drawPanel;private com.thrumania.src.mapEditor.Panel mapPanel;private com.thrumania.src.game.Panel gamePanel;
 
     private int state ;
-    private LinkedList <GameObject> objects;
+
+
+
+    private LinkedList <GameObject> gameObjects;
     private final int [][] PT= {
             {110,1,2,6,-1,-1,-1,-1,-1,-1,-1},
             {0,-1,-1,-1,-1,-1,-1,-1,8,-1,101},
@@ -44,7 +47,7 @@ public class Panel implements GraphicHandler{
         this.mapPanel = mapPanel;
         this.gamePanel = gamePanel;
         state = 0;
-        objects = new LinkedList<GameObject>();
+        gameObjects = new LinkedList<GameObject>();
     }
     @Override
     public void render(Graphics g) {
@@ -54,7 +57,7 @@ public class Panel implements GraphicHandler{
         g.drawRect(50,50,Constant.Screen_Width-100,Constant.Screen_Height-100);
         switch (state){
             case 0:
-                objects.add(new GameButton(this,"Single Player",100,100,100,300,100,(new ImageIcon("src/res/images/1.png")).getImage() , (new ImageIcon("src/res/images/2.png")).getImage()));
+                gameObjects.add(new GameButton(this,"Single Player",100,100,100,300,100,(new ImageIcon("src/res/images/1.png")).getImage() , (new ImageIcon("src/res/images/2.png")).getImage()));
                 break;
             case 1:
                 break;
@@ -62,11 +65,12 @@ public class Panel implements GraphicHandler{
 
         }
 
-        for(GameObject GO : objects){
+        for(GameObject GO : gameObjects){
             g.drawImage(GO.getImage(),GO.getX(),GO.getY(),GO.getWidth(),GO.getHeight(),null);
         }
     }
 
+    @Override
     public void pressButton(int code){
         state = PT[state][code];
         switch (state){
@@ -88,6 +92,39 @@ public class Panel implements GraphicHandler{
         this.ground = ground;
         this.object = object;
         pressButton(eventNumber_ForFinishingMapEditing_InAutomata);
+    }
+
+    @Override
+    public void mouseClick(int x, int y) {
+        for(GameObject GO : gameObjects){
+            if(GO.isInArea(x,y)){
+                GO.mouseClicked();
+                break;
+            }
+        }
+
+    }
+
+    @Override
+    public void mouseEnter(int x, int y) {
+        for(GameObject GO : gameObjects){
+            if(GO.isInArea(x,y)){
+                GO.mouseClicked();
+                break;
+            }
+        }
+
+    }
+
+    @Override
+    public void mouseExit(int x, int y) {
+        for(GameObject GO : gameObjects){
+            if(GO.isInArea(x,y)){
+                GO.mouseClicked();
+                break;
+            }
+        }
+
     }
 
 

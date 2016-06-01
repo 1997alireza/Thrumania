@@ -1,6 +1,7 @@
 package com.thrumania.src.objects;
 
 import java.awt.*;
+import java.util.LinkedList;
 
 /**
  * Created by AliReza on 29/05/2016.
@@ -35,5 +36,10 @@ public class StaticObject implements GameObject{
     @Override
     public void mouseClicked() {
 
+    }
+
+    @Override
+    public boolean isInArea(int x, int y) {
+        return false; // must return area.isInArea
     }
 }
