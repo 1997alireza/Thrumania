@@ -24,6 +24,10 @@ public class Panel implements GraphicHandler{
     @Override
     public void render(Graphics g) {
 
+    }
+
+    @Override
+    public void updateComponents() {
 
     }
 
@@ -31,6 +35,8 @@ public class Panel implements GraphicHandler{
     public void mouseClick(int x, int y) {
 
     }
+
+
     @Override
     public void mouseEnter(int x, int y) {
 

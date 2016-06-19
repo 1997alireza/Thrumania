@@ -30,6 +30,9 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
     public GamePanel(){
         setLayout(null);
 
+        addMouseListener(this);
+        addMouseMotionListener(this);
+
         menu_panel = new com.thrumania.src.menu.Panel(this,map_panel,game_panel);
         changeState(STATE.MENU);
 
@@ -40,9 +43,12 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
     @Override
     protected void paintComponent(Graphics g) {
         currentPanel.render(g);
+    }//avaz she be in :: objecta moqeye changeState remoall va sepas add shan tuye panele marbut. render faqat objectaye mojud ro mikshe va ezafe kam nmikone
+
+
+    private void updateComponents(){
+        currentPanel.updateComponents();
     }
-
-
     public void changeState(STATE state){
         switch(state){
             case MENU:
@@ -58,6 +64,8 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
                 map_panel = null;
         }
 
+        currentPanel.updateComponents();
+        repaint();
     }
 
 
@@ -99,6 +107,7 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
         currentPanel.mouseEnter(e.getX(),e.getY());
         lastMouseX = e.getX();
         lastMouseY = e.getY();
+
 
     }
 

@@ -10,6 +10,7 @@ import java.util.LinkedList;
  */
 public interface GraphicHandler {
     void render(Graphics g) ;
+    void updateComponents();
     void mouseClick(int x,int y);
     void mouseEnter(int x,int y);
     void mouseExit(int x,int y);

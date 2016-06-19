@@ -25,6 +25,11 @@ public class Panel  implements GraphicHandler{
     }
 
     @Override
+    public void updateComponents() {
+
+    }
+
+    @Override
     public void mouseClick(int x, int y) {
 
     }

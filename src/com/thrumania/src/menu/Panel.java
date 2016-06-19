@@ -16,12 +16,15 @@ import com.thrumania.src.draw.GamePanel;
 import com.thrumania.src.objects.GameButton;
 import com.thrumania.src.objects.GameObject;
 import res.values.*;
+import com.thrumania.src.Tools.Division;
 public class Panel implements GraphicHandler{
 
     private com.thrumania.src.draw.GamePanel drawPanel;private com.thrumania.src.mapEditor.Panel mapPanel;private com.thrumania.src.game.Panel gamePanel;
 
     private int state ;
 
+    private final int background_height = 1080;
+    private final int background_width = 1920;
 
 
     private LinkedList <GameObject> gameObjects;
@@ -52,18 +55,17 @@ public class Panel implements GraphicHandler{
     @Override
     public void render(Graphics g) {
 
-        //default background here
-        g.setColor(Color.black);
-        g.drawRect(50,50,Constant.Screen_Width-100,Constant.Screen_Height-100);
-        switch (state){
-            case 0:
-                gameObjects.add(new GameButton(this,"Single Player",100,100,100,300,100,(new ImageIcon("src/res/images/1.png")).getImage() , (new ImageIcon("src/res/images/2.png")).getImage()));
-                break;
-            case 1:
-                break;
+        if ((double) Constant.Screen_Width / Constant.Screen_Height <= (double) background_width / background_height) {
 
+            double temp = (double) (background_height * Constant.Screen_Width) / background_width;
+            System.out.println(temp);
+            g.drawImage(new ImageIcon("src/res/images/menu/background.jpg").getImage(), 0, (Constant.Screen_Height - (int) temp) / 2, Constant.Screen_Width, (int) temp, null);
+        } else {
 
+            double temp = (double) (background_width * Constant.Screen_Height) / background_height;
+            g.drawImage(new ImageIcon("src/res/images/menu/background.jpg").getImage(), (Constant.Screen_Width - (int) temp) / 2, 0, (int) temp, Constant.Screen_Height, null);
         }
+
 
         for(GameObject GO : gameObjects){
             g.drawImage(GO.getImage(),GO.getX(),GO.getY(),GO.getWidth(),GO.getHeight(),null);
@@ -71,7 +73,113 @@ public class Panel implements GraphicHandler{
     }
 
     @Override
+    public void updateComponents() {
+
+        int back_left = Division.division(Constant.Screen_Width, 8.97);
+        int back_right = Division.division(Constant.Screen_Width,12.97);
+        int back_up = Division.division(Constant.Screen_Height, 22.04);
+        int back_height = Division.division(Division.division(Constant.Screen_Width,8.97),2.5);
+        ImageIcon back_1 = new ImageIcon("src/res/images/menu/button/back 1.png");
+        ImageIcon back_2 = new ImageIcon("src/res/images/menu/button/back 2.png");
+
+        int edit_map_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 8)) / 2;
+        int edit_map_right = edit_map_left;
+        int edit_map_up = Division.division(Constant.Screen_Height, 1.855);
+        int edit_map_height = Division.division(Division.division(Constant.Screen_Width, 8),1.80);
+        ImageIcon edit_map_1 = new ImageIcon("src/res/images/menu/button/edit map 1.png");
+        ImageIcon edit_map_2 = new ImageIcon("src/res/images/menu/button/edit map 2.png");
+
+        switch (state) {
+            case 0:
+                int single_player_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 6.336)) / 2;
+                int single_player_right = single_player_left;
+                int single_player_up = Division.division(Constant.Screen_Height, 5.11);
+                int single_player_height = Division.division(Division.division(Constant.Screen_Width, 6.336), 2.330);
+                ImageIcon single_player_1 = new ImageIcon("src/res/images/menu/button/single player 1.png");
+                ImageIcon single_player_2 = new ImageIcon("src/res/images/menu/button/single player 2.png");
+
+                int multi_player_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 6.111)) / 2;
+                int multi_player_right = multi_player_left;
+                int multi_player_up = Division.division(Constant.Screen_Height, 2.416);
+                int multi_player_height = Division.division(Division.division(Constant.Screen_Width, 6.111), 1.849);
+                ImageIcon multi_player_1 = new ImageIcon("src/res/images/menu/button/multi player 1.png");
+                ImageIcon multi_player_2 = new ImageIcon("src/res/images/menu/button/multi player 2.png");
+
+                int option_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 6.048)) / 2;
+                int option_right = option_left;
+                int option_up = Division.division(Constant.Screen_Height, 1.545);
+                int option_height = Division.division(Division.division(Constant.Screen_Width, 6.048), 2);
+                ImageIcon option_1 = new ImageIcon("src/res/images/menu/button/option 1.png");
+                ImageIcon option_2 = new ImageIcon("src/res/images/menu/button/option 2.png");
+
+                int quit_left = Division.division(Constant.Screen_Width, 1.151);
+                int quit_right = Division.division(Constant.Screen_Width,10.666);
+                int quit_up = Division.division(Constant.Screen_Height, 1.15);
+                int quit_height = Division.division(Division.division(Constant.Screen_Width,10.666),1.78);
+                ImageIcon quit_1 = new ImageIcon("src/res/images/menu/button/quit 1.png");
+                ImageIcon quit_2 = new ImageIcon("src/res/images/menu/button/quit 2.png");
+
+
+
+                gameObjects.add(new GameButton(this, "single player", 1, single_player_left, single_player_up, Constant.Screen_Width - single_player_left - single_player_right, single_player_height, single_player_1.getImage(), single_player_2.getImage()));
+                gameObjects.add(new GameButton(this, "multi player", 2, multi_player_left, multi_player_up, Constant.Screen_Width - multi_player_left - multi_player_right, multi_player_height, multi_player_1.getImage(), multi_player_2.getImage()));
+                gameObjects.add(new GameButton(this, "option", 3, option_left, option_up, Constant.Screen_Width - option_left - option_right, option_height, option_1.getImage(), option_2.getImage()));
+                gameObjects.add(new GameButton(this, "quit", 0, quit_left, quit_up, quit_right, quit_height, quit_1.getImage(), quit_2.getImage()));
+                break;
+            case 1:
+                int play_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 10.54)) / 2;
+                int play_right = play_left;
+                int play_up = Division.division(Constant.Screen_Height, 3.5);
+                int play_height = Division.division(Division.division(Constant.Screen_Width, 10.54),1.26);
+                ImageIcon play_1 = new ImageIcon("src/res/images/menu/button/play 1.png");
+                ImageIcon play_2 = new ImageIcon("src/res/images/menu/button/play 2.png");
+
+                gameObjects.add(new GameButton(this, "play", 10, play_left, play_up, Constant.Screen_Width - play_left - play_right, play_height, play_1.getImage(), play_2.getImage()));
+                gameObjects.add(new GameButton(this, "edit map", 8, edit_map_left, edit_map_up, Constant.Screen_Width - edit_map_left - edit_map_right, edit_map_height, edit_map_1.getImage(), edit_map_2.getImage()));
+                gameObjects.add(new GameButton(this, "back", 0, back_left, back_up, back_right, back_height, back_1.getImage(), back_2.getImage()));
+                break;
+            case 2:
+                int creat_game_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 9.320)) / 2;
+                int creat_game_right = creat_game_left;
+                int creat_game_up = Division.division(Constant.Screen_Height, 3.5);
+                int creat_game_height = Division.division(Division.division(Constant.Screen_Width, 9.320),1.46);
+                ImageIcon creat_game_1 = new ImageIcon("src/res/images/menu/button/creat game 1.png");
+                ImageIcon creat_game_2 = new ImageIcon("src/res/images/menu/button/creat game 2.png");
+
+                int join_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 10.55)) / 2;
+                int join_right = join_left;
+                int join_up = Division.division(Constant.Screen_Height, 1.855);
+                int join_height = Division.division(Division.division(Constant.Screen_Width, 10.55),1.87);
+                ImageIcon join_1 = new ImageIcon("src/res/images/menu/button/join 1.png");
+                ImageIcon join_2 = new ImageIcon("src/res/images/menu/button/join 2.png");
+
+                gameObjects.add(new GameButton(this, "creat game", 5, creat_game_left, creat_game_up, Constant.Screen_Width - creat_game_left - creat_game_right, creat_game_height, creat_game_1.getImage(), creat_game_2.getImage()));
+                gameObjects.add(new GameButton(this, "join", 7, join_left, join_up, Constant.Screen_Width - join_left - join_right, join_height, join_1.getImage(), join_2.getImage()));
+                gameObjects.add(new GameButton(this, "back", 0, back_left, back_up, back_right, back_height, back_1.getImage(), back_2.getImage()));
+                break;
+            case 3:
+                int creat_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 7.320)) / 2;
+                int creat_right = creat_left;
+                int creat_up = Division.division(Constant.Screen_Height, 3.5);
+                int creat_height = Division.division(Division.division(Constant.Screen_Width, 9.320),1.26);
+                ImageIcon creat_1 = new ImageIcon("src/res/images/menu/button/creat 1.png");
+                ImageIcon creat_2 = new ImageIcon("src/res/images/menu/button/creat 2.png");
+
+
+
+                gameObjects.add(new GameButton(this, "creat", 5, creat_left, creat_up, Constant.Screen_Width - creat_left - creat_right, creat_height, creat_1.getImage(), creat_2.getImage()));
+                gameObjects.add(new GameButton(this, "edit map", 8, edit_map_left, edit_map_up, Constant.Screen_Width - edit_map_left - edit_map_right, edit_map_height, edit_map_1.getImage(), edit_map_2.getImage()));
+                gameObjects.add(new GameButton(this, "back", 0, back_left, back_up, back_right, back_height, back_1.getImage(), back_2.getImage()));
+                break;
+
+        }
+
+
+    }
+
+    @Override
     public void pressButton(int code){
+        //check if is a final state
         state = PT[state][code];
         switch (state){
             case 8:
@@ -109,7 +217,7 @@ public class Panel implements GraphicHandler{
     public void mouseEnter(int x, int y) {
         for(GameObject GO : gameObjects){
             if(GO.isInArea(x,y)){
-                GO.mouseClicked();
+                //enter in GO
                 break;
             }
         }
@@ -120,7 +228,7 @@ public class Panel implements GraphicHandler{
     public void mouseExit(int x, int y) {
         for(GameObject GO : gameObjects){
             if(GO.isInArea(x,y)){
-                GO.mouseClicked();
+                //exit of GO
                 break;
             }
         }
