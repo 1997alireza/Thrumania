@@ -12,11 +12,12 @@ import java.util.LinkedList;
 
 import com.sun.prism.*;
 import com.thrumania.src.GraphicHandler;
+import com.thrumania.src.Tools.Cursor;
 import com.thrumania.src.draw.GamePanel;
 import com.thrumania.src.objects.GameButton;
 import com.thrumania.src.objects.GameObject;
 import res.values.*;
-import com.thrumania.src.Tools.Division;
+import com.thrumania.src.Tools.*;
 public class Panel implements GraphicHandler{
 
     private com.thrumania.src.draw.GamePanel drawPanel;private com.thrumania.src.mapEditor.Panel mapPanel;private com.thrumania.src.game.Panel gamePanel;
@@ -73,6 +74,8 @@ public class Panel implements GraphicHandler{
 
     @Override
     public void updateComponents() {
+
+        Cursor.setCursor(drawPanel,Cursor.MENU_CUROSR);
 
         gameObjects = new LinkedList<GameObject>();
 
