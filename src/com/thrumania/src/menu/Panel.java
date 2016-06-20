@@ -70,6 +70,23 @@ public class Panel implements GraphicHandler{
         for(GameObject GO : gameObjects){
             g.drawImage(GO.getImage(),GO.getX(),GO.getY(),GO.getWidth(),GO.getHeight(),null);
         }
+
+        if (state == 6){
+            int slider_bar_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 4.266)) / 2;
+            int slider_bar_right = slider_bar_left;
+            int slider_bar_up = Division.division(Constant.Screen_Height, 2.541);
+            int slider_bar_height = Division.division(Division.division(Constant.Screen_Width, 4.266), 75);
+            ImageIcon slider_bar = new ImageIcon("src/res/images/menu/slider bar.png");
+
+            int sound_text_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 11.294)) / 2;
+            int sound_text_right = sound_text_left;
+            int sound_text_up = Division.division(Constant.Screen_Height, 3.253);
+            int sound_text_height = Division.division(Division.division(Constant.Screen_Width, 11.294), 4.483);
+            ImageIcon sound_text = new ImageIcon("src/res/images/menu/sound text.png");
+            g.drawImage(slider_bar.getImage(),slider_bar_left,slider_bar_up,Constant.Screen_Width-slider_bar_left-slider_bar_right,slider_bar_height,null);
+            g.drawImage(sound_text.getImage(),sound_text_left,sound_text_up,Constant.Screen_Width-sound_text_left-sound_text_right,sound_text_height,null);
+        }
+
     }
 
     @Override
@@ -177,6 +194,9 @@ public class Panel implements GraphicHandler{
                 gameObjects.add(new GameButton(this, "edit map", 8, edit_map_left, edit_map_up, Constant.Screen_Width - edit_map_left - edit_map_right, edit_map_height, edit_map_1.getImage(), edit_map_2.getImage()));
                 gameObjects.add(new GameButton(this, "back", 0, back_left, back_up, back_right, back_height, back_1.getImage(), back_2.getImage()));
                 break;
+            case 6:
+                gameObjects.add(new GameButton(this, "back", 0, back_left, back_up, back_right, back_height, back_1.getImage(), back_2.getImage()));
+                break;
 
         }
 
@@ -201,11 +221,11 @@ public class Panel implements GraphicHandler{
                 System.exit(0);
                 break;
 
-            case 8:     //go to map editor
+            case 8:
                 mapPanel = new com.thrumania.src.mapEditor.Panel(drawPanel,this,ground,object);
                 drawPanel.changeState(GamePanel.STATE.MAP);
                 break;
-            case 9:     //go to map editor
+            case 9:
                 mapPanel = new com.thrumania.src.mapEditor.Panel(drawPanel,this,ground,object);
                 drawPanel.changeState(GamePanel.STATE.MAP);
                 break;
