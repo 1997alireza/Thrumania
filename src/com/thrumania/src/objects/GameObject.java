@@ -18,5 +18,7 @@ public interface GameObject {
     boolean isInArea(int x, int y);
 
     void mouseClicked();
+    void mouseEntered();
+    void mouseExited();
 
 }

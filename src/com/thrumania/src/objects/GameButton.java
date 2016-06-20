@@ -44,12 +44,13 @@ public class GameButton implements GameObject{
         panel.pressButton(code);
     }
 
-
-    public void mouseEntered() {    //For change image : entering
+    @Override
+    public void mouseEntered() {
         currentImage = image_MouseHover;
     }
 
-    public void mouseExited() {     //For change image : exiting
+    @Override
+    public void mouseExited() {
         currentImage = image;
     }
 

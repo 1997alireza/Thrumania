@@ -39,6 +39,16 @@ public class StaticObject implements GameObject{
     }
 
     @Override
+    public void mouseEntered() {
+
+    }
+
+    @Override
+    public void mouseExited() {
+
+    }
+
+    @Override
     public boolean isInArea(int x, int y) {
         return false; // must return area.isInArea
     }

@@ -5,7 +5,7 @@ package com.thrumania.src.gameSpace;
  */
 public class Rectangle extends Area {
     private int x,y,width,height;
-    public Rectangle(int x,int y,int height,int width){
+    public Rectangle(int x,int y,int width,int height){
         this.x = x;
         this.y = y;
         this.width = width;

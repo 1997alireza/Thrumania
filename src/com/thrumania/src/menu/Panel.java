@@ -58,7 +58,6 @@ public class Panel implements GraphicHandler{
         if ((double) Constant.Screen_Width / Constant.Screen_Height <= (double) background_width / background_height) {
 
             double temp = (double) (background_height * Constant.Screen_Width) / background_width;
-            System.out.println(temp);
             g.drawImage(new ImageIcon("src/res/images/menu/background.jpg").getImage(), 0, (Constant.Screen_Height - (int) temp) / 2, Constant.Screen_Width, (int) temp, null);
         } else {
 
@@ -74,6 +73,10 @@ public class Panel implements GraphicHandler{
 
     @Override
     public void updateComponents() {
+
+        gameObjects = new LinkedList<GameObject>();
+
+
 
         int back_left = Division.division(Constant.Screen_Width, 8.97);
         int back_right = Division.division(Constant.Screen_Width,12.97);
@@ -182,6 +185,19 @@ public class Panel implements GraphicHandler{
         //check if is a final state
         state = PT[state][code];
         switch (state){
+            case 101:   //play game event : single player mode
+                drawPanel.changeState(GamePanel.STATE.GAME);
+                break;
+            case 102:   //play game event : multi player mode as host
+                drawPanel.changeState(GamePanel.STATE.GAME);
+                break;
+            case 103:   //play game event : multi player mode as guest
+                drawPanel.changeState(GamePanel.STATE.GAME);
+                break;
+            case 110:   //exit game event
+                System.exit(0);
+                break;
+
             case 8:
                 mapPanel = new com.thrumania.src.mapEditor.Panel(drawPanel,this,ground,object);
                 drawPanel.changeState(GamePanel.STATE.MAP);
@@ -217,7 +233,7 @@ public class Panel implements GraphicHandler{
     public void mouseEnter(int x, int y) {
         for(GameObject GO : gameObjects){
             if(GO.isInArea(x,y)){
-                //enter in GO
+                GO.mouseEntered();
                 break;
             }
         }
@@ -228,7 +244,7 @@ public class Panel implements GraphicHandler{
     public void mouseExit(int x, int y) {
         for(GameObject GO : gameObjects){
             if(GO.isInArea(x,y)){
-                //exit of GO
+                GO.mouseExited();
                 break;
             }
         }

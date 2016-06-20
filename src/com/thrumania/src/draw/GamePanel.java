@@ -108,6 +108,7 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
         lastMouseX = e.getX();
         lastMouseY = e.getY();
 
+        repaint();
 
     }
 
