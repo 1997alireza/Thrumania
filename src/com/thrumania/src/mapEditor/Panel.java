@@ -17,12 +17,12 @@ public class Panel implements GraphicHandler{
     public Panel(com.thrumania.src.draw.GamePanel drawPanel, com.thrumania.src.menu.Panel menuPanel, LinkedList<LinkedList<Constant.GROUND>> ground , LinkedList<ArrayList<Object>> object ){
         this.drawPanel = drawPanel;
         this.menuPanel = menuPanel;
-
-        drawPanel.changeState(GamePanel.STATE.MAP);
+        this.drawPanel.map_panel = this;
     }
 
     @Override
     public void render(Graphics g) {
+        g.drawString("ASdasdasdasd",100,100);
 
     }
 

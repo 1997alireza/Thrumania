@@ -201,11 +201,11 @@ public class Panel implements GraphicHandler{
                 System.exit(0);
                 break;
 
-            case 8:
+            case 8:     //go to map editor
                 mapPanel = new com.thrumania.src.mapEditor.Panel(drawPanel,this,ground,object);
                 drawPanel.changeState(GamePanel.STATE.MAP);
                 break;
-            case 9:
+            case 9:     //go to map editor
                 mapPanel = new com.thrumania.src.mapEditor.Panel(drawPanel,this,ground,object);
                 drawPanel.changeState(GamePanel.STATE.MAP);
                 break;
