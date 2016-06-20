@@ -3,7 +3,7 @@ package com.thrumania.src.draw;
 import javax.swing.*;
 import com.thrumania.src.*;
 import com.thrumania.src.objects.GameObject;
-
+import com.thrumania.src.Tools.PlaySound;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
@@ -27,6 +27,7 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
         MENU,MAP,GAME
     }
     private STATE state;
+    private STATE lastState;
     public GamePanel(){
         setLayout(null);
 
@@ -34,6 +35,9 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
         addMouseMotionListener(this);
 
         menu_panel = new com.thrumania.src.menu.Panel(this,map_panel,game_panel);
+
+        lastState = STATE.MAP;
+
         changeState(STATE.MENU);
 
         lastMouseX = MouseInfo.getPointerInfo().getLocation().x;
@@ -50,18 +54,28 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
         currentPanel.updateComponents();
     }
     public void changeState(STATE state){
+
+        if(lastState != STATE.MENU && state == STATE.MENU){
+            PlaySound menu_background_sound = new PlaySound("src/res/sounds/menu background.wav");
+            menu_background_sound.play(true);
+        }
+
+
         switch(state){
             case MENU:
                 currentPanel = menu_panel;
                 map_panel = null;
+                lastState = STATE.MENU;
                 break;
             case MAP:
                 currentPanel = map_panel;
+                lastState = STATE.MAP;
                 break;
             default:    // It's for GAME state
                 currentPanel = game_panel;
                 menu_panel = null;
                 map_panel = null;
+                lastState = STATE.GAME;
         }
 
         currentPanel.updateComponents();
