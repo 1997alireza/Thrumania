@@ -14,6 +14,7 @@ import com.sun.prism.*;
 import com.thrumania.src.GraphicHandler;
 import com.thrumania.src.Tools.Cursor;
 import com.thrumania.src.draw.GamePanel;
+import com.thrumania.src.objects.DragableObject;
 import com.thrumania.src.objects.GameButton;
 import com.thrumania.src.objects.GameObject;
 import res.values.*;
@@ -29,6 +30,7 @@ public class Panel implements GraphicHandler{
 
 
     private LinkedList <GameObject> gameObjects;
+    private LinkedList <DragableObject> dragableObjects;
     private final int [][] PT= {
             {110,1,2,6,-1,-1,-1,-1,-1,-1,-1},
             {0,-1,-1,-1,-1,-1,-1,-1,8,-1,101},
@@ -52,6 +54,7 @@ public class Panel implements GraphicHandler{
         this.gamePanel = gamePanel;
         state = 0;
         gameObjects = new LinkedList<GameObject>();
+        dragableObjects = new LinkedList<DragableObject>();
     }
     @Override
     public void render(Graphics g) {
@@ -67,26 +70,31 @@ public class Panel implements GraphicHandler{
         }
 
 
-        for(GameObject GO : gameObjects){
-            g.drawImage(GO.getImage(),GO.getX(),GO.getY(),GO.getWidth(),GO.getHeight(),null);
-        }
+
 
         if (state == 6){
             int slider_bar_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 4.266)) / 2;
             int slider_bar_right = slider_bar_left;
             int slider_bar_up = Division.division(Constant.Screen_Height, 2.541);
             int slider_bar_height = Division.division(Division.division(Constant.Screen_Width, 4.266), 75);
-            ImageIcon slider_bar = new ImageIcon("src/res/images/menu/slider bar.png");
+            ImageIcon slider_bar = new ImageIcon("src/res/images/menu/sound/slider bar.png");
 
             int sound_text_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 11.294)) / 2;
             int sound_text_right = sound_text_left;
             int sound_text_up = Division.division(Constant.Screen_Height, 3.253);
             int sound_text_height = Division.division(Division.division(Constant.Screen_Width, 11.294), 4.483);
-            ImageIcon sound_text = new ImageIcon("src/res/images/menu/sound text.png");
+            ImageIcon sound_text = new ImageIcon("src/res/images/menu/sound/sound text.png");
             g.drawImage(slider_bar.getImage(),slider_bar_left,slider_bar_up,Constant.Screen_Width-slider_bar_left-slider_bar_right,slider_bar_height,null);
             g.drawImage(sound_text.getImage(),sound_text_left,sound_text_up,Constant.Screen_Width-sound_text_left-sound_text_right,sound_text_height,null);
         }
 
+        for(GameObject GO : gameObjects){
+            g.drawImage(GO.getImage(),GO.getX(),GO.getY(),GO.getWidth(),GO.getHeight(),null);
+        }
+    
+        for(DragableObject DO : dragableObjects){
+            g.drawImage(DO.getImage(),DO.getX(),DO.getY(),DO.getWidth(),DO.getHeight(),null);
+        }
     }
 
     @Override
@@ -95,7 +103,7 @@ public class Panel implements GraphicHandler{
         Cursor.setCursor(drawPanel,Cursor.MENU_CUROSR);
 
         gameObjects = new LinkedList<GameObject>();
-
+        dragableObjects = new LinkedList<DragableObject>();
 
 
         int back_left = Division.division(Constant.Screen_Width, 8.97);
@@ -195,13 +203,31 @@ public class Panel implements GraphicHandler{
                 gameObjects.add(new GameButton(this, "back", 0, back_left, back_up, back_right, back_height, back_1.getImage(), back_2.getImage()));
                 break;
             case 6:
+
                 gameObjects.add(new GameButton(this, "back", 0, back_left, back_up, back_right, back_height, back_1.getImage(), back_2.getImage()));
-                break;
+
+                // (-40,0) -> (731,1151)
+                int x = (Division.division((PlaySound.getVolume()+40)*420 ,40)) + 730;
+                System.err.println(PlaySound.getVolume()+","+x);
+                int slider_option_bar_right = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 5.036)) / 2;
+                int slider_option_bar_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 4.200)) / 2;
+                int slider_option_bar_up = Division.division(Constant.Screen_Height, 2.645);
+                int minX = slider_option_bar_left;
+                int maxX = Constant.Screen_Width-slider_option_bar_right;
+                dragableObjects.add(new DragableObject(this,DragableObject.SOUND_OPTION,"sound option",x,slider_option_bar_up,minX,maxX,40,40,(new ImageIcon("src/res/images/menu/sound/kohga.png")).getImage()));
+                     break;
 
         }
 
 
     }
+
+
+    @Override
+    public void repaint() {
+        drawPanel.repaint();
+    }
+
 
     @Override
     public void pressButton(int code){
@@ -272,6 +298,37 @@ public class Panel implements GraphicHandler{
             }
         }
 
+    }
+
+    @Override
+    public void mouseDrag( int x, int y) {
+        for(DragableObject DO : dragableObjects) {
+            if (DO.isSelected()) {
+                DO.changeX((int)MouseInfo.getPointerInfo().getLocation().getX());
+                break;
+            }
+        }
+    }
+
+    @Override
+    public void mousePress( int x, int y) {
+        for(DragableObject DO : dragableObjects){
+            if(DO.isInArea(x,y)){
+                DO.select(true);
+                break;
+            }
+        }
+
+    }
+
+    @Override
+    public void mouseRelease(int x, int y) {
+        for(DragableObject DO : dragableObjects){
+            if(DO.isInArea(x,y)){
+                DO.select(false);
+                break;
+            }
+        }
     }
 
 

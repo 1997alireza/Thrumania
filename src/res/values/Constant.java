@@ -12,7 +12,7 @@ public class Constant {
         SEA , LOWLAND , HIGHLAND;
     }
     public enum OBJECT{
-        TREE , FARMLAND , IRON_MINE , GOLD_MINE;
+        TREE1 , TREE2 , FISH1 , FISH2 , FARMLAND , IRON_MINE , GOLD_MINE;
     }
 
 

@@ -14,6 +14,10 @@ public interface GraphicHandler {
     void mouseClick(int x,int y);
     void mouseEnter(int x,int y);
     void mouseExit(int x,int y);
+    void mouseDrag( int x,int y);
+    void mousePress(int x,int y);
+    void mouseRelease(int x,int y);
     void pressButton(int code);
+    void repaint();
 }
 

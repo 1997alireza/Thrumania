@@ -1,10 +1,15 @@
 package com.thrumania.src.draw;
 
 import javax.swing.*;
+
+import com.sun.prism.*;
 import com.thrumania.src.*;
 import com.thrumania.src.objects.GameObject;
 import com.thrumania.src.Tools.PlaySound;
+import res.values.Constant;
+
 import java.awt.*;
+import java.awt.Graphics;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -20,14 +25,13 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
     public com.thrumania.src.game.Panel game_panel;
     private GraphicHandler currentPanel;
 
-    private LinkedList<GameObject> panelObjects;
 
     private int lastMouseX , lastMouseY;
     public enum STATE{
         MENU,MAP,GAME
     }
-    private STATE state;
     private STATE lastState;
+    private boolean isJustChangedState = false;
     public GamePanel(){
         setLayout(null);
 
@@ -46,6 +50,11 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
     }
     @Override
     protected void paintComponent(Graphics g) {
+        if(isJustChangedState){
+            g.setColor(Color.BLACK);
+            g.fillRect(0,0,Constant.Screen_Width,Constant.Screen_Height);
+            isJustChangedState = false;
+        }
         currentPanel.render(g);
     }//avaz she be in :: objecta moqeye changeState remoall va sepas add shan tuye panele marbut. render faqat objectaye mojud ro mikshe va ezafe kam nmikone
 
@@ -58,8 +67,21 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
         if(lastState != STATE.MENU && state == STATE.MENU){
             PlaySound menu_background_sound = new PlaySound("src/res/sounds/menu background.wav");
             menu_background_sound.play(true);
-        }
+            isJustChangedState = true;
 
+        }
+        else if(lastState != STATE.MAP && state == STATE.MAP){
+            //PlaySound menu_background_sound = new PlaySound("src/res/sounds/...?.wav");
+            //menu_background_sound.play(true);
+
+            isJustChangedState = true;
+        }
+        else if(lastState != STATE.GAME && state == STATE.GAME){
+            //PlaySound menu_background_sound = new PlaySound("src/res/sounds/...?.wav");
+           // menu_background_sound.play(true);
+
+            isJustChangedState = true;
+        }
 
         switch(state){
             case MENU:
@@ -83,7 +105,6 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
     }
 
 
-
     @Override
     public void mouseClicked(MouseEvent e) {
         currentPanel.mouseClick(e.getX() , e.getY());
@@ -92,12 +113,12 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+        currentPanel.mousePress(e.getX(),e.getY());
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-
+        currentPanel.mouseRelease(e.getX(),e.getY());
     }
 
     @Override
@@ -112,7 +133,7 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
 
     @Override
     public void mouseDragged(MouseEvent e) {
-
+        currentPanel.mouseDrag(e.getX(),e.getY());
     }
 
     @Override

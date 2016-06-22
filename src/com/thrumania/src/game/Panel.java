@@ -29,6 +29,12 @@ public class Panel  implements GraphicHandler{
 
     }
 
+
+    @Override
+    public void repaint() {
+        drawPanel.repaint();
+    }
+
     @Override
     public void mouseClick(int x, int y) {
 
@@ -43,9 +49,25 @@ public class Panel  implements GraphicHandler{
     public void mouseExit(int x, int y) {
 
     }
+    @Override
+    public void mouseDrag( int x, int y) {
+
+    }
+
+    @Override
+    public void mousePress( int x, int y) {
+
+    }
+    @Override
+    public void mouseRelease(int x, int y) {
+
+    }
+
+
 
     @Override
     public void pressButton(int code) { // inja bar asase codi ke be buttone tuye panele payino rast dadim migim chikar kone
 
     }
+
 }
