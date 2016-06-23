@@ -45,8 +45,7 @@ public class Panel implements GraphicHandler{
     };
     private final int eventNumber_ForFinishingMapEditing_InAutomata = 9;
 
-    private LinkedList<LinkedList<Constant.GROUND>> ground ;
-    private LinkedList<ArrayList<Object>> object;
+    private LinkedList<LinkedList< Object[/* Constant.GROUND , Constant.OBJECT*/] >> ground ;
 
     public Panel(com.thrumania.src.draw.GamePanel drawPanel,com.thrumania.src.mapEditor.Panel mapPanel,com.thrumania.src.game.Panel gamePanel){
         this.drawPanel = drawPanel;
@@ -55,6 +54,24 @@ public class Panel implements GraphicHandler{
         state = 0;
         gameObjects = new LinkedList<GameObject>();
         dragableObjects = new LinkedList<DragableObject>();
+
+        // <-- map.ground
+        ground = new LinkedList<>();
+
+        // first width of map = 22 , first height of map = 20
+        for (int i=0;i<22;i++) {
+            LinkedList <Object[/* Constant.GROUND , Constant.OBJECT*/]> row = new LinkedList();
+            for (int j = 0; j < 20; j++) {
+                Object room [] = {Constant.GROUND.SEA,null};
+                row.add(room);
+            }
+
+            ground.add(row);
+        }
+
+        // map.ground -->
+
+
     }
     @Override
     public void render(Graphics g) {
@@ -208,7 +225,6 @@ public class Panel implements GraphicHandler{
 
                 // (-40,0) -> (731,1151)
                 int x = (Division.division((PlaySound.getVolume()+40)*420 ,40)) + 730;
-                System.err.println(PlaySound.getVolume()+","+x);
                 int slider_option_bar_right = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 5.036)) / 2;
                 int slider_option_bar_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 4.200)) / 2;
                 int slider_option_bar_up = Division.division(Constant.Screen_Height, 2.645);
@@ -248,11 +264,11 @@ public class Panel implements GraphicHandler{
                 break;
 
             case 8:
-                mapPanel = new com.thrumania.src.mapEditor.Panel(drawPanel,this,ground,object);
+                mapPanel = new com.thrumania.src.mapEditor.Panel(drawPanel,this,ground);
                 drawPanel.changeState(GamePanel.STATE.MAP);
                 break;
             case 9:
-                mapPanel = new com.thrumania.src.mapEditor.Panel(drawPanel,this,ground,object);
+                mapPanel = new com.thrumania.src.mapEditor.Panel(drawPanel,this,ground);
                 drawPanel.changeState(GamePanel.STATE.MAP);
                 break;
             default:
@@ -261,9 +277,8 @@ public class Panel implements GraphicHandler{
 
     }
 
-    public void editMap(LinkedList<LinkedList<Constant.GROUND>> ground , LinkedList<ArrayList<Object> /* 3 Objects per array : Integer x , Integer y , Constant.OBJECT*/> object){
+    public void editMap(LinkedList<LinkedList< Object[/* Constant.GROUND , Constant.OBJECT*/] >> ground ){
         this.ground = ground;
-        this.object = object;
         pressButton(eventNumber_ForFinishingMapEditing_InAutomata);
     }
 

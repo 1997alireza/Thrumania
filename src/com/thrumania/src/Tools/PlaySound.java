@@ -34,6 +34,11 @@ public class PlaySound implements Runnable {
         soundList.remove(this);
     }
 
+
+    public static void stopAll(){
+        for(PlaySound s : soundList)
+            s.stop();
+    }
     @Override
     public void run() {
         do {
@@ -75,7 +80,6 @@ public class PlaySound implements Runnable {
     }
 
     public static int getVolume(){
-        System.out.println(volume);
         return volume;
     }
 }

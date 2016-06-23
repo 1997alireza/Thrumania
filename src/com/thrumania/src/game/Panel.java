@@ -12,10 +12,16 @@ import java.util.LinkedList;
  */
 public class Panel  implements GraphicHandler{
     private com.thrumania.src.draw.GamePanel drawPanel;private com.thrumania.src.menu.Panel menuPanel; private com.thrumania.src.mapEditor.Panel mapPanel;
+
+
+    private boolean isRunningGame;
+
     public Panel(com.thrumania.src.draw.GamePanel drawPanel,com.thrumania.src.menu.Panel menuPanel,com.thrumania.src.mapEditor.Panel mapPanel){
         this.drawPanel = drawPanel;
         this.menuPanel = menuPanel;
         this.mapPanel = mapPanel;
+
+        isRunningGame = true;
 
     }
 
@@ -69,5 +75,15 @@ public class Panel  implements GraphicHandler{
     public void pressButton(int code) { // inja bar asase codi ke be buttone tuye panele payino rast dadim migim chikar kone
 
     }
+
+
+    public boolean isRunningGame() {
+        return isRunningGame;
+    }
+
+    public void setRunningGame(boolean runningGame) {
+        isRunningGame = runningGame;
+    }
+
 
 }

@@ -65,18 +65,29 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
     public void changeState(STATE state){
 
         if(lastState != STATE.MENU && state == STATE.MENU){
+
+            if(currentPanel instanceof com.thrumania.src.mapEditor.Panel)
+                ((com.thrumania.src.mapEditor.Panel)currentPanel).setRunningMap(false);
+            else if(currentPanel instanceof  com.thrumania.src.game.Panel)
+                ((com.thrumania.src.game.Panel)currentPanel).setRunningGame(false);
+
+
+            PlaySound.stopAll();
             PlaySound menu_background_sound = new PlaySound("src/res/sounds/menu background.wav");
             menu_background_sound.play(true);
+
             isJustChangedState = true;
 
         }
         else if(lastState != STATE.MAP && state == STATE.MAP){
+            PlaySound.stopAll();
             //PlaySound menu_background_sound = new PlaySound("src/res/sounds/...?.wav");
             //menu_background_sound.play(true);
 
             isJustChangedState = true;
         }
         else if(lastState != STATE.GAME && state == STATE.GAME){
+            PlaySound.stopAll();
             //PlaySound menu_background_sound = new PlaySound("src/res/sounds/...?.wav");
            // menu_background_sound.play(true);
 

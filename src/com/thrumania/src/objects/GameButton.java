@@ -14,13 +14,18 @@ import java.util.LinkedList;
  */
 public class GameButton implements GameObject{
 
-    private Image image , image_MouseHover;
+    protected Image image , image_MouseHover;
     private Image currentImage;
     private int x , y;
     private int width , height;
     private String text;
-    private int code;
-    private GraphicHandler panel;
+
+    public int getCode() {
+        return code;
+    }
+
+    protected int code;
+    protected GraphicHandler panel;
     private Area area;
     public GameButton(com.thrumania.src.menu.Panel menu_panel, String text,int code,int x, int y, int width, int height, Image image){
         this(menu_panel,text,code,x,y,width,height,image,image);
