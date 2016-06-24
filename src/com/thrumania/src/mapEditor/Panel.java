@@ -180,10 +180,9 @@ public class Panel implements GraphicHandler {
         ImageIcon peaks_2 = new ImageIcon("src/res/images/map/button/peaks.2.png");
         gameObjects.add(new DrawToolButton(this,"sea",103,794,890,77,77, peaks_1.getImage(), peaks_2.getImage()));
 
-
-        ImageIcon farm_1 = new ImageIcon("src/res/images/map/button/farm.1.png");
-        ImageIcon farm_2 = new ImageIcon("src/res/images/map/button/farm.2.png");
-        gameObjects.add(new DrawToolButton(this,"sea",111,536,890,77,77, farm_1.getImage(), farm_2.getImage()));
+        ImageIcon at_sea_1 = new ImageIcon("src/res/images/map/button/at-sea.1.png");
+        ImageIcon at_sea_2 = new ImageIcon("src/res/images/map/button/at-sea.2.png");
+        gameObjects.add(new DrawToolButton(this,"sea",101,536,890,77,77, at_sea_1.getImage(), at_sea_2.getImage()));
 
         ImageIcon mine_iron_1 = new ImageIcon("src/res/images/map/button/mine-wagon.1.png");
         ImageIcon mine_iron_2 = new ImageIcon("src/res/images/map/button/mine-wagon.2.png");
@@ -193,9 +192,9 @@ public class Panel implements GraphicHandler {
         ImageIcon mine_gold_2 = new ImageIcon("src/res/images/map/button/minerals.2.png");
         gameObjects.add(new DrawToolButton(this,"sea",113,1052,890,77,77, mine_gold_1.getImage(), mine_gold_2.getImage()));
 
-        ImageIcon at_sea_1 = new ImageIcon("src/res/images/map/button/at-sea.1.png");
-        ImageIcon at_sea_2 = new ImageIcon("src/res/images/map/button/at-sea.2.png");
-        gameObjects.add(new DrawToolButton(this,"sea",101,536,990,77,77, at_sea_1.getImage(), at_sea_2.getImage()));
+        ImageIcon farm_1 = new ImageIcon("src/res/images/map/button/farm.1.png");
+        ImageIcon farm_2 = new ImageIcon("src/res/images/map/button/farm.2.png");
+        gameObjects.add(new DrawToolButton(this,"sea",111,536,990,77,77, farm_1.getImage(), farm_2.getImage()));
 
         ImageIcon beech_1  = new ImageIcon("src/res/images/map/button/beech.1.png");
         ImageIcon beech_2 = new ImageIcon("src/res/images/map/button/beech.2.png");
@@ -375,6 +374,11 @@ public class Panel implements GraphicHandler {
 
             case 7:     //preview
                 changeSeason();
+                break;
+
+            case 10:    //exit
+                menuPanel.chooseMap(ground);
+                drawPanel.changeState(GamePanel.STATE.MENU);
                 break;
 
 

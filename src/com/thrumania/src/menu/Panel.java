@@ -24,6 +24,7 @@ public class Panel implements GraphicHandler{
     private com.thrumania.src.draw.GamePanel drawPanel;private com.thrumania.src.mapEditor.Panel mapPanel;private com.thrumania.src.game.Panel gamePanel;
 
     private int state ;
+    private int lastState ;
 
     private final int background_height = 1080;
     private final int background_width = 1920;
@@ -52,6 +53,7 @@ public class Panel implements GraphicHandler{
         this.mapPanel = mapPanel;
         this.gamePanel = gamePanel;
         state = 0;
+        lastState = state;
         gameObjects = new LinkedList<GameObject>();
         dragableObjects = new LinkedList<DragableObject>();
 
@@ -69,7 +71,7 @@ public class Panel implements GraphicHandler{
             ground.add(row);
         }
 
-        // map.ground -->
+        // map.ground --/>
 
 
     }
@@ -248,6 +250,7 @@ public class Panel implements GraphicHandler{
     @Override
     public void pressButton(int code){
         //check if is a final state
+        lastState = state;
         state = PT[state][code];
         switch (state){
             case 101:   //play game event : single player mode
@@ -344,6 +347,11 @@ public class Panel implements GraphicHandler{
                 break;
             }
         }
+    }
+
+    public void chooseMap(LinkedList<LinkedList< Object[] >> ground ){
+        this.ground = ground;
+        state = lastState;
     }
 
 
