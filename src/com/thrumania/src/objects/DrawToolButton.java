@@ -41,8 +41,9 @@ public class DrawToolButton extends GameButton {
 
     public void select(boolean selected) {
         isSelected = selected;
-        System.out.println("w");
+
         super.image = (isSelected) ? secondImage : firstImage ;
+        super.currentImage =  (isSelected) ? secondImage : firstImage ;
     }
 
 

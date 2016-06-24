@@ -15,7 +15,7 @@ import java.util.LinkedList;
 public class GameButton implements GameObject{
 
     protected Image image , image_MouseHover;
-    private Image currentImage;
+    protected Image currentImage;
     private int x , y;
     private int width , height;
     private String text;

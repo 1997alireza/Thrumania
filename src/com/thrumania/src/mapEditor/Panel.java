@@ -16,6 +16,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.concurrent.TimeUnit;
 
 public class Panel implements GraphicHandler {
     private com.thrumania.src.draw.GamePanel drawPanel;
@@ -50,7 +51,7 @@ public class Panel implements GraphicHandler {
         isRunningMap = true;
 
 
-        mapSize = new Dimension(1920 * 2, 1200 * 2);
+        mapSize = minMapSize;
         maxXMap = mapSize.width - 1920;
         maxYMap = mapSize.height - 1080 + Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/;
 
@@ -75,13 +76,14 @@ public class Panel implements GraphicHandler {
                 g.drawImage(new ImageIcon("src/res/images/ground/sea.jpg").getImage(), -(x0 % Constant.MIN_WIDTH_OF_EACH_SEA) + i * Constant.MIN_WIDTH_OF_EACH_SEA, -(y0 % Constant.MIN_HEIGHT_OF_EACH_SEA) + j * Constant.MIN_HEIGHT_OF_EACH_SEA, Constant.MIN_WIDTH_OF_EACH_SEA, Constant.MIN_HEIGHT_OF_EACH_SEA, null);
             }
 
-        for(int i = x0 / Constant.MIN_WIDTH_OF_EACH_GROUND ; i < (1920 + x0)/Constant.MIN_WIDTH_OF_EACH_GROUND - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND +1; i++)
+        for(int i = x0 / Constant.MIN_WIDTH_OF_EACH_GROUND ; i < (1920 + x0)/Constant.MIN_WIDTH_OF_EACH_GROUND  +1; i++)
             for(int j = y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND ; j < (1080-250 + y0)/Constant.MIN_HEIGHT_OF_EACH_GROUND +1; j++)
             {
                 Constant.GROUND thisGround = (Constant.GROUND)ground.get(i).get(j)[0];
                 switch (thisGround){
                     case LOWLAND:
-                        g.drawImage(new ImageIcon("src/res/images/ground/lowLand/0-0.png").getImage() , -x0%Constant.MIN_WIDTH_OF_EACH_GROUND + (i-x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND , -y0%Constant.MIN_HEIGHT_OF_EACH_GROUND + (j-y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND ,Constant.MIN_WIDTH_OF_EACH_GROUND,Constant.MIN_HEIGHT_OF_EACH_GROUND, null);
+                        int imageNum = chooseLandImageNumber(Constant.GROUND.LOWLAND , i , j);
+                        g.drawImage(new ImageIcon("src/res/images/ground/lowLand/0-"+imageNum+".png").getImage() , -x0%Constant.MIN_WIDTH_OF_EACH_GROUND + (i-x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND , -y0%Constant.MIN_HEIGHT_OF_EACH_GROUND + (j-y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND ,Constant.MIN_WIDTH_OF_EACH_GROUND,Constant.MIN_HEIGHT_OF_EACH_GROUND, null);
                         break;
                     case HIGHLAND:
                         break;
@@ -257,6 +259,9 @@ public class Panel implements GraphicHandler {
 
     }
 
+    private int startDraggingX = -1;
+    private int startDraggingY = -1;
+
     @Override
     public void mouseEnter(int x, int y) {
         for(GameObject GO : gameObjects){
@@ -282,49 +287,186 @@ public class Panel implements GraphicHandler {
     @Override
     public void mouseDrag(int x, int y) {
 
+
+        if( ! (y>=1080 - Constant.BOTTOM_FRAME_HEIGHT) ){
+            int i = (x+x0) / Constant.MIN_WIDTH_OF_EACH_GROUND;
+            int j = (y+y0) / Constant.MIN_HEIGHT_OF_EACH_GROUND;
+            Object [] room = new Object[2];
+            switch (selectedDrawTool){
+                case (101) :
+                    room[0] = Constant.GROUND.SEA;
+                    room[1] = null;
+                    ground.get(i).set(j , room);
+                    break;
+                case(102):
+                    room[0] = Constant.GROUND.LOWLAND;
+                    room[1] = null;
+                    ground.get(i).set(j , room);
+                    break;
+                case(103):
+                    room[0] = Constant.GROUND.HIGHLAND;
+                    room[1] = null;
+                    ground.get(i).set(j , room);
+                    break;
+
+            }
+
+        }
+
+       else {
+            for (GameObject GO : gameObjects) {
+                if (GO.isInArea(x, y)) {
+                    if(GO.isInArea(startDraggingX,startDraggingY))
+                        GO.mouseClicked();
+                    break;
+                }
+            }
+        }
+
+
     }
 
     @Override
     public void mousePress(int x, int y) {
+        startDraggingX = x;
+        startDraggingY = y;
 
     }
 
     @Override
     public void mouseRelease(int x, int y) {
+        startDraggingX = -1;
+        startDraggingY = -1;
 
     }
 
 
     @Override
     public void pressButton(int code) {
+        System.out.println(code);
         switch(code){
-           // case :
+            case 9:     //erease all
+
+                Object emptyRoom [] = {Constant.GROUND.SEA , null};
+
+                for(int i=0 ; i < ground.size() ; i++)
+                    for(int j=0 ; j < ground.get(i).size() ; j++)
+                        ground.get(i).set(j , emptyRoom);
+
+                break;
+            case 11:    //fast up
+                movingUp = true;
+                movingDown = false;
+                break;
+            case 12:    //fast down
+                movingDown = true;
+                movingUp = false;
+                break;
+            case 13:    //fast left
+                movingLeft = true;
+                movingRight = false;
+                break;
+            case 14:    //fast right
+                movingRight = true;
+                movingLeft = false;
+                break;
+
+
         }
     }
 
+
+    private boolean movingUp = false , movingDown = false , movingRight = false , movingLeft = false;
 
     private void moveMap() {
         while (isRunningMap) {
 
             int x = (int) MouseInfo.getPointerInfo().getLocation().getX();
             int y = (int) MouseInfo.getPointerInfo().getLocation().getY();
-            if (x <= 5 && x0 > 0) {
-                x0--;
-            } else if (x >= Constant.Screen_Width - 5 && x0 < maxXMap) {
-                x0++;
+            boolean t = false;
+            boolean movingFast = movingUp || movingDown || movingRight || movingLeft;
+            if ( (x <= 5) && x0 > 0 && !movingFast) {
+                x0-=3;
+                t=true;
+
+            } else if ( (x >= Constant.Screen_Width - 5) && x0 < maxXMap && !movingFast) {
+                x0+=3;
+                t=true;
             }
 
-            if (y <= 5 && y0 > 0) {
-                y0--;
-            } else if (y >= Constant.Screen_Height - 5 && y0 < maxYMap) {
-                y0++;
+            if ( (y <= 5 ) && y0 > 0 && !movingFast) {
+                y0-=3;
+                t=true;
+            } else if ( (y >= Constant.Screen_Height - 5)  && y0 < maxYMap && !movingFast) {
+                y0+=3;
+                t=true;
+            }
+
+            repaint();
+
+            if(t) {
+                try {
+                    Thread.sleep(12);
+                } catch (InterruptedException e1) {
+                }
             }
 
 
-            try {
-                Thread.sleep(2);
-            } catch (InterruptedException e1) {
+
+            if ( (movingLeft) && x0 > 0) {
+                x0-=3;
+                t=true;
+
+                try {
+                    TimeUnit.NANOSECONDS.sleep(x0/4);
+                } catch (InterruptedException e1) {
+                }
+                repaint();
+            } else if ( ( movingRight) && x0 < maxXMap) {
+                x0+=3;
+                t=true;
+
+                try {
+                    TimeUnit.NANOSECONDS.sleep((maxXMap-x0)/4);
+                } catch (InterruptedException e1) {
+                }
+                repaint();
             }
+
+            if ( (movingUp ) && y0 > 0) {
+                y0-=3;
+                t=true;
+
+                try {
+                    TimeUnit.NANOSECONDS.sleep(y0/4);
+                } catch (InterruptedException e1) {
+                }
+                repaint();
+            } else if ( ( movingDown)  && y0 < maxYMap) {
+                y0+=3;
+                t=true;
+
+                try {
+                    TimeUnit.NANOSECONDS.sleep((maxYMap-y0)/4);
+                } catch (InterruptedException e1) {
+                }
+                repaint();
+            }
+
+
+
+
+
+            if(x0==0)
+                movingLeft = false;
+            else if(x0==maxXMap)
+                movingRight = false;
+            if(y0==0)
+                movingUp = false;
+            else if(y0==maxYMap)
+                movingDown = false;
+
+
             repaint();
         }
 
@@ -340,12 +482,11 @@ public class Panel implements GraphicHandler {
     }
 
     public void selectDrawTool(int code){
-        System.out.println("aa");
+
         if(selectedDrawTool!=-1){
             for(GameObject GO : gameObjects)
-                if(GO instanceof  DrawToolButton && ((DrawToolButton)GO).isSelected()) {
+                if(GO instanceof  DrawToolButton && ((DrawToolButton)GO).getCode() == selectedDrawTool) {
                     ((DrawToolButton) GO).select(false);
-                    System.out.println(((GameButton) GO).getCode());
                 }
         }
 
@@ -356,6 +497,24 @@ public class Panel implements GraphicHandler {
         selectedDrawTool = -1;
     }
 
+
+    private int chooseLandImageNumber(Constant.GROUND groundType , int x , int y){
+
+        int k = 0;
+
+        if( y>0 && ground.get(x).get(y-1)[0] == groundType)   //up
+            k+=1;
+        if( x<ground.size()-1 && ground.get(x+1).get(y) [0] == groundType)   //right
+            k+=2;
+        if( y<ground.get(x).size()-1 && ground.get(x).get(y+1) [0] == groundType)   //down
+            k+=4;
+        if( x>0 && ground.get(x-1).get(y)[0] == groundType)   //left
+            k+=8;
+
+
+        return k;
+
+    }
 }
-    // on click on "finish" change state to menu and give the "ground" and "object" to menu.Panel.editMap(...)
+    // on click on "finish" change state to menu and give the "ground"  to menu.Panel.editMap(...)
 
