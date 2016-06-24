@@ -73,7 +73,7 @@ public class Panel implements GraphicHandler {
 
         for (int i = 0; i < Constant.NUM_OF_SEA_IN_EACH_ROW / scale; i++)
             for (int j = 0; j < Constant.NUM_OF_SEA_IN_EACH_COLUMN / scale; j++) {
-                g.drawImage(new ImageIcon("src/res/images/ground/sea.jpg").getImage(), -(x0 % Constant.MIN_WIDTH_OF_EACH_SEA) + i * Constant.MIN_WIDTH_OF_EACH_SEA, -(y0 % Constant.MIN_HEIGHT_OF_EACH_SEA) + j * Constant.MIN_HEIGHT_OF_EACH_SEA, Constant.MIN_WIDTH_OF_EACH_SEA, Constant.MIN_HEIGHT_OF_EACH_SEA, null);
+                g.drawImage(new ImageIcon("src/res/images/map/ground/sea.jpg").getImage(), -(x0 % Constant.MIN_WIDTH_OF_EACH_SEA) + i * Constant.MIN_WIDTH_OF_EACH_SEA, -(y0 % Constant.MIN_HEIGHT_OF_EACH_SEA) + j * Constant.MIN_HEIGHT_OF_EACH_SEA, Constant.MIN_WIDTH_OF_EACH_SEA, Constant.MIN_HEIGHT_OF_EACH_SEA, null);
             }
 
         for(int i = x0 / Constant.MIN_WIDTH_OF_EACH_GROUND ; i < (1920 + x0)/Constant.MIN_WIDTH_OF_EACH_GROUND  +1; i++)
@@ -83,9 +83,14 @@ public class Panel implements GraphicHandler {
                 switch (thisGround){
                     case LOWLAND:
                         int imageNum = chooseLandImageNumber(Constant.GROUND.LOWLAND , i , j);
-                        g.drawImage(new ImageIcon("src/res/images/ground/lowLand/"+season+"-"+imageNum+".png").getImage() , -x0%Constant.MIN_WIDTH_OF_EACH_GROUND + (i-x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND , -y0%Constant.MIN_HEIGHT_OF_EACH_GROUND + (j-y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND ,Constant.MIN_WIDTH_OF_EACH_GROUND,Constant.MIN_HEIGHT_OF_EACH_GROUND, null);
+                        g.drawImage(new ImageIcon("src/res/images/map/ground/lowLand/"+season+"-"+imageNum+".png").getImage() , -x0%Constant.MIN_WIDTH_OF_EACH_GROUND + (i-x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND , -y0%Constant.MIN_HEIGHT_OF_EACH_GROUND + (j-y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND ,Constant.MIN_WIDTH_OF_EACH_GROUND,Constant.MIN_HEIGHT_OF_EACH_GROUND, null);
                         break;
                     case HIGHLAND:
+                        g.drawImage(new ImageIcon("src/res/images/map/ground/lowLand/"+season+"-"+15+".png").getImage() , -x0%Constant.MIN_WIDTH_OF_EACH_GROUND + (i-x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND , -y0%Constant.MIN_HEIGHT_OF_EACH_GROUND + (j-y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND ,Constant.MIN_WIDTH_OF_EACH_GROUND,Constant.MIN_HEIGHT_OF_EACH_GROUND, null);
+                        //for the lowLand under the highLand
+
+                        int imageNum2 = chooseLandImageNumber(Constant.GROUND.HIGHLAND , i , j);
+                        g.drawImage(new ImageIcon("src/res/images/map/ground/highLand/"+imageNum2+".png").getImage() , -x0%Constant.MIN_WIDTH_OF_EACH_GROUND + (i-x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND , -y0%Constant.MIN_HEIGHT_OF_EACH_GROUND + (j-y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND ,Constant.MIN_WIDTH_OF_EACH_GROUND,Constant.MIN_HEIGHT_OF_EACH_GROUND, null);
                         break;
                 }
 
@@ -219,6 +224,117 @@ public class Panel implements GraphicHandler {
         drawPanel.repaint();
     }
 
+    private void drawIntoGround(int x,int y){
+        int i = (x+x0) / Constant.MIN_WIDTH_OF_EACH_GROUND;
+        int j = (y+y0) / Constant.MIN_HEIGHT_OF_EACH_GROUND;
+        Object [] room = new Object[2];
+        switch (selectedDrawTool){
+            case (101) :    //sea
+                room[0] = Constant.GROUND.SEA;
+                room[1] = null;
+                ground.get(i).set(j , room);
+
+                if(i>0 && j>0 && ground.get(i-1).get(j-1)[0]== Constant.GROUND.HIGHLAND){
+                    Object [] room1 = {Constant.GROUND.LOWLAND , null};
+                    ground.get(i-1).set(j-1 ,room1);
+                }
+                if(j>0 && ground.get(i).get(j-1)[0] == Constant.GROUND.HIGHLAND){
+                    Object [] room1 = {Constant.GROUND.LOWLAND , null};
+                    ground.get(i).set(j-1 ,room1);
+                }
+                if(i<maxXMap && j>0 && ground.get(i+1).get(j-1)[0]== Constant.GROUND.HIGHLAND){
+                    Object [] room1 = {Constant.GROUND.LOWLAND , null};
+                    ground.get(i+1).set(j-1 ,room1);
+                }
+                if(i>0 && ground.get(i-1).get(j)[0]== Constant.GROUND.HIGHLAND){
+                    Object [] room1 = {Constant.GROUND.LOWLAND , null};
+                    ground.get(i-1).set(j ,room1);
+                }
+                if(i<maxXMap&& ground.get(i+1).get(j)[0]== Constant.GROUND.HIGHLAND){
+                    Object [] room1 = {Constant.GROUND.LOWLAND , null};
+                    ground.get(i+1).set(j ,room1);
+                }
+                if(i>0 && j<maxYMap && ground.get(i-1).get(j+1)[0]== Constant.GROUND.HIGHLAND){
+                    Object [] room1 = {Constant.GROUND.LOWLAND , null};
+                    ground.get(i-1).set(j+1 ,room1);
+                }
+                if(j<maxYMap && ground.get(i+1).get(j)[0]== Constant.GROUND.HIGHLAND){
+                    Object [] room1 = {Constant.GROUND.LOWLAND , null};
+                    ground.get(i+1).set(j ,room1);
+                }
+                if(i<maxXMap && j<maxYMap && ground.get(i+1).get(j+1)[0]== Constant.GROUND.HIGHLAND){
+                    Object [] room1 = {Constant.GROUND.LOWLAND , null};
+                    ground.get(i+1).set(j+1 ,room1);
+                }
+
+
+                break;
+            case(102):      //lowLand
+                room[0] = Constant.GROUND.LOWLAND;
+                room[1] = null;
+                ground.get(i).set(j , room);
+                break;
+            case(103):      //highLand
+                if(i>0 && j>0 && i<maxXMap && j<maxYMap) {
+                    boolean t1 = ground.get(i - 1).get(j - 1)[0] == Constant.GROUND.LOWLAND || ground.get(i - 1).get(j - 1)[0] == Constant.GROUND.HIGHLAND;
+                    boolean t2 = ground.get(i).get(j - 1)[0] == Constant.GROUND.LOWLAND || ground.get(i).get(j - 1)[0] == Constant.GROUND.HIGHLAND;
+                    boolean t3 = ground.get(i + 1).get(j - 1)[0] == Constant.GROUND.LOWLAND || ground.get(i + 1).get(j - 1)[0] == Constant.GROUND.HIGHLAND;
+                    boolean t4 = ground.get(i - 1).get(j)[0] == Constant.GROUND.LOWLAND || ground.get(i - 1).get(j)[0] == Constant.GROUND.HIGHLAND;
+                    boolean t5 = ground.get(i).get(j)[0] == Constant.GROUND.LOWLAND || ground.get(i).get(j)[0] == Constant.GROUND.HIGHLAND;
+                    boolean t6 = ground.get(i + 1).get(j)[0] == Constant.GROUND.LOWLAND || ground.get(i + 1).get(j)[0] == Constant.GROUND.HIGHLAND;
+                    boolean t7 = ground.get(i - 1).get(j + 1)[0] == Constant.GROUND.LOWLAND || ground.get(i - 1).get(j + 1)[0] == Constant.GROUND.HIGHLAND;
+                    boolean t8 = ground.get(i).get(j + 1)[0] == Constant.GROUND.LOWLAND || ground.get(i).get(j + 1)[0] == Constant.GROUND.HIGHLAND;
+                    boolean t9 = ground.get(i + 1).get(j + 1)[0] == Constant.GROUND.LOWLAND || ground.get(i + 1).get(j + 1)[0] == Constant.GROUND.HIGHLAND;
+                    if (t1 && t2 && t3 && t4 && t5 && t6 && t7 && t8 && t9) {
+                        room[0] = Constant.GROUND.HIGHLAND;
+                        room[1] = null;
+                        ground.get(i).set(j, room);
+                    }
+                }
+                break;
+            case(114):      //tree 1
+                if(room[0] == Constant.GROUND.LOWLAND)
+                    room[1] = Constant.OBJECT.TREE1;
+                ground.get(i).set(j , room);
+                break;
+            case(115):      //tree 2
+                if(room[0] == Constant.GROUND.LOWLAND)
+                    room[1] = Constant.OBJECT.TREE2;
+                ground.get(i).set(j , room);
+                break;
+            case(112):      //iron
+                if(room[0] == Constant.GROUND.HIGHLAND)
+                    room[1] = Constant.OBJECT.IRON_MINE;
+                ground.get(i).set(j , room);
+                break;
+
+            case(113):      //gold
+                if(room[0] == Constant.GROUND.HIGHLAND)
+                    room[1] = Constant.OBJECT.IRON_MINE;
+                ground.get(i).set(j , room);
+                break;
+
+            case(111):      //farmLand
+                if(room[0] == Constant.GROUND.LOWLAND)
+                    room[1] = Constant.OBJECT.FARMLAND;
+                ground.get(i).set(j , room);
+                break;
+
+            case(116):      //salmon - fish1
+                if(room[0] == Constant.GROUND.SEA)
+                    room[1] = Constant.OBJECT.FISH1;
+                ground.get(i).set(j , room);
+                break;
+
+            case(117):      //piranha - fish2
+                if(room[0] == Constant.GROUND.SEA)
+                    room[1] = Constant.OBJECT.FISH2;
+                ground.get(i).set(j , room);
+                break;
+
+        }
+    }
+
     @Override
     public void mouseClick(int x, int y) {
         if(y>=1080 - Constant.BOTTOM_FRAME_HEIGHT) {
@@ -230,69 +346,8 @@ public class Panel implements GraphicHandler {
             }
         }
 
-        else{
-            int i = (x+x0) / Constant.MIN_WIDTH_OF_EACH_GROUND;
-            int j = (y+y0) / Constant.MIN_HEIGHT_OF_EACH_GROUND;
-            Object [] room = new Object[2];
-            switch (selectedDrawTool){
-                case (101) :    //sea
-                    room[0] = Constant.GROUND.SEA;
-                    room[1] = null;
-                    ground.get(i).set(j , room);
-                    break;
-                case(102):      //lowLand
-                    room[0] = Constant.GROUND.LOWLAND;
-                    room[1] = null;
-                    ground.get(i).set(j , room);
-                    break;
-                case(103):      //highLand
-                    room[0] = Constant.GROUND.HIGHLAND;
-                    room[1] = null;
-                    ground.get(i).set(j , room);
-                    break;
-                case(114):      //tree 1
-                    if(room[0] == Constant.GROUND.LOWLAND)
-                        room[1] = Constant.OBJECT.TREE1;
-                    ground.get(i).set(j , room);
-                    break;
-                case(115):      //tree 2
-                    if(room[0] == Constant.GROUND.LOWLAND)
-                        room[1] = Constant.OBJECT.TREE2;
-                    ground.get(i).set(j , room);
-                    break;
-                case(112):      //iron
-                    if(room[0] == Constant.GROUND.HIGHLAND)
-                        room[1] = Constant.OBJECT.IRON_MINE;
-                    ground.get(i).set(j , room);
-                    break;
-
-                case(113):      //gold
-                    if(room[0] == Constant.GROUND.HIGHLAND)
-                        room[1] = Constant.OBJECT.IRON_MINE;
-                    ground.get(i).set(j , room);
-                    break;
-
-                case(111):      //farmLand
-                    if(room[0] == Constant.GROUND.LOWLAND)
-                        room[1] = Constant.OBJECT.FARMLAND;
-                    ground.get(i).set(j , room);
-                    break;
-
-                case(116):      //salmon - fish1
-                    if(room[0] == Constant.GROUND.SEA)
-                        room[1] = Constant.OBJECT.FISH1;
-                    ground.get(i).set(j , room);
-                    break;
-
-                case(117):      //piranha - fish2
-                    if(room[0] == Constant.GROUND.SEA)
-                        room[1] = Constant.OBJECT.FISH2;
-                    ground.get(i).set(j , room);
-                    break;
-
-            }
-
-        }
+        else
+            drawIntoGround(x,y);
 
     }
 
@@ -325,35 +380,13 @@ public class Panel implements GraphicHandler {
     public void mouseDrag(int x, int y) {
 
 
-        if( ! (y>=1080 - Constant.BOTTOM_FRAME_HEIGHT) ){
-            int i = (x+x0) / Constant.MIN_WIDTH_OF_EACH_GROUND;
-            int j = (y+y0) / Constant.MIN_HEIGHT_OF_EACH_GROUND;
-            Object [] room = new Object[2];
-            switch (selectedDrawTool){
-                case (101) :
-                    room[0] = Constant.GROUND.SEA;
-                    room[1] = null;
-                    ground.get(i).set(j , room);
-                    break;
-                case(102):
-                    room[0] = Constant.GROUND.LOWLAND;
-                    room[1] = null;
-                    ground.get(i).set(j , room);
-                    break;
-                case(103):
-                    room[0] = Constant.GROUND.HIGHLAND;
-                    room[1] = null;
-                    ground.get(i).set(j , room);
-                    break;
+        if (!(y >= 1080 - Constant.BOTTOM_FRAME_HEIGHT))
+            drawIntoGround(x, y);
 
-            }
-
-        }
-
-       else {
+        else {
             for (GameObject GO : gameObjects) {
                 if (GO.isInArea(x, y)) {
-                    if(GO.isInArea(startDraggingX,startDraggingY))
+                    if (GO.isInArea(startDraggingX, startDraggingY))
                         GO.mouseClicked();
                     break;
                 }
@@ -550,13 +583,13 @@ public class Panel implements GraphicHandler {
 
         int k = 0;
 
-        if( y>0 && ground.get(x).get(y-1)[0] == groundType)   //up
+        if( y>0 && (ground.get(x).get(y-1)[0] == groundType || ground.get(x).get(y-1)[0] == Constant.GROUND.HIGHLAND))   //up
             k+=1;
-        if( x<ground.size()-1 && ground.get(x+1).get(y) [0] == groundType)   //right
+        if( x<ground.size()-1 && (ground.get(x+1).get(y) [0] == groundType || ground.get(x+1).get(y)[0] == Constant.GROUND.HIGHLAND))   //right
             k+=2;
-        if( y<ground.get(x).size()-1 && ground.get(x).get(y+1) [0] == groundType)   //down
+        if( y<ground.get(x).size()-1 && (ground.get(x).get(y+1) [0] == groundType || ground.get(x).get(y+1)[0] == Constant.GROUND.HIGHLAND))   //down
             k+=4;
-        if( x>0 && ground.get(x-1).get(y)[0] == groundType)   //left
+        if( x>0 && (ground.get(x-1).get(y)[0] == groundType || ground.get(x-1).get(y)[0] == Constant.GROUND.HIGHLAND))   //left
             k+=8;
 
 
