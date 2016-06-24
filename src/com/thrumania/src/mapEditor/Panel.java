@@ -28,7 +28,7 @@ public class Panel implements GraphicHandler {
     // another linkedlist for staticObjects
 
 
-
+    private int season = 0; // 0->spring , 1->summer , 2->autumn , 3->winter
     private int selectedDrawTool = -1;
     private float scale = 1;
     private static int x0, y0;
@@ -83,7 +83,7 @@ public class Panel implements GraphicHandler {
                 switch (thisGround){
                     case LOWLAND:
                         int imageNum = chooseLandImageNumber(Constant.GROUND.LOWLAND , i , j);
-                        g.drawImage(new ImageIcon("src/res/images/ground/lowLand/0-"+imageNum+".png").getImage() , -x0%Constant.MIN_WIDTH_OF_EACH_GROUND + (i-x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND , -y0%Constant.MIN_HEIGHT_OF_EACH_GROUND + (j-y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND ,Constant.MIN_WIDTH_OF_EACH_GROUND,Constant.MIN_HEIGHT_OF_EACH_GROUND, null);
+                        g.drawImage(new ImageIcon("src/res/images/ground/lowLand/"+season+"-"+imageNum+".png").getImage() , -x0%Constant.MIN_WIDTH_OF_EACH_GROUND + (i-x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND , -y0%Constant.MIN_HEIGHT_OF_EACH_GROUND + (j-y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND ,Constant.MIN_WIDTH_OF_EACH_GROUND,Constant.MIN_HEIGHT_OF_EACH_GROUND, null);
                         break;
                     case HIGHLAND:
                         break;
@@ -343,7 +343,6 @@ public class Panel implements GraphicHandler {
 
     @Override
     public void pressButton(int code) {
-        System.out.println(code);
         switch(code){
             case 9:     //erease all
 
@@ -354,6 +353,8 @@ public class Panel implements GraphicHandler {
                         ground.get(i).set(j , emptyRoom);
 
                 break;
+
+
             case 11:    //fast up
                 movingUp = true;
                 movingDown = false;
@@ -369,6 +370,11 @@ public class Panel implements GraphicHandler {
             case 14:    //fast right
                 movingRight = true;
                 movingLeft = false;
+                break;
+
+
+            case 7:     //preview
+                changeSeason();
                 break;
 
 
@@ -514,6 +520,10 @@ public class Panel implements GraphicHandler {
 
         return k;
 
+    }
+
+    private void changeSeason(){
+            season = (season+1)%4;
     }
 }
     // on click on "finish" change state to menu and give the "ground"  to menu.Panel.editMap(...)
