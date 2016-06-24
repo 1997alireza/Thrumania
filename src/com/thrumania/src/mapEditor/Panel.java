@@ -171,38 +171,37 @@ public class Panel implements GraphicHandler {
 
 
 
-
-        ImageIcon stone_1 = new ImageIcon("src/res/images/map/button/stone-pile.1.png");
-        ImageIcon stone_2 = new ImageIcon("src/res/images/map/button/stone-pile.2.png");
-        gameObjects.add(new DrawToolButton(this,"sea",102,665,890,77,77, stone_1.getImage(), stone_2.getImage()));
-
-        ImageIcon peaks_1 = new ImageIcon("src/res/images/map/button/peaks.1.png");
-        ImageIcon peaks_2 = new ImageIcon("src/res/images/map/button/peaks.2.png");
-        gameObjects.add(new DrawToolButton(this,"sea",103,794,890,77,77, peaks_1.getImage(), peaks_2.getImage()));
-
         ImageIcon at_sea_1 = new ImageIcon("src/res/images/map/button/at-sea.1.png");
         ImageIcon at_sea_2 = new ImageIcon("src/res/images/map/button/at-sea.2.png");
         gameObjects.add(new DrawToolButton(this,"sea",101,536,890,77,77, at_sea_1.getImage(), at_sea_2.getImage()));
 
+        ImageIcon stone_1 = new ImageIcon("src/res/images/map/button/stone-pile.1.png");
+        ImageIcon stone_2 = new ImageIcon("src/res/images/map/button/stone-pile.2.png");
+        gameObjects.add(new DrawToolButton(this,"lowLand",102,665,890,77,77, stone_1.getImage(), stone_2.getImage()));
+
+        ImageIcon peaks_1 = new ImageIcon("src/res/images/map/button/peaks.1.png");
+        ImageIcon peaks_2 = new ImageIcon("src/res/images/map/button/peaks.2.png");
+        gameObjects.add(new DrawToolButton(this,"highLand",103,794,890,77,77, peaks_1.getImage(), peaks_2.getImage()));
+
         ImageIcon mine_iron_1 = new ImageIcon("src/res/images/map/button/mine-wagon.1.png");
         ImageIcon mine_iron_2 = new ImageIcon("src/res/images/map/button/mine-wagon.2.png");
-        gameObjects.add(new DrawToolButton(this,"sea",112,923,890,77,77, mine_iron_1.getImage(), mine_iron_2.getImage()));
+        gameObjects.add(new DrawToolButton(this,"ironMine",112,923,890,77,77, mine_iron_1.getImage(), mine_iron_2.getImage()));
 
         ImageIcon mine_gold_1 = new ImageIcon("src/res/images/map/button/minerals.1.png");
         ImageIcon mine_gold_2 = new ImageIcon("src/res/images/map/button/minerals.2.png");
-        gameObjects.add(new DrawToolButton(this,"sea",113,1052,890,77,77, mine_gold_1.getImage(), mine_gold_2.getImage()));
+        gameObjects.add(new DrawToolButton(this,"goldMine",113,1052,890,77,77, mine_gold_1.getImage(), mine_gold_2.getImage()));
 
         ImageIcon farm_1 = new ImageIcon("src/res/images/map/button/farm.1.png");
         ImageIcon farm_2 = new ImageIcon("src/res/images/map/button/farm.2.png");
-        gameObjects.add(new DrawToolButton(this,"sea",111,536,990,77,77, farm_1.getImage(), farm_2.getImage()));
+        gameObjects.add(new DrawToolButton(this,"farmLand",111,536,990,77,77, farm_1.getImage(), farm_2.getImage()));
 
         ImageIcon beech_1  = new ImageIcon("src/res/images/map/button/beech.1.png");
         ImageIcon beech_2 = new ImageIcon("src/res/images/map/button/beech.2.png");
-        gameObjects.add(new DrawToolButton(this,"beech",114,665,990,77,77, beech_1.getImage(), beech_2.getImage()));
+        gameObjects.add(new DrawToolButton(this,"tree1",114,665,990,77,77, beech_1.getImage(), beech_2.getImage()));
 
         ImageIcon pine_tree_1 = new ImageIcon("src/res/images/map/button/pine-tree.1.png");
         ImageIcon pine_tree_2 = new ImageIcon("src/res/images/map/button/pine-tree.2.png");
-        gameObjects.add(new DrawToolButton(this,"pine tree",115,794,990,77,77, pine_tree_1.getImage(), pine_tree_2.getImage()));
+        gameObjects.add(new DrawToolButton(this,"tree2",115,794,990,77,77, pine_tree_1.getImage(), pine_tree_2.getImage()));
 
         ImageIcon salmon_1 = new ImageIcon("src/res/images/map/button/salmon.1.png");
         ImageIcon salmon_2 = new ImageIcon("src/res/images/map/button/salmon.2.png");
@@ -236,19 +235,58 @@ public class Panel implements GraphicHandler {
             int j = (y+y0) / Constant.MIN_HEIGHT_OF_EACH_GROUND;
             Object [] room = new Object[2];
             switch (selectedDrawTool){
-                case (101) :
+                case (101) :    //sea
                     room[0] = Constant.GROUND.SEA;
                     room[1] = null;
                     ground.get(i).set(j , room);
                     break;
-                case(102):
+                case(102):      //lowLand
                     room[0] = Constant.GROUND.LOWLAND;
                     room[1] = null;
                     ground.get(i).set(j , room);
                     break;
-                case(103):
+                case(103):      //highLand
                     room[0] = Constant.GROUND.HIGHLAND;
                     room[1] = null;
+                    ground.get(i).set(j , room);
+                    break;
+                case(114):      //tree 1
+                    if(room[0] == Constant.GROUND.LOWLAND)
+                        room[1] = Constant.OBJECT.TREE1;
+                    ground.get(i).set(j , room);
+                    break;
+                case(115):      //tree 2
+                    if(room[0] == Constant.GROUND.LOWLAND)
+                        room[1] = Constant.OBJECT.TREE2;
+                    ground.get(i).set(j , room);
+                    break;
+                case(112):      //iron
+                    if(room[0] == Constant.GROUND.HIGHLAND)
+                        room[1] = Constant.OBJECT.IRON_MINE;
+                    ground.get(i).set(j , room);
+                    break;
+
+                case(113):      //gold
+                    if(room[0] == Constant.GROUND.HIGHLAND)
+                        room[1] = Constant.OBJECT.IRON_MINE;
+                    ground.get(i).set(j , room);
+                    break;
+
+                case(111):      //farmLand
+                    if(room[0] == Constant.GROUND.LOWLAND)
+                        room[1] = Constant.OBJECT.FARMLAND;
+                    ground.get(i).set(j , room);
+                    break;
+
+                case(116):      //salmon - fish1
+                    if(room[0] == Constant.GROUND.SEA)
+                        room[1] = Constant.OBJECT.FISH1;
+                    ground.get(i).set(j , room);
+                    break;
+
+                case(117):      //piranha - fish2
+                    if(room[0] == Constant.GROUND.SEA)
+                        room[1] = Constant.OBJECT.FISH2;
                     ground.get(i).set(j , room);
                     break;
 
@@ -322,7 +360,7 @@ public class Panel implements GraphicHandler {
             }
         }
 
-
+        repaint();
     }
 
     @Override
