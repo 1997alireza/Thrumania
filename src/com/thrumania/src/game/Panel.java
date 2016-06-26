@@ -5,6 +5,8 @@ import com.thrumania.src.objects.GameObject;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 import java.util.LinkedList;
 
 /**
@@ -41,8 +43,9 @@ public class Panel  implements GraphicHandler{
         drawPanel.repaint();
     }
 
+
     @Override
-    public void mouseClick(int x, int y) {
+    public void mouseClick(MouseEvent e) {
 
     }
 
@@ -56,7 +59,7 @@ public class Panel  implements GraphicHandler{
 
     }
     @Override
-    public void mouseDrag( int x, int y) {
+    public void mouseDrag(MouseEvent e) {
 
     }
 
@@ -69,6 +72,10 @@ public class Panel  implements GraphicHandler{
 
     }
 
+    @Override
+    public void mouseWheelMove(MouseWheelEvent e) {
+
+    }
 
 
     @Override

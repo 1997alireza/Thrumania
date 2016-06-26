@@ -9,10 +9,11 @@ import com.thrumania.src.objects.GameObject;
 import res.values.Constant;
 
 import javax.swing.*;
-import javax.swing.filechooser.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.io.*;
-import java.io.FileFilter;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
@@ -48,7 +49,7 @@ public class Panel implements GraphicHandler {
         isRunningMap = true;
 
 
-        mapSize = Constant.minMapSize;
+        mapSize = Constant.MIN_MAP_SIZE;
 
         maxXMap = mapSize.width - Constant.DEFAULT_SCREEN_SIZE.width;
         maxYMap = mapSize.height - Constant.DEFAULT_SCREEN_SIZE.height + Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/;
@@ -78,7 +79,7 @@ public class Panel implements GraphicHandler {
             }
 
         for (int i = x0 / Constant.MIN_WIDTH_OF_EACH_GROUND; i < (Constant.DEFAULT_SCREEN_SIZE.width  + x0) / Constant.MIN_WIDTH_OF_EACH_GROUND + 1; i++)
-            for (int j = y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND; j < (Constant.DEFAULT_SCREEN_SIZE.height - Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/ + y0) / Constant.MIN_HEIGHT_OF_EACH_GROUND + 1; j++) {
+            for (int j = y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND; j < (Constant.DEFAULT_SCREEN_SIZE.height - Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/ + y0) / Constant.MIN_HEIGHT_OF_EACH_GROUND + 1 + 1/*for tall objects*/ && j < (Constant.DEFAULT_SCREEN_SIZE.height - Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/ + maxYMap) / Constant.MIN_HEIGHT_OF_EACH_GROUND + 1; j++) {
                 Constant.GROUND thisGround = (Constant.GROUND) ground.get(i).get(j)[0];
                 switch (thisGround) {
                     case LOWLAND:
@@ -367,10 +368,17 @@ public class Panel implements GraphicHandler {
                 }
                 break;
         }
+
+        repaint();
     }
 
+
     @Override
-    public void mouseClick(int x, int y) {
+    public void mouseClick(MouseEvent e) {
+
+        int x = e.getX();
+        int y = e.getY();
+
         if(y>=1080 - Constant.BOTTOM_FRAME_HEIGHT) {
             for (GameObject GO : gameObjects) {
                 if (GO.isInArea(x, y)) {
@@ -380,9 +388,14 @@ public class Panel implements GraphicHandler {
             }
         }
 
-        else
-            drawIntoGround(x,y);
-
+        else {
+            if(SwingUtilities.isRightMouseButton(e)) {
+                //call erase(x,y) function
+                System.out.println("--> should call erase function");
+            }
+            else if(SwingUtilities.isLeftMouseButton(e))
+                drawIntoGround(x, y);
+        }
     }
 
     private int startDraggingX = -1;
@@ -425,11 +438,19 @@ public class Panel implements GraphicHandler {
     }
 
     @Override
-    public void mouseDrag(int x, int y) {
+    public void mouseDrag(MouseEvent e) {
 
+        int x = e.getX();
+        int y = e.getY();
 
-        if (!(y >= 1080 - Constant.BOTTOM_FRAME_HEIGHT))
-            drawIntoGround(x, y);
+        if (!(y >= 1080 - Constant.BOTTOM_FRAME_HEIGHT)) {
+            if(SwingUtilities.isRightMouseButton(e)) {
+                //call erase(x,y) function
+                System.out.println("--> should call erase function");
+            }
+            else if(SwingUtilities.isLeftMouseButton(e))
+                drawIntoGround(x, y);
+        }
 
         else {
             for (GameObject GO : gameObjects) {
@@ -456,6 +477,16 @@ public class Panel implements GraphicHandler {
         startDraggingX = -1;
         startDraggingY = -1;
 
+    }
+
+    @Override
+    public void mouseWheelMove(MouseWheelEvent e) {
+        if(e.getWheelRotation() < 0){
+            changeScale(true);
+        }
+        else {
+            changeScale(false);
+        }
     }
 
 
@@ -515,6 +546,16 @@ public class Panel implements GraphicHandler {
                 loadMap();
                 break;
 
+            case 15:        //decrease
+                if(! mapSize.equals(Constant.MIN_MAP_SIZE) )
+                    mapSize = new Dimension(mapSize.width - Constant.ONE_MAP_SIZE_CHANGING.width,mapSize.height - Constant.ONE_MAP_SIZE_CHANGING.height);
+                //////NOT CCCOMPLETE
+                break;
+            case 16:        //increase
+                if(! mapSize.equals(Constant.MAX_MAP_SIZE) )
+                    mapSize = new Dimension(mapSize.width + Constant.ONE_MAP_SIZE_CHANGING.width,mapSize.height + Constant.ONE_MAP_SIZE_CHANGING.height);
+                //////NOT CCCOMPLETE
+                break;
 
         }
 
@@ -536,19 +577,19 @@ public class Panel implements GraphicHandler {
             int y = (int) MouseInfo.getPointerInfo().getLocation().getY();
             boolean t = false;
             boolean movingFast = movingUp || movingDown || movingRight || movingLeft;
-            if ( (x <= 5) && x0 > 0 && !movingFast) {
+            if ( (x <= 5) && x0 > 2 && !movingFast) {
                 x0-=3;
                 t=true;
 
-            } else if ( (x >= Constant.Screen_Width - 5) && x0 < maxXMap && !movingFast) {
+            } else if ( (x >= Constant.Screen_Width - 5) && x0 < maxXMap-2 && !movingFast) {
                 x0+=3;
                 t=true;
             }
 
-            if ( (y <= 5 ) && y0 > 0 && !movingFast) {
+            if ( (y <= 5 ) && y0 > 2 && !movingFast) {
                 y0-=3;
                 t=true;
-            } else if ( (y >= Constant.Screen_Height - 5)  && y0 < maxYMap && !movingFast) {
+            } else if ( (y >= Constant.Screen_Height - 5)  && y0 < maxYMap-2 && !movingFast) {
                 y0+=3;
                 t=true;
             }
@@ -564,7 +605,7 @@ public class Panel implements GraphicHandler {
 
 
 
-            if ( (movingLeft) && x0 > 0) {
+            if ( (movingLeft) && x0 > 2) {
                 x0-=3;
                 t=true;
 
@@ -573,7 +614,7 @@ public class Panel implements GraphicHandler {
                 } catch (InterruptedException e1) {
                 }
                 repaint();
-            } else if ( ( movingRight) && x0 < maxXMap) {
+            } else if ( ( movingRight) && x0 < maxXMap-2) {
                 x0+=3;
                 t=true;
 
@@ -584,7 +625,7 @@ public class Panel implements GraphicHandler {
                 repaint();
             }
 
-            if ( (movingUp ) && y0 > 0) {
+            if ( (movingUp ) && y0 > 2) {
                 y0-=3;
                 t=true;
 
@@ -593,7 +634,7 @@ public class Panel implements GraphicHandler {
                 } catch (InterruptedException e1) {
                 }
                 repaint();
-            } else if ( ( movingDown)  && y0 < maxYMap) {
+            } else if ( ( movingDown)  && y0 < maxYMap-2) {
                 y0+=3;
                 t=true;
 
@@ -608,20 +649,25 @@ public class Panel implements GraphicHandler {
 
 
 
-            if(x0==0)
+            if(x0<=2) {
                 movingLeft = false;
-            else if(x0==maxXMap)
+            }
+            else if(x0>=maxXMap-2) {
                 movingRight = false;
-            if(y0==0)
+            }
+            if(y0<=2) {
                 movingUp = false;
-            else if(y0==maxYMap)
+            }
+            else if(y0>=maxYMap-2) {
                 movingDown = false;
+            }
 
 
             movingFast = movingUp || movingDown || movingRight || movingLeft;
             if(!movingFast && !inMovavleArea)
                 inMovablePosition = false;
             repaint();
+
         }
 
 
@@ -672,6 +718,7 @@ public class Panel implements GraphicHandler {
 
     private void changeSeason(){
             season = (season+1)%4;
+            repaint();
     }
 
     private void changeScale(boolean in){   // in = true -> zoomIn  , in = false -> zoomOut
@@ -694,6 +741,8 @@ public class Panel implements GraphicHandler {
         public boolean accept(File pathname) {
             if(pathname==null || pathname.toString()==null || pathname.toString().replaceAll(" ","") == null)
                 return false;
+            if(pathname.isDirectory())
+                return true;
             return pathname.toString().endsWith(".tmf");    //  Thrumania map file
         }
 
@@ -712,6 +761,7 @@ public class Panel implements GraphicHandler {
             jFileChooser.setDialogTitle("save");
             jFileChooser.setFileFilter(FILE_FILTER);
             jFileChooser.setAcceptAllFileFilterUsed(false);
+            jFileChooser.setCurrentDirectory(new File("src/res/maps"));
             int result = jFileChooser.showSaveDialog(null);
             if(result == 0) {
                 FileOutputStream out = new FileOutputStream(jFileChooser.getSelectedFile());
@@ -734,7 +784,7 @@ public class Panel implements GraphicHandler {
             jFileChooser.setDialogTitle("load");
             jFileChooser.setFileFilter(FILE_FILTER);
             jFileChooser.setAcceptAllFileFilterUsed(false);
-
+            jFileChooser.setCurrentDirectory(new File("src/res/maps"));
             int result = jFileChooser.showOpenDialog(null);
             if(result == 0){
                 ObjectInputStream ois = new ObjectInputStream(new FileInputStream(jFileChooser.getSelectedFile()));
@@ -744,6 +794,7 @@ public class Panel implements GraphicHandler {
 
         }
     }
+
 }
 
 

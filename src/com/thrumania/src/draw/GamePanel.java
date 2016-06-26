@@ -10,16 +10,13 @@ import res.values.Constant;
 
 import java.awt.*;
 import java.awt.Graphics;
-import java.awt.event.ComponentEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
 import java.util.LinkedList;
 
 /**
  * Created by AliReza on 23/05/2016.
  */
-public class GamePanel extends JPanel implements MouseListener,MouseMotionListener {
+public class GamePanel extends JPanel implements MouseListener,MouseMotionListener,MouseWheelListener {
     public com.thrumania.src.menu.Panel menu_panel;
     public com.thrumania.src.mapEditor.Panel map_panel;
     public com.thrumania.src.game.Panel game_panel;
@@ -46,6 +43,8 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
 
         lastMouseX = MouseInfo.getPointerInfo().getLocation().x;
         lastMouseY = MouseInfo.getPointerInfo().getLocation().y;
+
+        addMouseWheelListener(this);
 
     }
     @Override
@@ -118,7 +117,7 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        currentPanel.mouseClick(e.getX() , e.getY());
+        currentPanel.mouseClick(e);
 
     }
 
@@ -144,7 +143,7 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        currentPanel.mouseDrag(e.getX(),e.getY());
+        currentPanel.mouseDrag(e);
     }
 
     @Override
@@ -156,6 +155,11 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
 
         repaint();
 
+    }
+
+    @Override
+    public void mouseWheelMoved(MouseWheelEvent e) {
+        currentPanel.mouseWheelMove(e);
     }
 
 }

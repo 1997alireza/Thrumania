@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -286,13 +288,17 @@ public class Panel implements GraphicHandler{
     }
 
     @Override
-    public void mouseClick(int x, int y) {
+    public void mouseClick(MouseEvent e) {
+        int x = e.getX();
+        int y = e.getY();
         for(GameObject GO : gameObjects){
             if(GO.isInArea(x,y)){
                 GO.mouseClicked();
                 break;
             }
         }
+
+
 
     }
 
@@ -319,7 +325,10 @@ public class Panel implements GraphicHandler{
     }
 
     @Override
-    public void mouseDrag( int x, int y) {
+    public void mouseDrag(MouseEvent e) {
+        int x = e.getX();
+        int y = e.getY();
+
         for(DragableObject DO : dragableObjects) {
             if (DO.isSelected()) {
                 DO.changeX((int)MouseInfo.getPointerInfo().getLocation().getX());
@@ -347,6 +356,11 @@ public class Panel implements GraphicHandler{
                 break;
             }
         }
+    }
+
+    @Override
+    public void mouseWheelMove(MouseWheelEvent e) {
+
     }
 
     public void chooseMap(LinkedList<LinkedList< Object[] >> ground ){
