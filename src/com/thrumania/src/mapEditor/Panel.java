@@ -252,44 +252,7 @@ public class Panel implements GraphicHandler {
         Object [] room = new Object[2];
         switch (selectedDrawTool){
             case (101) :    //sea
-                room[0] = Constant.GROUND.SEA;
-                room[1] = null;
-                ground.get(i).set(j , room);
-
-                if(i>0 && j>0 && ground.get(i-1).get(j-1)[0]== Constant.GROUND.HIGHLAND){
-                    Object [] room1 = {Constant.GROUND.LOWLAND , null};
-                    ground.get(i-1).set(j-1 ,room1);
-                }
-                if(j>0 && ground.get(i).get(j-1)[0] == Constant.GROUND.HIGHLAND){
-                    Object [] room1 = {Constant.GROUND.LOWLAND , null};
-                    ground.get(i).set(j-1 ,room1);
-                }
-                if(i<maxXMap && j>0 && ground.get(i+1).get(j-1)[0]== Constant.GROUND.HIGHLAND){
-                    Object [] room1 = {Constant.GROUND.LOWLAND , null};
-                    ground.get(i+1).set(j-1 ,room1);
-                }
-                if(i>0 && ground.get(i-1).get(j)[0]== Constant.GROUND.HIGHLAND){
-                    Object [] room1 = {Constant.GROUND.LOWLAND , null};
-                    ground.get(i-1).set(j ,room1);
-                }
-                if(i<maxXMap&& ground.get(i+1).get(j)[0]== Constant.GROUND.HIGHLAND){
-                    Object [] room1 = {Constant.GROUND.LOWLAND , null};
-                    ground.get(i+1).set(j ,room1);
-                }
-                if(i>0 && j<maxYMap && ground.get(i-1).get(j+1)[0]== Constant.GROUND.HIGHLAND){
-                    Object [] room1 = {Constant.GROUND.LOWLAND , null};
-                    ground.get(i-1).set(j+1 ,room1);
-                }
-                if(j<maxYMap && ground.get(i).get(j+1)[0]== Constant.GROUND.HIGHLAND){
-                    Object [] room1 = {Constant.GROUND.LOWLAND , null};
-                    ground.get(i).set(j+1 ,room1);
-                }
-                if(i<maxXMap && j<maxYMap && ground.get(i+1).get(j+1)[0]== Constant.GROUND.HIGHLAND){
-                    Object [] room1 = {Constant.GROUND.LOWLAND , null};
-                    ground.get(i+1).set(j+1 ,room1);
-                }
-
-
+                setSeaInGround(i,j);
                 break;
             case(102):      //lowLand
                 room[0] = Constant.GROUND.LOWLAND;
@@ -366,6 +329,10 @@ public class Panel implements GraphicHandler {
                     room[1] = Constant.OBJECT.FISH2;
                     ground.get(i).set(j, room);
                 }
+                break;
+
+            case(8):        //erase
+                erase(i,j);
                 break;
         }
 
@@ -445,8 +412,9 @@ public class Panel implements GraphicHandler {
 
         if (!(y >= 1080 - Constant.BOTTOM_FRAME_HEIGHT)) {
             if(SwingUtilities.isRightMouseButton(e)) {
-                //call erase(x,y) function
-                System.out.println("--> should call erase function");
+                int i = (x+x0) / Constant.MIN_WIDTH_OF_EACH_GROUND;
+                int j = (y+y0) / Constant.MIN_HEIGHT_OF_EACH_GROUND;
+                erase(i,j);
             }
             else if(SwingUtilities.isLeftMouseButton(e))
                 drawIntoGround(x, y);
@@ -547,14 +515,10 @@ public class Panel implements GraphicHandler {
                 break;
 
             case 15:        //decrease
-                if(! mapSize.equals(Constant.MIN_MAP_SIZE) )
-                    mapSize = new Dimension(mapSize.width - Constant.ONE_MAP_SIZE_CHANGING.width,mapSize.height - Constant.ONE_MAP_SIZE_CHANGING.height);
-                //////NOT CCCOMPLETE
+                changeMapSize(false);
                 break;
             case 16:        //increase
-                if(! mapSize.equals(Constant.MAX_MAP_SIZE) )
-                    mapSize = new Dimension(mapSize.width + Constant.ONE_MAP_SIZE_CHANGING.width,mapSize.height + Constant.ONE_MAP_SIZE_CHANGING.height);
-                //////NOT CCCOMPLETE
+                changeMapSize(true);
                 break;
 
         }
@@ -691,6 +655,8 @@ public class Panel implements GraphicHandler {
         }
 
         selectedDrawTool = code;
+
+        repaint();
     }
 
     public void unSelectDrawTool(){
@@ -721,7 +687,8 @@ public class Panel implements GraphicHandler {
             repaint();
     }
 
-    private void changeScale(boolean in){   // in = true -> zoomIn  , in = false -> zoomOut
+    private void changeScale(boolean in){   // in = true -> zoomIn  , in = false -> zoomOut         //BOTT_COMPLETE
+        System.out.println("--> not complete changeScale function");
         scale = (in)?(scale+Constant.ONE_SCALE_CHANGING):(scale-Constant.ONE_SCALE_CHANGING);
         if(scale<1)
             scale=1f;
@@ -734,6 +701,29 @@ public class Panel implements GraphicHandler {
         repaint();
     }
 
+    private void changeMapSize(boolean increase){   /////NOTTCOMPLETE
+        System.out.println("--> not complete changeMapSize function");
+
+        if(increase==false) {       //increase
+            if (!mapSize.equals(Constant.MIN_MAP_SIZE))
+                mapSize = new Dimension(mapSize.width - Constant.ONE_MAP_SIZE_CHANGING.width, mapSize.height - Constant.ONE_MAP_SIZE_CHANGING.height);
+        }
+
+        else {                      //decrease
+            if (!mapSize.equals(Constant.MAX_MAP_SIZE))
+                mapSize = new Dimension(mapSize.width + Constant.ONE_MAP_SIZE_CHANGING.width, mapSize.height + Constant.ONE_MAP_SIZE_CHANGING.height);
+        }
+
+        maxXMap = mapSize.width - Constant.DEFAULT_SCREEN_SIZE.width;
+        maxYMap = mapSize.height - Constant.DEFAULT_SCREEN_SIZE.height + Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/;
+
+        if(x0>maxXMap)
+            x0 = maxXMap;
+        if(y0>maxYMap)
+            y0 = maxYMap;
+
+        repaint();
+    }
 
 
     private static final javax.swing.filechooser.FileFilter FILE_FILTER = new javax.swing.filechooser.FileFilter() {
@@ -794,6 +784,68 @@ public class Panel implements GraphicHandler {
 
         }
     }
+
+    private void erase (int i,int j){
+
+        Object [] room = new Object[2];
+
+        if(ground.get(i).get(j)[1] != null){
+            room[0] = ground.get(i).get(j)[0];
+            room[1] = null;
+            ground.get(i).set(j,room);
+        }
+        else if(ground.get(i).get(j)[0] == Constant.GROUND.HIGHLAND){
+            room[0] = Constant.GROUND.LOWLAND;
+            room[1] = null;
+            ground.get(i).set(j,room);
+        }
+        else if(ground.get(i).get(j)[0] == Constant.GROUND.LOWLAND){
+            setSeaInGround(i,j);
+        }
+
+    }
+
+    private void setSeaInGround(int i,int j){
+        Object [] room = new Object[2];
+        room[0] = Constant.GROUND.SEA;
+        room[1] = null;
+        ground.get(i).set(j , room);
+
+        if(i>0 && j>0 && ground.get(i-1).get(j-1)[0]== Constant.GROUND.HIGHLAND){
+            Object [] room1 = {Constant.GROUND.LOWLAND , null};
+            ground.get(i-1).set(j-1 ,room1);
+        }
+        if(j>0 && ground.get(i).get(j-1)[0] == Constant.GROUND.HIGHLAND){
+            Object [] room1 = {Constant.GROUND.LOWLAND , null};
+            ground.get(i).set(j-1 ,room1);
+        }
+        if(i<maxXMap && j>0 && ground.get(i+1).get(j-1)[0]== Constant.GROUND.HIGHLAND){
+            Object [] room1 = {Constant.GROUND.LOWLAND , null};
+            ground.get(i+1).set(j-1 ,room1);
+        }
+        if(i>0 && ground.get(i-1).get(j)[0]== Constant.GROUND.HIGHLAND){
+            Object [] room1 = {Constant.GROUND.LOWLAND , null};
+            ground.get(i-1).set(j ,room1);
+        }
+        if(i<maxXMap&& ground.get(i+1).get(j)[0]== Constant.GROUND.HIGHLAND){
+            Object [] room1 = {Constant.GROUND.LOWLAND , null};
+            ground.get(i+1).set(j ,room1);
+        }
+        if(i>0 && j<maxYMap && ground.get(i-1).get(j+1)[0]== Constant.GROUND.HIGHLAND){
+            Object [] room1 = {Constant.GROUND.LOWLAND , null};
+            ground.get(i-1).set(j+1 ,room1);
+        }
+        if(j<maxYMap && ground.get(i).get(j+1)[0]== Constant.GROUND.HIGHLAND){
+            Object [] room1 = {Constant.GROUND.LOWLAND , null};
+            ground.get(i).set(j+1 ,room1);
+        }
+        if(i<maxXMap && j<maxYMap && ground.get(i+1).get(j+1)[0]== Constant.GROUND.HIGHLAND){
+            Object [] room1 = {Constant.GROUND.LOWLAND , null};
+            ground.get(i+1).set(j+1 ,room1);
+        }
+    }
+
+
 
 }
 
