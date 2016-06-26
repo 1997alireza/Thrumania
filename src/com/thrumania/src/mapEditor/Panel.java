@@ -9,11 +9,10 @@ import com.thrumania.src.objects.GameObject;
 import res.values.Constant;
 
 import javax.swing.*;
+import javax.swing.filechooser.*;
 import java.awt.*;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
+import java.io.FileFilter;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
@@ -689,6 +688,21 @@ public class Panel implements GraphicHandler {
     }
 
 
+
+    private static final javax.swing.filechooser.FileFilter FILE_FILTER = new javax.swing.filechooser.FileFilter() {
+        @Override
+        public boolean accept(File pathname) {
+            if(pathname==null || pathname.toString()==null || pathname.toString().replaceAll(" ","") == null)
+                return false;
+            return pathname.toString().endsWith(".tmf");    //  Thrumania map file
+        }
+
+        @Override
+        public String getDescription() {
+            return "Thrumania map file (.tmf)";
+        }
+    };
+
     /**
      * this method save map
      */
@@ -696,6 +710,8 @@ public class Panel implements GraphicHandler {
         try {
             JFileChooser jFileChooser = new JFileChooser();
             jFileChooser.setDialogTitle("save");
+            jFileChooser.setFileFilter(FILE_FILTER);
+            jFileChooser.setAcceptAllFileFilterUsed(false);
             int result = jFileChooser.showSaveDialog(null);
             if(result == 0) {
                 FileOutputStream out = new FileOutputStream(jFileChooser.getSelectedFile());
@@ -711,10 +727,14 @@ public class Panel implements GraphicHandler {
     /**
      * this method load map
      */
+
     private void loadMap(){
         try{
             JFileChooser jFileChooser = new JFileChooser();
             jFileChooser.setDialogTitle("load");
+            jFileChooser.setFileFilter(FILE_FILTER);
+            jFileChooser.setAcceptAllFileFilterUsed(false);
+
             int result = jFileChooser.showOpenDialog(null);
             if(result == 0){
                 ObjectInputStream ois = new ObjectInputStream(new FileInputStream(jFileChooser.getSelectedFile()));
