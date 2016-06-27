@@ -1,5 +1,6 @@
 package com.thrumania.src.mapEditor;
 
+import com.sun.glass.ui.Screen;
 import com.thrumania.src.GraphicHandler;
 import com.thrumania.src.Tools.Division;
 import com.thrumania.src.draw.GamePanel;
@@ -30,10 +31,11 @@ public class Panel implements GraphicHandler {
     private int season = 0; // 0->spring , 1->summer , 2->autumn , 3->winter
     private int selectedDrawTool = -1;
     private float scale;
+    private static int x0_inDefaultScale , y0_inDefaultScale;
     private static int x0, y0;
     private static Dimension mapSize;  // height / width = 8 / 5
     private static int maxXMap, maxYMap;
-
+    private static int minXMap ,minYMap ;
 
 
     private static boolean isRunningMap;
@@ -52,13 +54,15 @@ public class Panel implements GraphicHandler {
         mapSize = Constant.MIN_MAP_SIZE;
 
         maxXMap = mapSize.width - Constant.DEFAULT_SCREEN_SIZE.width;
-        maxYMap = mapSize.height - Constant.DEFAULT_SCREEN_SIZE.height + Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/;
+        maxYMap = mapSize.height - (Constant.DEFAULT_SCREEN_SIZE.height - Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/);
+        minXMap =  -(Constant.Screen_Width - Constant.Screen_Width)/2;
+        minYMap = -(Constant.Screen_Height-Constant.BOTTOM_FRAME_HEIGHT - (Constant.Screen_Height-Constant.BOTTOM_FRAME_HEIGHT))/2;
 
         scale = 1f;
         x0 = 0;
         y0 = 0;
-        x0 = 0;
-        y0 = 0;
+        x0_inDefaultScale = x0;
+        y0_inDefaultScale = y0;
 
         this.ground = ground;
 
@@ -68,18 +72,22 @@ public class Panel implements GraphicHandler {
 
     @Override
     public void render(Graphics g) {
+
+        x0 = x0_inDefaultScale + (Constant.Screen_Width - Division.division(Constant.Screen_Width,scale))/2;
+        y0 = y0_inDefaultScale + (Constant.Screen_Height-Constant.BOTTOM_FRAME_HEIGHT - Division.division(Constant.Screen_Height-Constant.BOTTOM_FRAME_HEIGHT,scale))/2;
+
         Graphics2D g2d = (Graphics2D)g;
-        g2d.translate(Constant.DEFAULT_SCREEN_SIZE.width/2, Constant.DEFAULT_SCREEN_SIZE.height/2);
+        //g2d.translate(Constant.DEFAULT_SCREEN_SIZE.width/2, Constant.DEFAULT_SCREEN_SIZE.height/2);
         g2d.scale(scale, scale);
-        g2d.translate(-Constant.DEFAULT_SCREEN_SIZE.width/2, -Constant.DEFAULT_SCREEN_SIZE.height/2);
+       // g2d.translate(-Constant.DEFAULT_SCREEN_SIZE.width/2, -Constant.DEFAULT_SCREEN_SIZE.height/2);
 
         for (int i = 0; i < Constant.NUM_OF_SEA_IN_EACH_ROW  ; i++)
             for (int j = 0; j < Constant.NUM_OF_SEA_IN_EACH_COLUMN  ; j++) {
                 g.drawImage(new ImageIcon("src/res/images/map/ground/sea.jpg").getImage(), -(x0 % Constant.MIN_WIDTH_OF_EACH_SEA) + i * Constant.MIN_WIDTH_OF_EACH_SEA, -(y0 % Constant.MIN_HEIGHT_OF_EACH_SEA) + j * Constant.MIN_HEIGHT_OF_EACH_SEA, Constant.MIN_WIDTH_OF_EACH_SEA, Constant.MIN_HEIGHT_OF_EACH_SEA, null);
             }
+        for (int i = x0 / Constant.MIN_WIDTH_OF_EACH_GROUND; i </*Division.division*/ ( Constant.DEFAULT_SCREEN_SIZE.width  / (scale*Constant.MIN_WIDTH_OF_EACH_GROUND))+x0 / Constant.MIN_WIDTH_OF_EACH_GROUND +1 && i<ground.size(); i++)
 
-        for (int i = x0 / Constant.MIN_WIDTH_OF_EACH_GROUND; i < (Constant.DEFAULT_SCREEN_SIZE.width  + x0) / Constant.MIN_WIDTH_OF_EACH_GROUND + 1; i++)
-            for (int j = y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND; j < (Constant.DEFAULT_SCREEN_SIZE.height - Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/ + y0) / Constant.MIN_HEIGHT_OF_EACH_GROUND + 1 + 1/*for tall objects*/ && j < (Constant.DEFAULT_SCREEN_SIZE.height - Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/ + maxYMap) / Constant.MIN_HEIGHT_OF_EACH_GROUND + 1; j++) {
+            for (int j = y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND; j < Division.division ( Constant.DEFAULT_SCREEN_SIZE.height - Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/   ,scale*Constant.MIN_HEIGHT_OF_EACH_GROUND)+ Division.division(y0 ,Constant.MIN_HEIGHT_OF_EACH_GROUND )+ 1 + 1/*for tall objects*/ && j < ground.get(i).size(); j++) {
                 Constant.GROUND thisGround = (Constant.GROUND) ground.get(i).get(j)[0];
                 switch (thisGround) {
                     case LOWLAND:
@@ -91,7 +99,6 @@ public class Panel implements GraphicHandler {
                                 case TREE1:
                                     /////////////FFFFFFFFFFirst must paint shadows
                                     ///////////// MUSTTT PROVE MOKHTASSATTE va size SHADOW va tree
-                                    // va inke sare check krdne highland bega mire
                                     g.drawImage(new ImageIcon("src/res/images/map/tree/1/" + season + ".png").getImage(), -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -60 - y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, 120, 120, null);
                                     break;
                                 case TREE2:
@@ -110,14 +117,16 @@ public class Panel implements GraphicHandler {
                         int imageNum2 = chooseLandImageNumber(Constant.GROUND.HIGHLAND, i, j);
                         g.drawImage(new ImageIcon("src/res/images/map/ground/highLand/" + imageNum2 + ".png").getImage(), -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, Constant.MIN_WIDTH_OF_EACH_GROUND, Constant.MIN_HEIGHT_OF_EACH_GROUND, null);
                         break;
+
+
                 }
 
 
             }
 
-        g2d.translate(Constant.DEFAULT_SCREEN_SIZE.width/2, Constant.DEFAULT_SCREEN_SIZE.height/2);
+       // g2d.translate(Constant.DEFAULT_SCREEN_SIZE.width/2, Constant.DEFAULT_SCREEN_SIZE.height/2);
         g2d.scale((1f)/scale, (1f)/scale);
-        g2d.translate(-Constant.DEFAULT_SCREEN_SIZE.width/2, -Constant.DEFAULT_SCREEN_SIZE.height/2);
+       // g2d.translate(-Constant.DEFAULT_SCREEN_SIZE.width/2, -Constant.DEFAULT_SCREEN_SIZE.height/2);
 
         ImageIcon bottomFrame = new ImageIcon("src/res/images/map/editor/frame.png");
         g.drawImage(bottomFrame.getImage(), 0, 0, Constant.DEFAULT_SCREEN_SIZE.width, Constant.DEFAULT_SCREEN_SIZE.height, null);
@@ -246,9 +255,12 @@ public class Panel implements GraphicHandler {
         drawPanel.repaint();
     }
 
-    private void drawIntoGround(int x,int y){
-        int i = (x+x0) / Constant.MIN_WIDTH_OF_EACH_GROUND;
-        int j = (y+y0) / Constant.MIN_HEIGHT_OF_EACH_GROUND;
+    private void drawIntoGround(int x,int y){       // real x and y for mouse
+
+
+        int i =  ( x0 + (int)( x / scale)) / Constant.MIN_WIDTH_OF_EACH_GROUND ;
+        int j =  ( y0 + (int)( y / scale)) / Constant.MIN_HEIGHT_OF_EACH_GROUND ;
+
         Object [] room = new Object[2];
         switch (selectedDrawTool){
             case (101) :    //sea
@@ -346,7 +358,7 @@ public class Panel implements GraphicHandler {
         int x = e.getX();
         int y = e.getY();
 
-        if(y>=1080 - Constant.BOTTOM_FRAME_HEIGHT) {
+        if(y>=Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT) {
             for (GameObject GO : gameObjects) {
                 if (GO.isInArea(x, y)) {
                     GO.mouseClicked();
@@ -356,12 +368,15 @@ public class Panel implements GraphicHandler {
         }
 
         else {
+
             if(SwingUtilities.isRightMouseButton(e)) {
-                //call erase(x,y) function
-                System.out.println("--> should call erase function");
+                int i =  ( x0 + (int)( x / scale)) / Constant.MIN_WIDTH_OF_EACH_GROUND ;
+                int j =  ( y0 + (int)( y / scale)) / Constant.MIN_HEIGHT_OF_EACH_GROUND ;
+                erase(i,j);
             }
-            else if(SwingUtilities.isLeftMouseButton(e))
+            else if(SwingUtilities.isLeftMouseButton(e)) {
                 drawIntoGround(x, y);
+            }
         }
     }
 
@@ -409,11 +424,10 @@ public class Panel implements GraphicHandler {
 
         int x = e.getX();
         int y = e.getY();
-
-        if (!(y >= 1080 - Constant.BOTTOM_FRAME_HEIGHT)) {
+        if (!(y >= Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT)) {
             if(SwingUtilities.isRightMouseButton(e)) {
-                int i = (x+x0) / Constant.MIN_WIDTH_OF_EACH_GROUND;
-                int j = (y+y0) / Constant.MIN_HEIGHT_OF_EACH_GROUND;
+                int i =  ( x0 + (int)( x / scale)) / Constant.MIN_WIDTH_OF_EACH_GROUND ;
+                int j =  ( y0 + (int)( y / scale)) / Constant.MIN_HEIGHT_OF_EACH_GROUND ;
                 erase(i,j);
             }
             else if(SwingUtilities.isLeftMouseButton(e))
@@ -534,6 +548,8 @@ public class Panel implements GraphicHandler {
 
     private boolean movingUp = false , movingDown = false , movingRight = false , movingLeft = false;
     private boolean inMovablePosition = false;
+
+
     private void moveMap() {
         while (isRunningMap && inMovablePosition) {
 
@@ -541,20 +557,20 @@ public class Panel implements GraphicHandler {
             int y = (int) MouseInfo.getPointerInfo().getLocation().getY();
             boolean t = false;
             boolean movingFast = movingUp || movingDown || movingRight || movingLeft;
-            if ( (x <= 5) && x0 > 2 && !movingFast) {
-                x0-=3;
+            if ( (x <= 5) && x0_inDefaultScale > 2 + minXMap && !movingFast) {
+                x0_inDefaultScale-=3;
                 t=true;
 
-            } else if ( (x >= Constant.Screen_Width - 5) && x0 < maxXMap-2 && !movingFast) {
-                x0+=3;
+            } else if ( (x >= Constant.Screen_Width - 5) && x0_inDefaultScale < maxXMap-2 && !movingFast) {
+                x0_inDefaultScale+=3;
                 t=true;
             }
 
-            if ( (y <= 5 ) && y0 > 2 && !movingFast) {
-                y0-=3;
+            if ( (y <= 5 ) && y0_inDefaultScale > 2 + minYMap && !movingFast) {
+                y0_inDefaultScale-=3;
                 t=true;
-            } else if ( (y >= Constant.Screen_Height - 5)  && y0 < maxYMap-2 && !movingFast) {
-                y0+=3;
+            } else if ( (y >= Constant.Screen_Height - 5)  && y0_inDefaultScale < maxYMap-2 && !movingFast) {
+                y0_inDefaultScale+=3;
                 t=true;
             }
 
@@ -569,8 +585,8 @@ public class Panel implements GraphicHandler {
 
 
 
-            if ( (movingLeft) && x0 > 2) {
-                x0-=3;
+            if ( (movingLeft) && x0_inDefaultScale > 2 + minXMap) {
+                x0_inDefaultScale-=3;
                 t=true;
 
                 try {
@@ -578,32 +594,32 @@ public class Panel implements GraphicHandler {
                 } catch (InterruptedException e1) {
                 }
                 repaint();
-            } else if ( ( movingRight) && x0 < maxXMap-2) {
-                x0+=3;
+            } else if ( ( movingRight) && x0_inDefaultScale < maxXMap-2) {
+                x0_inDefaultScale+=3;
                 t=true;
 
                 try {
-                    TimeUnit.NANOSECONDS.sleep((maxXMap-x0)/4);
+                    TimeUnit.NANOSECONDS.sleep((maxXMap-x0_inDefaultScale)/4);
                 } catch (InterruptedException e1) {
                 }
                 repaint();
             }
 
-            if ( (movingUp ) && y0 > 2) {
-                y0-=3;
+            if ( (movingUp ) && y0_inDefaultScale > 2 + minYMap) {
+                y0_inDefaultScale-=3;
                 t=true;
 
                 try {
-                    TimeUnit.NANOSECONDS.sleep(y0/4);
+                    TimeUnit.NANOSECONDS.sleep(y0_inDefaultScale/4);
                 } catch (InterruptedException e1) {
                 }
                 repaint();
-            } else if ( ( movingDown)  && y0 < maxYMap-2) {
-                y0+=3;
+            } else if ( ( movingDown)  && y0_inDefaultScale < maxYMap-2) {
+                y0_inDefaultScale+=3;
                 t=true;
 
                 try {
-                    TimeUnit.NANOSECONDS.sleep((maxYMap-y0)/4);
+                    TimeUnit.NANOSECONDS.sleep((maxYMap-y0_inDefaultScale)/4);
                 } catch (InterruptedException e1) {
                 }
                 repaint();
@@ -613,16 +629,16 @@ public class Panel implements GraphicHandler {
 
 
 
-            if(x0<=2) {
+            if(x0_inDefaultScale<=2+minXMap) {
                 movingLeft = false;
             }
-            else if(x0>=maxXMap-2) {
+            else if(x0_inDefaultScale>=maxXMap-2) {
                 movingRight = false;
             }
-            if(y0<=2) {
+            if(y0_inDefaultScale<=2+minYMap) {
                 movingUp = false;
             }
-            else if(y0>=maxYMap-2) {
+            else if(y0_inDefaultScale>=maxYMap-2) {
                 movingDown = false;
             }
 
@@ -630,7 +646,13 @@ public class Panel implements GraphicHandler {
             movingFast = movingUp || movingDown || movingRight || movingLeft;
             if(!movingFast && !inMovavleArea)
                 inMovablePosition = false;
+
+            x0_inDefaultScale = x0_inDefaultScale - x0_inDefaultScale%3;
+            y0_inDefaultScale = y0_inDefaultScale - y0_inDefaultScale%3;
+
             repaint();
+
+
 
         }
 
@@ -687,21 +709,33 @@ public class Panel implements GraphicHandler {
             repaint();
     }
 
-    private void changeScale(boolean in){   // in = true -> zoomIn  , in = false -> zoomOut         //BOTT_COMPLETE
-        System.out.println("--> not complete changeScale function");
+    private void changeScale(boolean in){   // in = true -> zoomIn  , in = false -> zoomOut
+
         scale = (in)?(scale+Constant.ONE_SCALE_CHANGING):(scale-Constant.ONE_SCALE_CHANGING);
-        if(scale<1)
+        if(scale<1f)
             scale=1f;
         else if(scale>Constant.MAX_OF_SCALE)
             scale = Constant.MAX_OF_SCALE;
 
-        maxXMap = mapSize.width - Division.division(Constant.DEFAULT_SCREEN_SIZE.width , scale);
-        maxYMap = mapSize.height - Division.division(Constant.DEFAULT_SCREEN_SIZE.height + Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/ , scale);
+        minXMap =  -(Constant.Screen_Width - Division.division(Constant.Screen_Width,scale))/2;
+        minYMap = -(Constant.Screen_Height-Constant.BOTTOM_FRAME_HEIGHT - Division.division(Constant.Screen_Height-Constant.BOTTOM_FRAME_HEIGHT,scale))/2;
+        maxXMap = mapSize.width - Constant.DEFAULT_SCREEN_SIZE.width - minXMap;
+        maxYMap = mapSize.height -( Constant.DEFAULT_SCREEN_SIZE.height - Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/) - minYMap; // ?
+
+        if(x0_inDefaultScale>maxXMap)
+            x0_inDefaultScale = maxXMap;
+        if(y0_inDefaultScale>maxYMap)
+            y0_inDefaultScale = maxYMap;
+        if(x0_inDefaultScale<minXMap)
+            x0_inDefaultScale = minXMap;
+        if(y0_inDefaultScale<minYMap)
+            y0_inDefaultScale = minYMap;
 
         repaint();
     }
 
-    private void changeMapSize(boolean increase){   /////NOTTCOMPLETE
+    private void changeMapSize(boolean increase){
+        /////NOTTCOMPLETE
         System.out.println("--> not complete changeMapSize function");
 
         if(increase==false) {       //increase
@@ -715,12 +749,7 @@ public class Panel implements GraphicHandler {
         }
 
         maxXMap = mapSize.width - Constant.DEFAULT_SCREEN_SIZE.width;
-        maxYMap = mapSize.height - Constant.DEFAULT_SCREEN_SIZE.height + Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/;
-
-        if(x0>maxXMap)
-            x0 = maxXMap;
-        if(y0>maxYMap)
-            y0 = maxYMap;
+        maxYMap = mapSize.height - (Constant.DEFAULT_SCREEN_SIZE.height - Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/); // warning to scale
 
         repaint();
     }
@@ -802,6 +831,8 @@ public class Panel implements GraphicHandler {
         else if(ground.get(i).get(j)[0] == Constant.GROUND.LOWLAND){
             setSeaInGround(i,j);
         }
+
+        repaint();
 
     }
 

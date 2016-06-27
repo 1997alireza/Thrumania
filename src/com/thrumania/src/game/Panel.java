@@ -59,7 +59,7 @@ public class Panel  implements GraphicHandler{
 
     }
     @Override
-    public void mouseDrag(MouseEvent e) {
+    public void mouseDrag(MouseEvent e5) {
 
     }
 

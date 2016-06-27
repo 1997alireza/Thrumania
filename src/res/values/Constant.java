@@ -53,7 +53,7 @@ public class Constant {
     public static final int NUM_OF_SEA_IN_EACH_COLUMN = 5;
     public static final int BOTTOM_FRAME_HEIGHT = 250;
 
-    public static final float MAX_OF_SCALE = 1.5f;
+    public static final float MAX_OF_SCALE = 2f;
     public static final float ONE_SCALE_CHANGING = 0.05f;
 
 
