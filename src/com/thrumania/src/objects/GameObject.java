@@ -21,4 +21,7 @@ public interface GameObject {
     void mouseEntered();
     void mouseExited();
 
+    void setDraggingOnIt(boolean isDraggingOnIt);
+    boolean isDraggingOnIt();
+
 }

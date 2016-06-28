@@ -493,7 +493,7 @@ public class Panel implements GraphicHandler {
             for (GameObject GO : gameObjects) {
                 if (GO.isInArea(x, y)) {
                     if (GO.isInArea(startDraggingX, startDraggingY))
-                        GO.mouseClicked();
+                        GO.setDraggingOnIt(true);
                     break;
                 }
             }
@@ -517,6 +517,16 @@ public class Panel implements GraphicHandler {
         startDraggingX = -1;
         startDraggingY = -1;
         dragstate++;
+
+        for (GameObject GO : gameObjects) {
+            if (GO.isDraggingOnIt()) {
+                GO.setDraggingOnIt(false);
+                if (GO.isInArea(x, y))
+                    GO.mouseClicked();
+                break;
+            }
+        }
+
 
     }
 

@@ -48,6 +48,15 @@ public class DynamicObject implements GameObject{
     }
 
     @Override
+    public void setDraggingOnIt(boolean isDraggingOnIt) {
+
+    }
+    @Override
+    public boolean isDraggingOnIt() {
+        return false;
+    }
+
+    @Override
     public boolean isInArea(int x, int y) {
         return false; // must return area.isInArea
     }

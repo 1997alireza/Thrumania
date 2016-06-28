@@ -97,5 +97,13 @@ public class DragableObject implements GameObject {
     @Override
     public void mouseExited() {}
 
+    @Override
+    public void setDraggingOnIt(boolean isDraggingOnIt) {
+
+    }
+    @Override
+    public boolean isDraggingOnIt() {
+        return false;
+    }
 
 }

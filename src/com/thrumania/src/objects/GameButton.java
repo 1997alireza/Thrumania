@@ -27,6 +27,8 @@ public class GameButton implements GameObject{
     protected int code;
     protected GraphicHandler panel;
     private Area area;
+    private boolean isDraggingOnIt;
+
     public GameButton(com.thrumania.src.menu.Panel menu_panel, String text,int code,int x, int y, int width, int height, Image image){
         this(menu_panel,text,code,x,y,width,height,image,image);
     }
@@ -42,6 +44,7 @@ public class GameButton implements GameObject{
         this.image_MouseHover = image_MouseHover;
         currentImage = image;
         area = new Rectangle(x,y,width,height);
+        isDraggingOnIt = false;
     }
 
     @Override
@@ -88,6 +91,16 @@ public class GameButton implements GameObject{
     @Override
     public boolean isInArea(int x, int y) {
         return area.isInArea(x,y);
+    }
+
+    @Override
+    public void setDraggingOnIt(boolean isDraggingOnIt) {
+        this.isDraggingOnIt = isDraggingOnIt;
+
+    }
+    @Override
+    public boolean isDraggingOnIt() {
+        return isDraggingOnIt;
     }
 
 }

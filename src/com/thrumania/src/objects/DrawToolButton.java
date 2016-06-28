@@ -13,6 +13,7 @@ public class DrawToolButton extends GameButton {
 
     private Image firstImage , secondImage;
 
+    private boolean isDraggingOnIt;
 
     private boolean isSelected;
     public DrawToolButton(GraphicHandler panel, String text, int code, int x, int y, int width, int height, Image image, Image image_MouseHover) {
@@ -21,6 +22,7 @@ public class DrawToolButton extends GameButton {
         secondImage = image_MouseHover;
 
         isSelected = false;
+        isDraggingOnIt = false;
 
     }
 
@@ -35,6 +37,7 @@ public class DrawToolButton extends GameButton {
             ((com.thrumania.src.mapEditor.Panel)panel).selectDrawTool(code);
     }
 
+
     public boolean isSelected() {
         return isSelected;
     }
@@ -46,5 +49,15 @@ public class DrawToolButton extends GameButton {
         super.currentImage =  (isSelected) ? secondImage : firstImage ;
     }
 
+
+    @Override
+    public void setDraggingOnIt(boolean isDraggingOnIt) {
+        this.isDraggingOnIt = isDraggingOnIt;
+
+    }
+    @Override
+    public boolean isDraggingOnIt() {
+        return isDraggingOnIt;
+    }
 
 }
