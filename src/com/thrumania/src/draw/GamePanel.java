@@ -11,6 +11,7 @@ import res.values.Constant;
 import java.awt.*;
 import java.awt.Graphics;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 
 /**
@@ -49,13 +50,16 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
     }
     @Override
     protected void paintComponent(Graphics g) {
+        BufferedImage BI = new BufferedImage(Constant.Screen_Width,Constant.Screen_Height,BufferedImage.TYPE_3BYTE_BGR);
+        Graphics BG = BI.getGraphics();
         if(isJustChangedState){
-            g.setColor(Color.BLACK);
-            g.fillRect(0,0,Constant.Screen_Width,Constant.Screen_Height);
+            BG.setColor(Color.BLACK);
+            BG.fillRect(0,0,Constant.Screen_Width,Constant.Screen_Height);
             isJustChangedState = false;
         }
-        currentPanel.render(g);
-    }//avaz she be in :: objecta moqeye changeState remoall va sepas add shan tuye panele marbut. render faqat objectaye mojud ro mikshe va ezafe kam nmikone
+        currentPanel.render(BG);
+        g.drawImage(BI ,0 ,0 ,null);
+    }
 
 
     private void updateComponents(){
@@ -118,6 +122,7 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
     @Override
     public void mouseClicked(MouseEvent e) {
         currentPanel.mouseClick(e);
+        repaint();
 
     }
 

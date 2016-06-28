@@ -40,8 +40,9 @@ public class Constant {
     public static final Dimension DEFAULT_SCREEN_SIZE = new Dimension(1920 , 1080);
 
     public static final Dimension MIN_MAP_SIZE = new Dimension(1920 * 2, 1200 * 2);    // height / width = 8 / 5
-    public static final Dimension MAX_MAP_SIZE = new Dimension(1920 * 6, 1200 * 6);
-    public static final Dimension ONE_MAP_SIZE_CHANGING = new Dimension(960,600);
+    public static final Dimension ONE_MAP_NUM_CHANGING= new Dimension(8,7);
+    public static final Dimension ONE_MAP_SIZE_CHANGING = new Dimension(ONE_MAP_NUM_CHANGING.width*Constant.MIN_WIDTH_OF_EACH_GROUND ,ONE_MAP_NUM_CHANGING.height*Constant.MIN_HEIGHT_OF_EACH_GROUND);  // height / width = 8 / 5
+    public static final Dimension MAX_MAP_SIZE = new Dimension(MIN_MAP_SIZE.width + ONE_MAP_SIZE_CHANGING.width * 4 , MIN_MAP_SIZE.height + ONE_MAP_SIZE_CHANGING.height * 4);
     public static final Dimension Mini_Map_Size_Ratio = new Dimension(8,5);
 
     public static final int MIN_WIDTH_OF_EACH_GROUND = 175;

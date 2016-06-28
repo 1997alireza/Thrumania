@@ -16,9 +16,7 @@ import com.sun.prism.*;
 import com.thrumania.src.GraphicHandler;
 import com.thrumania.src.Tools.Cursor;
 import com.thrumania.src.draw.GamePanel;
-import com.thrumania.src.objects.DragableObject;
-import com.thrumania.src.objects.GameButton;
-import com.thrumania.src.objects.GameObject;
+import com.thrumania.src.objects.*;
 import res.values.*;
 import com.thrumania.src.Tools.*;
 public class Panel implements GraphicHandler{
@@ -34,6 +32,8 @@ public class Panel implements GraphicHandler{
 
     private LinkedList <GameObject> gameObjects;
     private LinkedList <DragableObject> dragableObjects;
+
+
     private final int [][] PT= {
             {110,1,2,6,-1,-1,-1,-1,-1,-1,-1},
             {0,-1,-1,-1,-1,-1,-1,-1,8,-1,101},
@@ -59,6 +59,8 @@ public class Panel implements GraphicHandler{
         gameObjects = new LinkedList<GameObject>();
         dragableObjects = new LinkedList<DragableObject>();
 
+
+
         // <-- map.ground
         ground = new LinkedList<>();
 
@@ -72,6 +74,8 @@ public class Panel implements GraphicHandler{
 
             ground.add(row);
         }
+
+        Object[] a = {Constant.GROUND.LOWLAND,null};
 
         // map.ground --/>
 
@@ -186,6 +190,15 @@ public class Panel implements GraphicHandler{
                 ImageIcon play_1 = new ImageIcon("src/res/images/menu/button/play 1.png");
                 ImageIcon play_2 = new ImageIcon("src/res/images/menu/button/play 2.png");
 
+
+                RadioButton _2singlePlayer = new RadioButton(2,(Constant.Screen_Width - Division.division(Constant.Screen_Width, 10.54)) / 2 + 30  ,Division.division(Constant.Screen_Height, 3.5) - 50 , 30);
+                RadioButton _3singlePlayer = new RadioButton(3,play_left + 30 + 50 , play_up - 50 , 30);
+                RadioButton _4singlePlayer = new RadioButton(4,play_left + 30 + 100 , play_up - 50, 30);
+                Radio NsinglePlayers = new Radio("Number of players in single mode",_2singlePlayer,_3singlePlayer,_4singlePlayer);
+                gameObjects.add(_2singlePlayer);
+                gameObjects.add(_3singlePlayer);
+                gameObjects.add(_4singlePlayer);
+
                 gameObjects.add(new GameButton(this, "play", 10, play_left, play_up, Constant.Screen_Width - play_left - play_right, play_height, play_1.getImage(), play_2.getImage()));
                 gameObjects.add(new GameButton(this, "edit map", 8, edit_map_left, edit_map_up, Constant.Screen_Width - edit_map_left - edit_map_right, edit_map_height, edit_map_1.getImage(), edit_map_2.getImage()));
                 gameObjects.add(new GameButton(this, "back", 0, back_left, back_up, back_right, back_height, back_1.getImage(), back_2.getImage()));
@@ -217,6 +230,14 @@ public class Panel implements GraphicHandler{
                 ImageIcon creat_1 = new ImageIcon("src/res/images/menu/button/creat 1.png");
                 ImageIcon creat_2 = new ImageIcon("src/res/images/menu/button/creat 2.png");
 
+
+                RadioButton _2multiPlayer = new RadioButton(2,(Constant.Screen_Width - Division.division(Constant.Screen_Width, 10.54)) / 2 + 30  ,Division.division(Constant.Screen_Height, 3.5) - 50 , 30);
+                RadioButton _3multiPlayer = new RadioButton(3,50 + (Constant.Screen_Width - Division.division(Constant.Screen_Width, 10.54)) / 2 + 30  ,Division.division(Constant.Screen_Height, 3.5) - 50, 30);
+                RadioButton _4multiPlayer = new RadioButton(4,100 + (Constant.Screen_Width - Division.division(Constant.Screen_Width, 10.54)) / 2 + 30  ,Division.division(Constant.Screen_Height, 3.5) - 50, 30);
+                Radio NsmultiPlayers = new Radio("Number of players in single mode",_2multiPlayer,_3multiPlayer,_4multiPlayer);
+                gameObjects.add(_2multiPlayer);
+                gameObjects.add(_3multiPlayer);
+                gameObjects.add(_4multiPlayer);
 
 
                 gameObjects.add(new GameButton(this, "creat", 5, creat_left, creat_up, Constant.Screen_Width - creat_left - creat_right, creat_height, creat_1.getImage(), creat_2.getImage()));

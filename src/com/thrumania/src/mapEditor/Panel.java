@@ -1,6 +1,7 @@
 package com.thrumania.src.mapEditor;
 
 import com.sun.glass.ui.Screen;
+import com.sun.javafx.collections.SourceAdapterChange;
 import com.thrumania.src.GraphicHandler;
 import com.thrumania.src.Tools.Division;
 import com.thrumania.src.draw.GamePanel;
@@ -8,6 +9,7 @@ import com.thrumania.src.objects.DrawToolButton;
 import com.thrumania.src.objects.GameButton;
 import com.thrumania.src.objects.GameObject;
 import res.values.Constant;
+import sun.invoke.empty.Empty;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +17,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Stack;
 import java.util.concurrent.TimeUnit;
 
 public class Panel implements GraphicHandler {
@@ -37,6 +41,9 @@ public class Panel implements GraphicHandler {
     private static int maxXMap, maxYMap;
     private static int minXMap ,minYMap ;
 
+
+    private Stack<ArrayList<Object []>> undo = new Stack<ArrayList<Object[]>>();
+    private Stack<ArrayList<Object []>> redo = new Stack<ArrayList<Object[]>>();
 
     private static boolean isRunningMap;
 
@@ -199,11 +206,11 @@ public class Panel implements GraphicHandler {
 
         ImageIcon decrease_1 = new ImageIcon("src/res/images/map/editor/button/decrease.1.png");
         ImageIcon decrease_2 = new ImageIcon("src/res/images/map/editor/button/decrease.2.png");
-        gameObjects.add(new GameButton(this,"decrease",15,1363,1016,51,51, decrease_1.getImage(), decrease_2.getImage()));
+        gameObjects.add(new GameButton(this,"decrease",15,1237,874,51,51, decrease_1.getImage(), decrease_2.getImage()));
 
         ImageIcon increase_1 = new ImageIcon("src/res/images/map/editor/button/increase.1.png");
         ImageIcon increase_2 = new ImageIcon("src/res/images/map/editor/button/increase.2.png");
-        gameObjects.add(new GameButton(this,"increase",16,1237,874,51,51, increase_1.getImage(), increase_2.getImage()));
+        gameObjects.add(new GameButton(this,"increase",16,1363,1016,51,51, increase_1.getImage(), increase_2.getImage()));
 
 
 
@@ -255,11 +262,57 @@ public class Panel implements GraphicHandler {
         drawPanel.repaint();
     }
 
-    private void drawIntoGround(int x,int y){       // real x and y for mouse
+    int last_i = -1;
+    int last_j = -1;
 
+    private void drawIntoGround(int x,int y,boolean isdrag){       // real x and y for mouse
 
+        // <-- START : undo & redo
         int i =  ( x0 + (int)( x / scale)) / Constant.MIN_WIDTH_OF_EACH_GROUND ;
         int j =  ( y0 + (int)( y / scale)) / Constant.MIN_HEIGHT_OF_EACH_GROUND ;
+
+
+        boolean t = true;
+        if(selectedDrawTool == ((Constant.GROUND)ground.get(i).get(j)[0]).getCode())
+            t = false;
+        else if (ground.get(i).get(j)[1] != null)
+            if(selectedDrawTool == ((Constant.OBJECT)ground.get(i).get(j)[1]).getCode())
+                t = false;
+        if(selectedDrawTool == Constant.GROUND.HIGHLAND.getCode()){
+            if(i>0 && j>0 && i<maxXMap && j<maxYMap) {
+                boolean t1 = ground.get(i - 1).get(j - 1)[0] == Constant.GROUND.LOWLAND || ground.get(i - 1).get(j - 1)[0] == Constant.GROUND.HIGHLAND;
+                boolean t2 = ground.get(i).get(j - 1)[0] == Constant.GROUND.LOWLAND || ground.get(i).get(j - 1)[0] == Constant.GROUND.HIGHLAND;
+                boolean t3 = ground.get(i + 1).get(j - 1)[0] == Constant.GROUND.LOWLAND || ground.get(i + 1).get(j - 1)[0] == Constant.GROUND.HIGHLAND;
+                boolean t4 = ground.get(i - 1).get(j)[0] == Constant.GROUND.LOWLAND || ground.get(i - 1).get(j)[0] == Constant.GROUND.HIGHLAND;
+                boolean t5 = ground.get(i).get(j)[0] == Constant.GROUND.LOWLAND || ground.get(i).get(j)[0] == Constant.GROUND.HIGHLAND;
+                boolean t6 = ground.get(i + 1).get(j)[0] == Constant.GROUND.LOWLAND || ground.get(i + 1).get(j)[0] == Constant.GROUND.HIGHLAND;
+                boolean t7 = ground.get(i - 1).get(j + 1)[0] == Constant.GROUND.LOWLAND || ground.get(i - 1).get(j + 1)[0] == Constant.GROUND.HIGHLAND;
+                boolean t8 = ground.get(i).get(j + 1)[0] == Constant.GROUND.LOWLAND || ground.get(i).get(j + 1)[0] == Constant.GROUND.HIGHLAND;
+                boolean t9 = ground.get(i + 1).get(j + 1)[0] == Constant.GROUND.LOWLAND || ground.get(i + 1).get(j + 1)[0] == Constant.GROUND.HIGHLAND;
+                if (!(t1 && t2 && t3 && t4 && t5 && t6 && t7 && t8 && t9)) {
+                    t = false;
+                }
+            }
+        }
+
+        if(t) {
+            if (isdrag && lastdragstate == dragstate && (last_i != i || last_j != j)) {
+                Object o[] = {new Integer(i), new Integer(j), ground.get(i).get(j)};
+                undo.peek().add(o);
+            } else if ((isdrag && lastdragstate != dragstate) || (!isdrag)) {
+                redo.removeAllElements();
+                ArrayList<Object[]> arr = new ArrayList<Object[]>();
+                Object o[] = {new Integer(i), new Integer(j), ground.get(i).get(j)};
+                arr.add(o);
+                undo.push(arr);
+            }
+            lastdragstate = dragstate;
+        }
+
+        last_i = i;
+        last_j = j;
+
+        //  END : undo & redo -->
 
         Object [] room = new Object[2];
         switch (selectedDrawTool){
@@ -351,6 +404,8 @@ public class Panel implements GraphicHandler {
         repaint();
     }
 
+    private long dragstate = 0;
+    private long lastdragstate = -1;
 
     @Override
     public void mouseClick(MouseEvent e) {
@@ -375,7 +430,7 @@ public class Panel implements GraphicHandler {
                 erase(i,j);
             }
             else if(SwingUtilities.isLeftMouseButton(e)) {
-                drawIntoGround(x, y);
+                drawIntoGround(x, y,false);
             }
         }
     }
@@ -431,7 +486,7 @@ public class Panel implements GraphicHandler {
                 erase(i,j);
             }
             else if(SwingUtilities.isLeftMouseButton(e))
-                drawIntoGround(x, y);
+                drawIntoGround(x, y,true);
         }
 
         else {
@@ -445,6 +500,9 @@ public class Panel implements GraphicHandler {
         }
 
         repaint();
+
+        if(ground.get(ground.size()-1).get(0)[0] == Constant.GROUND.LOWLAND)
+            System.out.println("here here");
     }
 
     @Override
@@ -458,6 +516,7 @@ public class Panel implements GraphicHandler {
     public void mouseRelease(int x, int y) {
         startDraggingX = -1;
         startDraggingY = -1;
+        dragstate++;
 
     }
 
@@ -476,11 +535,30 @@ public class Panel implements GraphicHandler {
     public void pressButton(int code) {
         switch(code){
             case 9:     //erase all
+
                 Object emptyRoom [] = {Constant.GROUND.SEA , null};
 
+                redo.removeAllElements();
+
+                boolean first_time = true ;
+
                 for(int i=0 ; i < ground.size() ; i++)
-                    for(int j=0 ; j < ground.get(i).size() ; j++)
-                        ground.get(i).set(j , emptyRoom);
+                    for(int j=0 ; j < ground.get(i).size() ; j++) {
+                        if(ground.get(i).get(j)[0]!=Constant.GROUND.SEA){
+                            if(!first_time){
+                                Object o[] = {new Integer(i), new Integer(j), ground.get(i).get(j)};
+                                undo.peek().add(o);
+                            }
+                            else{
+                                ArrayList<Object[]> arr = new ArrayList<Object[]>();
+                                Object o[] = {new Integer(i), new Integer(j), ground.get(i).get(j)};
+                                arr.add(o);
+                                undo.push(arr);
+                                first_time = false;
+                            }
+                        }
+                        ground.get(i).set(j, emptyRoom);
+                    }
 
                 break;
 
@@ -533,6 +611,40 @@ public class Panel implements GraphicHandler {
                 break;
             case 16:        //increase
                 changeMapSize(true);
+                break;
+            case 5:         //undo
+                if(!undo.isEmpty()){
+
+                    ArrayList<Object []> arr = new ArrayList<Object []>();
+
+                    for (int i = 0; i < undo.peek().size(); i++) {
+                        Object o [] = { undo.peek().get(i)[0], undo.peek().get(i)[1],ground.get((Integer) undo.peek().get(i)[0]).get((Integer) undo.peek().get(i)[1])};
+                        ground.get((Integer) undo.peek().get(i)[0]).set((Integer) undo.peek().get(i)[1],(Object [])undo.peek().get(i)[2]);
+                        arr.add(o);
+                    }
+
+                    undo.pop();
+                    redo.push(arr);
+
+                }
+                repaint();
+                break;
+            case 6:     //redo
+                if(!redo.isEmpty()){
+
+                    ArrayList<Object []> arr = new ArrayList<Object []>();
+
+                    for (int i = 0; i < redo.peek().size(); i++) {
+                        Object o [] = { redo.peek().get(i)[0], redo.peek().get(i)[1],ground.get((Integer) redo.peek().get(i)[0]).get((Integer) redo.peek().get(i)[1])};
+                        ground.get((Integer) redo.peek().get(i)[0]).set((Integer) redo.peek().get(i)[1],(Object [])redo.peek().get(i)[2]);
+                        arr.add(o);
+                    }
+
+                    redo.pop();
+                    undo.push(arr);
+
+                }
+                repaint();
                 break;
 
         }
@@ -738,18 +850,57 @@ public class Panel implements GraphicHandler {
         /////NOTTCOMPLETE
         System.out.println("--> not complete changeMapSize function");
 
-        if(increase==false) {       //increase
-            if (!mapSize.equals(Constant.MIN_MAP_SIZE))
-                mapSize = new Dimension(mapSize.width - Constant.ONE_MAP_SIZE_CHANGING.width, mapSize.height - Constant.ONE_MAP_SIZE_CHANGING.height);
+        // one change in map width = 8 ground , one change in map height = 7 ground
+
+        if(increase==false) {       //deccrease
+            mapSize = new Dimension(mapSize.width - Constant.ONE_MAP_SIZE_CHANGING.width, mapSize.height - Constant.ONE_MAP_SIZE_CHANGING.height);
+
+            for(int i=0;i<Constant.ONE_MAP_NUM_CHANGING.width;i++)
+                ground.remove();
+
+            for (int i=0;i<ground.size();i++)
+                for (int j=0;j<Constant.ONE_MAP_NUM_CHANGING.height;j++)
+                    ground.get(i).remove();
+
         }
 
-        else {                      //decrease
-            if (!mapSize.equals(Constant.MAX_MAP_SIZE))
-                mapSize = new Dimension(mapSize.width + Constant.ONE_MAP_SIZE_CHANGING.width, mapSize.height + Constant.ONE_MAP_SIZE_CHANGING.height);
+        else {                      //increase
+            mapSize = new Dimension(mapSize.width + Constant.ONE_MAP_SIZE_CHANGING.width, mapSize.height + Constant.ONE_MAP_SIZE_CHANGING.height);
+
+            Object [] emptyRoom = {Constant.GROUND.SEA , null};
+
+            for (int i=0;i<ground.size();i++)
+                for (int j=0;j<Constant.ONE_MAP_NUM_CHANGING.height;j++)
+                    ground.get(i).add(emptyRoom);
+
+            for(int i=0;i<Constant.ONE_MAP_NUM_CHANGING.width;i++) {
+                LinkedList<Object[]> col = new LinkedList<>();
+                for(int j=0;j<ground.get(0).size();j++) {
+                    col.add(emptyRoom);
+                }
+                ground.add(col);
+            }
         }
 
-        maxXMap = mapSize.width - Constant.DEFAULT_SCREEN_SIZE.width;
-        maxYMap = mapSize.height - (Constant.DEFAULT_SCREEN_SIZE.height - Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/); // warning to scale
+
+        if (Constant.MIN_MAP_SIZE.width > mapSize.width)
+            mapSize = Constant.MIN_MAP_SIZE;
+        else if(Constant.MAX_MAP_SIZE.width < mapSize.width)
+            mapSize = Constant.MAX_MAP_SIZE;
+
+        minXMap =  -(Constant.Screen_Width - Division.division(Constant.Screen_Width,scale))/2;
+        minYMap = -(Constant.Screen_Height-Constant.BOTTOM_FRAME_HEIGHT - Division.division(Constant.Screen_Height-Constant.BOTTOM_FRAME_HEIGHT,scale))/2;
+        maxXMap = mapSize.width - Constant.DEFAULT_SCREEN_SIZE.width - minXMap;
+        maxYMap = mapSize.height -( Constant.DEFAULT_SCREEN_SIZE.height - Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/) - minYMap; // ?
+
+        if(x0_inDefaultScale>maxXMap)
+            x0_inDefaultScale = maxXMap;
+        if(y0_inDefaultScale>maxYMap)
+            y0_inDefaultScale = maxYMap;
+        if(x0_inDefaultScale<minXMap)
+            x0_inDefaultScale = minXMap;
+        if(y0_inDefaultScale<minYMap)
+            y0_inDefaultScale = minYMap;
 
         repaint();
     }
@@ -844,34 +995,50 @@ public class Panel implements GraphicHandler {
 
         if(i>0 && j>0 && ground.get(i-1).get(j-1)[0]== Constant.GROUND.HIGHLAND){
             Object [] room1 = {Constant.GROUND.LOWLAND , null};
+            Object o[] = {new Integer(i-1), new Integer(j-1), ground.get(i-1).get(j-1)};
+            undo.peek().add(o);
             ground.get(i-1).set(j-1 ,room1);
         }
         if(j>0 && ground.get(i).get(j-1)[0] == Constant.GROUND.HIGHLAND){
             Object [] room1 = {Constant.GROUND.LOWLAND , null};
+            Object o[] = {new Integer(i), new Integer(j-1), ground.get(i).get(j-1)};
+            undo.peek().add(o);
             ground.get(i).set(j-1 ,room1);
         }
         if(i<maxXMap && j>0 && ground.get(i+1).get(j-1)[0]== Constant.GROUND.HIGHLAND){
             Object [] room1 = {Constant.GROUND.LOWLAND , null};
+            Object o[] = {new Integer(i+1), new Integer(j-1), ground.get(i+1).get(j-1)};
+            undo.peek().add(o);
             ground.get(i+1).set(j-1 ,room1);
         }
         if(i>0 && ground.get(i-1).get(j)[0]== Constant.GROUND.HIGHLAND){
             Object [] room1 = {Constant.GROUND.LOWLAND , null};
+            Object o[] = {new Integer(i-1), new Integer(j), ground.get(i-1).get(j)};
+            undo.peek().add(o);
             ground.get(i-1).set(j ,room1);
         }
         if(i<maxXMap&& ground.get(i+1).get(j)[0]== Constant.GROUND.HIGHLAND){
             Object [] room1 = {Constant.GROUND.LOWLAND , null};
+            Object o[] = {new Integer(i+1), new Integer(j), ground.get(i+1).get(j)};
+            undo.peek().add(o);
             ground.get(i+1).set(j ,room1);
         }
         if(i>0 && j<maxYMap && ground.get(i-1).get(j+1)[0]== Constant.GROUND.HIGHLAND){
             Object [] room1 = {Constant.GROUND.LOWLAND , null};
+            Object o[] = {new Integer(i-1), new Integer(j+1), ground.get(i-1).get(j+1)};
+            undo.peek().add(o);
             ground.get(i-1).set(j+1 ,room1);
         }
         if(j<maxYMap && ground.get(i).get(j+1)[0]== Constant.GROUND.HIGHLAND){
             Object [] room1 = {Constant.GROUND.LOWLAND , null};
+            Object o[] = {new Integer(i), new Integer(j+1), ground.get(i).get(j+1)};
+            undo.peek().add(o);
             ground.get(i).set(j+1 ,room1);
         }
         if(i<maxXMap && j<maxYMap && ground.get(i+1).get(j+1)[0]== Constant.GROUND.HIGHLAND){
             Object [] room1 = {Constant.GROUND.LOWLAND , null};
+            Object o[] = {new Integer(i+1), new Integer(j+1), ground.get(i+1).get(j+1)};
+            undo.peek().add(o);
             ground.get(i+1).set(j+1 ,room1);
         }
     }
