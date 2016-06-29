@@ -86,7 +86,7 @@ public class Panel implements GraphicHandler {
         Graphics2D g2d = (Graphics2D)g;
         //g2d.translate(Constant.DEFAULT_SCREEN_SIZE.width/2, Constant.DEFAULT_SCREEN_SIZE.height/2);
         g2d.scale(scale, scale);
-       // g2d.translate(-Constant.DEFAULT_SCREEN_SIZE.width/2, -Constant.DEFAULT_SCREEN_SIZE.height/2);
+        // g2d.translate(-Constant.DEFAULT_SCREEN_SIZE.width/2, -Constant.DEFAULT_SCREEN_SIZE.height/2);
 
         for (int i = 0; i < Constant.NUM_OF_SEA_IN_EACH_ROW  ; i++)
             for (int j = 0; j < Constant.NUM_OF_SEA_IN_EACH_COLUMN  ; j++) {
@@ -131,9 +131,9 @@ public class Panel implements GraphicHandler {
 
             }
 
-       // g2d.translate(Constant.DEFAULT_SCREEN_SIZE.width/2, Constant.DEFAULT_SCREEN_SIZE.height/2);
+        // g2d.translate(Constant.DEFAULT_SCREEN_SIZE.width/2, Constant.DEFAULT_SCREEN_SIZE.height/2);
         g2d.scale((1f)/scale, (1f)/scale);
-       // g2d.translate(-Constant.DEFAULT_SCREEN_SIZE.width/2, -Constant.DEFAULT_SCREEN_SIZE.height/2);
+        // g2d.translate(-Constant.DEFAULT_SCREEN_SIZE.width/2, -Constant.DEFAULT_SCREEN_SIZE.height/2);
 
         ImageIcon bottomFrame = new ImageIcon("src/res/images/map/editor/frame.png");
         g.drawImage(bottomFrame.getImage(), 0, 0, Constant.DEFAULT_SCREEN_SIZE.width, Constant.DEFAULT_SCREEN_SIZE.height, null);
@@ -537,7 +537,7 @@ public class Panel implements GraphicHandler {
             if (GO.isDraggingOnIt()) {
                 GO.setDraggingOnIt(false);
                 if (GO.isInArea(x, y))
-                break;
+                    break;
             }
         }
 
@@ -674,10 +674,10 @@ public class Panel implements GraphicHandler {
         }
 
         if(!inMovavleArea && (movingUp || movingDown || movingRight || movingLeft)){
-                if(!inMovablePosition) {
-                    inMovablePosition = true;
-                    new Thread(this::moveMap).start();
-                }
+            if(!inMovablePosition) {
+                inMovablePosition = true;
+                new Thread(this::moveMap).start();
+            }
         }
     }
 
@@ -841,8 +841,8 @@ public class Panel implements GraphicHandler {
     }
 
     private void changeSeason(){
-            season = (season+1)%4;
-            repaint();
+        season = (season+1)%4;
+        repaint();
     }
 
     private void changeScale(boolean in){   // in = true -> zoomIn  , in = false -> zoomOut
@@ -882,11 +882,11 @@ public class Panel implements GraphicHandler {
             else {
 
                 for (int i = 0; i < Constant.ONE_MAP_NUM_CHANGING.width; i++)
-                    ground.remove();
+                    ground.removeLast();
 
                 for (int i = 0; i < ground.size(); i++)
                     for (int j = 0; j < Constant.ONE_MAP_NUM_CHANGING.height; j++)
-                        ground.get(i).remove();
+                        ground.get(i).removeLast();
             }
 
         }
