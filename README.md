@@ -12,7 +12,7 @@ Thrumania is a strategy game network.
 > From 2 up to 4 players can play together.  
 > Players have a castle , caserns , harbors , ships , battle ships , soldiers , humans , fishermans and climbers.  
 > Map has lowland and highland , farmland , tree , iron mine and gold mine , sea and fishes.  
-> A player lose when all of his soldiers die.
+> A player lose when all of his soldiers and humans die.
     
 ## Team Members
 
