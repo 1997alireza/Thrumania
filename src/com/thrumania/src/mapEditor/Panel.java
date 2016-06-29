@@ -268,8 +268,8 @@ public class Panel implements GraphicHandler {
     private void drawIntoGround(int x,int y){       // real x and y for mouse
 
         // <-- START : undo & redo
-        int i = (x+x0) / Constant.MIN_WIDTH_OF_EACH_GROUND;
-        int j = (y+y0) / Constant.MIN_HEIGHT_OF_EACH_GROUND;
+        int i =  ( x0 + (int)( x / scale)) / Constant.MIN_WIDTH_OF_EACH_GROUND ;
+        int j =  ( y0 + (int)( y / scale)) / Constant.MIN_HEIGHT_OF_EACH_GROUND ;
 
         boolean t = true;
         if(selectedDrawTool == ((Constant.GROUND)ground.get(i).get(j)[0]).getCode())
@@ -871,46 +871,47 @@ public class Panel implements GraphicHandler {
     }
 
     private void changeMapSize(boolean increase){
-        /////NOTTCOMPLETE
-        System.out.println("--> not complete changeMapSize function");
 
         // one change in map width = 8 ground , one change in map height = 7 ground
 
         if(increase==false) {       //deccrease
             mapSize = new Dimension(mapSize.width - Constant.ONE_MAP_SIZE_CHANGING.width, mapSize.height - Constant.ONE_MAP_SIZE_CHANGING.height);
 
-            for(int i=0;i<Constant.ONE_MAP_NUM_CHANGING.width;i++)
-                ground.remove();
+            if (Constant.MIN_MAP_SIZE.width > mapSize.width)
+                mapSize = Constant.MIN_MAP_SIZE;
+            else {
 
-            for (int i=0;i<ground.size();i++)
-                for (int j=0;j<Constant.ONE_MAP_NUM_CHANGING.height;j++)
-                    ground.get(i).remove();
+                for (int i = 0; i < Constant.ONE_MAP_NUM_CHANGING.width; i++)
+                    ground.remove();
+
+                for (int i = 0; i < ground.size(); i++)
+                    for (int j = 0; j < Constant.ONE_MAP_NUM_CHANGING.height; j++)
+                        ground.get(i).remove();
+            }
 
         }
 
         else {                      //increase
             mapSize = new Dimension(mapSize.width + Constant.ONE_MAP_SIZE_CHANGING.width, mapSize.height + Constant.ONE_MAP_SIZE_CHANGING.height);
 
-            Object [] emptyRoom = {Constant.GROUND.SEA , null};
+            if(Constant.MAX_MAP_SIZE.width < mapSize.width)
+                mapSize = Constant.MAX_MAP_SIZE;
+            else {
+                Object[] emptyRoom = {Constant.GROUND.SEA, null};
 
-            for (int i=0;i<ground.size();i++)
-                for (int j=0;j<Constant.ONE_MAP_NUM_CHANGING.height;j++)
-                    ground.get(i).add(emptyRoom);
+                for (int i = 0; i < ground.size(); i++)
+                    for (int j = 0; j < Constant.ONE_MAP_NUM_CHANGING.height; j++)
+                        ground.get(i).add(emptyRoom);
 
-            for(int i=0;i<Constant.ONE_MAP_NUM_CHANGING.width;i++) {
-                LinkedList<Object[]> col = new LinkedList<>();
-                for(int j=0;j<ground.get(0).size();j++) {
-                    col.add(emptyRoom);
+                for (int i = 0; i < Constant.ONE_MAP_NUM_CHANGING.width; i++) {
+                    LinkedList<Object[]> col = new LinkedList<>();
+                    for (int j = 0; j < ground.get(0).size(); j++) {
+                        col.add(emptyRoom);
+                    }
+                    ground.add(col);
                 }
-                ground.add(col);
             }
         }
-
-
-        if (Constant.MIN_MAP_SIZE.width > mapSize.width)
-            mapSize = Constant.MIN_MAP_SIZE;
-        else if(Constant.MAX_MAP_SIZE.width < mapSize.width)
-            mapSize = Constant.MAX_MAP_SIZE;
 
         minXMap =  -(Constant.Screen_Width - Division.division(Constant.Screen_Width,scale))/2;
         minYMap = -(Constant.Screen_Height-Constant.BOTTOM_FRAME_HEIGHT - Division.division(Constant.Screen_Height-Constant.BOTTOM_FRAME_HEIGHT,scale))/2;
