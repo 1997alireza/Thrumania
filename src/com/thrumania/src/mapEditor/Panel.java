@@ -265,19 +265,34 @@ public class Panel implements GraphicHandler {
     int last_i = -1;
     int last_j = -1;
 
-    private void drawIntoGround(int x,int y,boolean isdrag){       // real x and y for mouse
+    private void drawIntoGround(int x,int y){       // real x and y for mouse
 
         // <-- START : undo & redo
-        int i =  ( x0 + (int)( x / scale)) / Constant.MIN_WIDTH_OF_EACH_GROUND ;
-        int j =  ( y0 + (int)( y / scale)) / Constant.MIN_HEIGHT_OF_EACH_GROUND ;
-
+        int i = (x+x0) / Constant.MIN_WIDTH_OF_EACH_GROUND;
+        int j = (y+y0) / Constant.MIN_HEIGHT_OF_EACH_GROUND;
 
         boolean t = true;
         if(selectedDrawTool == ((Constant.GROUND)ground.get(i).get(j)[0]).getCode())
             t = false;
-        else if (ground.get(i).get(j)[1] != null)
-            if(selectedDrawTool == ((Constant.OBJECT)ground.get(i).get(j)[1]).getCode())
+
+        else if (ground.get(i).get(j)[1] != null) {
+            if (selectedDrawTool == ((Constant.OBJECT) ground.get(i).get(j)[1]).getCode())
                 t = false;
+        }
+
+        else if (selectedDrawTool == 8 && ((Constant.GROUND) ground.get(i).get(j)[0]).getCode() == Constant.GROUND.SEA.getCode()
+                && ground.get(i).get(j)[1] == null)
+            t = false;
+
+        else if((selectedDrawTool == Constant.OBJECT.GOLD_MINE.getCode() || selectedDrawTool == Constant.OBJECT.IRON_MINE.getCode())
+                && ((Constant.GROUND)ground.get(i).get(j)[0]).getCode()!=Constant.GROUND.HIGHLAND.getCode())
+            t = false;
+        else if((selectedDrawTool == Constant.OBJECT.TREE1.getCode() || selectedDrawTool == Constant.OBJECT.TREE2.getCode() || selectedDrawTool == Constant.OBJECT.FARMLAND.getCode())
+                && ((Constant.GROUND)ground.get(i).get(j)[0]).getCode()!=Constant.GROUND.LOWLAND.getCode())
+            t = false;
+        else if((selectedDrawTool == Constant.OBJECT.FISH1.getCode() || selectedDrawTool == Constant.OBJECT.FISH2.getCode())
+                && ((Constant.GROUND)ground.get(i).get(j)[0]).getCode()!=Constant.GROUND.SEA.getCode())
+            t = false;
         if(selectedDrawTool == Constant.GROUND.HIGHLAND.getCode()){
             if(i>0 && j>0 && i<maxXMap && j<maxYMap) {
                 boolean t1 = ground.get(i - 1).get(j - 1)[0] == Constant.GROUND.LOWLAND || ground.get(i - 1).get(j - 1)[0] == Constant.GROUND.HIGHLAND;
@@ -296,17 +311,17 @@ public class Panel implements GraphicHandler {
         }
 
         if(t) {
-            if (isdrag && lastdragstate == dragstate && (last_i != i || last_j != j)) {
+            if (dragstate == 0 && (last_i != i || last_j != j)) {
                 Object o[] = {new Integer(i), new Integer(j), ground.get(i).get(j)};
                 undo.peek().add(o);
-            } else if ((isdrag && lastdragstate != dragstate) || (!isdrag)) {
+            } else if (dragstate > 0) {
                 redo.removeAllElements();
                 ArrayList<Object[]> arr = new ArrayList<Object[]>();
                 Object o[] = {new Integer(i), new Integer(j), ground.get(i).get(j)};
                 arr.add(o);
                 undo.push(arr);
             }
-            lastdragstate = dragstate;
+            dragstate = 0;
         }
 
         last_i = i;
@@ -405,7 +420,6 @@ public class Panel implements GraphicHandler {
     }
 
     private long dragstate = 0;
-    private long lastdragstate = -1;
 
     @Override
     public void mouseClick(MouseEvent e) {
@@ -425,12 +439,15 @@ public class Panel implements GraphicHandler {
         else {
 
             if(SwingUtilities.isRightMouseButton(e)) {
-                int i =  ( x0 + (int)( x / scale)) / Constant.MIN_WIDTH_OF_EACH_GROUND ;
-                int j =  ( y0 + (int)( y / scale)) / Constant.MIN_HEIGHT_OF_EACH_GROUND ;
-                erase(i,j);
+                int temp= selectedDrawTool;
+                selectedDrawTool = 8;
+                drawIntoGround(x,y);
+                dragstate++;
+                selectedDrawTool = temp;
             }
             else if(SwingUtilities.isLeftMouseButton(e)) {
-                drawIntoGround(x, y,false);
+                drawIntoGround(x, y);
+                dragstate++;
             }
         }
     }
@@ -481,12 +498,13 @@ public class Panel implements GraphicHandler {
         int y = e.getY();
         if (!(y >= Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT)) {
             if(SwingUtilities.isRightMouseButton(e)) {
-                int i =  ( x0 + (int)( x / scale)) / Constant.MIN_WIDTH_OF_EACH_GROUND ;
-                int j =  ( y0 + (int)( y / scale)) / Constant.MIN_HEIGHT_OF_EACH_GROUND ;
-                erase(i,j);
+                int temp= selectedDrawTool;
+                selectedDrawTool = 8;
+                drawIntoGround(x,y);
+                selectedDrawTool = temp;
             }
             else if(SwingUtilities.isLeftMouseButton(e))
-                drawIntoGround(x, y,true);
+                drawIntoGround(x, y);
         }
 
         else {
@@ -500,9 +518,6 @@ public class Panel implements GraphicHandler {
         }
 
         repaint();
-
-        if(ground.get(ground.size()-1).get(0)[0] == Constant.GROUND.LOWLAND)
-            System.out.println("here here");
     }
 
     @Override
@@ -522,7 +537,6 @@ public class Panel implements GraphicHandler {
             if (GO.isDraggingOnIt()) {
                 GO.setDraggingOnIt(false);
                 if (GO.isInArea(x, y))
-                    GO.mouseClicked();
                 break;
             }
         }
