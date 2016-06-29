@@ -75,7 +75,6 @@ public class Panel implements GraphicHandler{
             ground.add(row);
         }
 
-        Object[] a = {Constant.GROUND.LOWLAND,null};
 
         // map.ground --/>
 

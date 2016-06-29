@@ -1,55 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java" line="27" />
-    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java" line="29" />
-    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java" line="60" />
-    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java" line="72" />
-    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java" line="47" />
-    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java" line="35" />
-    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java" line="73" />
+    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java" line="29" />
+    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java" line="36" />
+    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java" line="81" />
+    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java" line="42" />
+    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java" line="272" />
+    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java" line="283" />
+    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java" line="47" />
+    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java" />
+    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java" line="473" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b5555ea-9629-4dd5-be67-a0cfc6b81a41" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/thrumania/src/gameSpace/Area.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/thrumania/src/gameSpace/Circle.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/thrumania/src/gameSpace/Rectangle.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Thrumania-StartAgain/com/thrumania/src/draw/GameFrame.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Thrumania-StartAgain/com/thrumania/src/draw/GamePanel$STATE.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Thrumania-StartAgain/com/thrumania/src/draw/GamePanel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Thrumania-StartAgain/com/thrumania/src/draw/Main.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Thrumania-StartAgain/com/thrumania/src/game/Panel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Thrumania-StartAgain/com/thrumania/src/mapEditor/Panel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Thrumania-StartAgain/com/thrumania/src/menu/MenuButton.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Thrumania-StartAgain/com/thrumania/src/menu/Panel$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Thrumania-StartAgain/com/thrumania/src/menu/Panel$STATE.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Thrumania-StartAgain/com/thrumania/src/menu/Panel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Thrumania-StartAgain/res/images/map editor button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Thrumania-StartAgain/res/values/Constant.class" afterPath="" />
+    <list default="true" id="4b5555ea-9629-4dd5-be67-a0cfc6b81a41" name="Default" comment="Update images" />
+    <list id="14e6d9ff-ef15-4ce0-a9ce-146286ea0dbe" name="Rejected commit: Default" comment="Initial">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/GraphicHandler.class" afterPath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/GraphicHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/draw/GamePanel$STATE.class" afterPath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/draw/GamePanel$STATE.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/draw/GamePanel$1.class" afterPath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/draw/GamePanel$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/draw/GamePanel.class" afterPath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/draw/GamePanel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/game/Panel.class" afterPath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/game/Panel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/mapEditor/Panel.class" afterPath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/mapEditor/Panel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/objects/DynamicObject.class" afterPath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/objects/DynamicObject.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/objects/StaticObject.class" afterPath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/objects/StaticObject.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/menu/Panel.class" afterPath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/menu/Panel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/objects/GameButton.class" afterPath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/objects/GameButton.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thrumania/src/GraphicHandler.java" afterPath="$PROJECT_DIR$/src/com/thrumania/src/GraphicHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java" afterPath="$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thrumania/src/game/Panel.java" afterPath="$PROJECT_DIR$/src/com/thrumania/src/game/Panel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java" afterPath="$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java" afterPath="$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thrumania/src/objects/DynamicObject.java" afterPath="$PROJECT_DIR$/src/com/thrumania/src/objects/DynamicObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java" afterPath="$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thrumania/src/objects/GameObject.java" afterPath="$PROJECT_DIR$/src/com/thrumania/src/objects/GameObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thrumania/src/objects/StaticObject.java" afterPath="$PROJECT_DIR$/src/com/thrumania/src/objects/StaticObject.java" />
     </list>
-    <list id="14e6d9ff-ef15-4ce0-a9ce-146286ea0dbe" name="Rejected commit: Default" comment="Initial" />
     <ignored path="Thrumania-StartAgain.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" ignored="false" />
+    <file path="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/draw/GamePanel$1.class" ignored="false" />
+    <file path="$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java" ignored="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,91 +49,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="GamePanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="31" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1192#1193#0" expanded="true" />
-                <element signature="e#1230#1231#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameFrame.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GameFrame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Panel.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.39576548">
-              <caret line="76" column="19" selection-start-line="76" selection-start-column="19" selection-end-line="76" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Area.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/gameSpace/Area.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GraphicHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/GraphicHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameButton.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="27" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1484#1485#0" expanded="true" />
-                <element signature="e#1564#1565#0" expanded="true" />
-                <element signature="e#1712#1713#0" expanded="true" />
-                <element signature="e#1747#1748#0" expanded="true" />
-                <element signature="e#1786#1787#0" expanded="true" />
-                <element signature="e#1810#1811#0" expanded="true" />
-                <element signature="e#1988#1989#0" expanded="true" />
-                <element signature="e#2017#2018#0" expanded="true" />
-                <element signature="e#2076#2077#0" expanded="true" />
-                <element signature="e#2117#2118#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Panel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="27" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="27" />
+            <state vertical-scroll-proportion="1.9318937">
+              <caret line="155" column="42" selection-start-line="155" selection-start-column="42" selection-end-line="155" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1527#1548#0" expanded="true" />
+                <element signature="e#1608#1629#0" expanded="true" />
+                <element signature="e#19011#19012#0" expanded="true" />
+                <element signature="e#19046#19047#0" expanded="true" />
+                <element signature="e#22656#22666#0" expanded="true" />
+                <element signature="e#31537#31547#0" expanded="true" />
+                <element signature="e#33423#33434#0" expanded="true" />
+                <element signature="e#34138#34149#0" expanded="true" />
+                <element signature="e#38458#38459#0" expanded="true" />
+                <element signature="e#38493#38494#0" expanded="true" />
+                <element signature="e#38555#38556#0" expanded="true" />
+                <element signature="e#38604#38605#0" expanded="true" />
+                <element signature="e#39015#39016#0" expanded="true" />
+                <element signature="e#39052#39053#0" expanded="true" />
+                <element signature="e#44136#44137#0" expanded="true" />
+                <element signature="e#44194#44195#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -160,20 +81,8 @@
         <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/game/Panel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="124" selection-start-line="42" selection-start-column="124" selection-end-line="42" selection-end-column="124" />
+              <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameObject.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/GameObject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -208,22 +117,31 @@
       <list>
         <option value="$PROJECT_DIR$/src/com/thrumania/src/draw/Main.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/menu/MenuButton.java" />
-        <option value="$PROJECT_DIR$/src/res/values/Constant.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/menu/ActionButtonEvent.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/menu/MapEditEvent.java" />
-        <option value="$PROJECT_DIR$/src/com/thrumania/src/draw/GameFrame.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/gameSpace/Area.java" />
-        <option value="$PROJECT_DIR$/src/com/thrumania/src/gameSpace/Rectangle.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/gameSpace/Circle.java" />
-        <option value="$PROJECT_DIR$/src/com/thrumania/src/objects/DynamicObject.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/Tools/Division.java" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/gameSpace/Rectangle.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/objects/StaticObject.java" />
-        <option value="$PROJECT_DIR$/src/com/thrumania/src/objects/GameObject.java" />
-        <option value="$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java" />
-        <option value="$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java" />
-        <option value="$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java" />
-        <option value="$PROJECT_DIR$/src/com/thrumania/src/game/Panel.java" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/Tools/Cursor.java" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/draw/GameFrame.java" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/Tools/PlaySound.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/GraphicHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/game/Panel.java" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/objects/Radio.java" />
+        <option value="$PROJECT_DIR$/src/res/values/Constant.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/objects/GameObject.java" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/objects/DragableObject.java" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/objects/DynamicObject.java" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/objects/RadioButton.java" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/objects/DrawToolButton.java" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java" />
       </list>
     </option>
   </component>
@@ -319,8 +237,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -356,10 +274,6 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -376,6 +290,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sounds" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -415,7 +333,81 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="map" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Thrumania-StartAgain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Thrumania" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cursor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Thrumania-StartAgain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Thrumania" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Thrumania-StartAgain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Thrumania" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -553,22 +545,27 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="full.screen.before.presentation.mode" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\AliReza\IdeaProjects\Thrumania-StartAgain\src" />
+      <recent name="C:\Users\AliReza\IdeaProjects\Thrumania\src\res\images\menu" />
+      <recent name="C:\Users\AliReza\IdeaProjects\Thrumania\src\res\images\map" />
+      <recent name="C:\Users\AliReza\IdeaProjects\Thrumania\src\res\images\ground" />
+      <recent name="C:\Users\AliReza\IdeaProjects\Thrumania\src\res\images\map\ground" />
+      <recent name="C:\Users\AliReza\IdeaProjects\Thrumania\src\res\images\menu\sound" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\AliReza\IdeaProjects\Thrumania\src\res\images" />
@@ -1067,7 +1064,32 @@
       <workItem from="1464533768883" duration="5705000" />
       <workItem from="1464584665699" duration="23961000" />
       <workItem from="1464673935036" duration="12812000" />
-      <workItem from="1464711043932" duration="16022000" />
+      <workItem from="1464711043932" duration="18894000" />
+      <workItem from="1464789697544" duration="2770000" />
+      <workItem from="1465027725290" duration="540000" />
+      <workItem from="1465192177033" duration="257000" />
+      <workItem from="1465374061110" duration="15000" />
+      <workItem from="1466309196423" duration="10641000" />
+      <workItem from="1466389386254" duration="11945000" />
+      <workItem from="1466429209875" duration="870000" />
+      <workItem from="1466432726982" duration="148000" />
+      <workItem from="1466480306636" duration="21688000" />
+      <workItem from="1466572099386" duration="1590000" />
+      <workItem from="1466580574328" duration="26494000" />
+      <workItem from="1466675476274" duration="10927000" />
+      <workItem from="1466687138335" duration="7009000" />
+      <workItem from="1466742208449" duration="18401000" />
+      <workItem from="1466781560891" duration="8254000" />
+      <workItem from="1466843966916" duration="9919000" />
+      <workItem from="1466878947179" duration="660000" />
+      <workItem from="1466885413501" duration="361000" />
+      <workItem from="1466908977232" duration="22440000" />
+      <workItem from="1466959410773" duration="3073000" />
+      <workItem from="1466993879902" duration="27515000" />
+      <workItem from="1467060406692" duration="9550000" />
+      <workItem from="1467112835803" duration="2696000" />
+      <workItem from="1467116239482" duration="18887000" />
+      <workItem from="1467171690075" duration="15434000" />
     </task>
     <task id="LOCAL-00001" summary="Initial">
       <created>1464348441777</created>
@@ -1099,40 +1121,211 @@
       <option name="project" value="LOCAL" />
       <updated>1464694908255</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="game objects , game spaces ( Area )">
+      <created>1464777406805</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1464777406805</updated>
+    </task>
+    <task id="LOCAL-00007" summary="new state for menu">
+      <created>1466313511704</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1466313511704</updated>
+    </task>
+    <task id="LOCAL-00008" summary="focus and click in menu">
+      <created>1466390418395</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1466390418395</updated>
+    </task>
+    <task id="LOCAL-00009" summary="cursor changing">
+      <created>1466394567190</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1466394567190</updated>
+    </task>
+    <task id="LOCAL-00010" summary="cursor changing">
+      <created>1466426425842</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1466426425842</updated>
+    </task>
+    <task id="LOCAL-00011" summary="sound class">
+      <created>1466429477608</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1466429477608</updated>
+    </task>
+    <task id="LOCAL-00012" summary="complete sound option">
+      <created>1466581202726</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1466581202726</updated>
+    </task>
+    <task id="LOCAL-00013" summary="map : move - buttons - draw">
+      <created>1466693887124</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1466693887124</updated>
+    </task>
+    <task id="LOCAL-00014" summary="map : connect images - erase all">
+      <created>1466773101643</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1466773101643</updated>
+    </task>
+    <task id="LOCAL-00015" summary="ground images - season">
+      <created>1466777376935</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1466777376935</updated>
+    </task>
+    <task id="LOCAL-00016" summary="map : exit into menu">
+      <created>1466784642789</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1466784642789</updated>
+    </task>
+    <task id="LOCAL-00017" summary="map : complete drawing and put into &quot;ground&quot;">
+      <created>1466786158327</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1466786158327</updated>
+    </task>
+    <task id="LOCAL-00018" summary="map : drawing highLand">
+      <created>1466789511309</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1466789511309</updated>
+    </task>
+    <task id="LOCAL-00019" summary="map : save&amp;load , improve map moving">
+      <created>1466931512973</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1466931512973</updated>
+    </task>
+    <task id="LOCAL-00020" summary="map : set extension filter for save and load">
+      <created>1466934337514</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1466934337514</updated>
+    </task>
+    <task id="LOCAL-00021" summary="map : improve">
+      <created>1466944475926</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1466944475926</updated>
+    </task>
+    <task id="LOCAL-00022" summary="map : erase">
+      <created>1466966253416</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1466966253416</updated>
+    </task>
+    <task id="LOCAL-00023" summary="map : complete map zoom">
+      <created>1467064289405</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1467064289405</updated>
+    </task>
+    <task id="LOCAL-00024" summary="map : increase &amp; decrease - undo &amp; redo (beta) , menu : radio buttons">
+      <created>1467138490706</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1467138490706</updated>
+    </task>
+    <task id="LOCAL-00025" summary="map : improve mouse dragging on button">
+      <created>1467140245941</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1467140245941</updated>
+    </task>
+    <task id="LOCAL-00026" summary="map : redo &amp; undo">
+      <created>1467173154433</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1467173154433</updated>
+    </task>
+    <task id="LOCAL-00027" summary="map : improve increase &amp; decrease">
+      <created>1467174077828</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1467174077828</updated>
+    </task>
+    <task id="LOCAL-00028" summary="map : improve increase &amp; decrease ( remove -&gt; removeLast )">
+      <created>1467174796295</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1467174796295</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Update images">
+      <created>1467185067168</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1467185067168</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81127000" />
+    <option name="totallyTimeSpent" value="316083000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24590164" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29289618" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18333334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.50208336" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.49791667" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30601093" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18697916" sideWeight="0.49617487" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18489583" sideWeight="0.5038251" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50163937" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" x="91" y="91" width="1738" height="848" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.50208336" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" x="91" y="91" width="1738" height="848" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.49791667" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30601093" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18697916" sideWeight="0.49617487" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18489583" sideWeight="0.5038251" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.50163937" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -1146,141 +1339,74 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Initial" />
-    <MESSAGE value="Make classes for game objects and buttons" />
-    <MESSAGE value="Automata for menu" />
     <MESSAGE value="Imporve painting" />
     <MESSAGE value="delete component and use images with coordinates" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete component and use images with coordinates" />
+    <MESSAGE value="game objects , game spaces ( Area )" />
+    <MESSAGE value="new state for menu" />
+    <MESSAGE value="focus and click in menu" />
+    <MESSAGE value="cursor changing" />
+    <MESSAGE value="sound class" />
+    <MESSAGE value="complete sound option" />
+    <MESSAGE value="map : move - buttons - draw" />
+    <MESSAGE value="map : connect images - erase all" />
+    <MESSAGE value="ground images - season" />
+    <MESSAGE value="map : exit into menu" />
+    <MESSAGE value="map : complete drawing and put into &quot;ground&quot;" />
+    <MESSAGE value="map : drawing highLand" />
+    <MESSAGE value="map : save&amp;load , improve map moving" />
+    <MESSAGE value="map : set extension filter for save and load" />
+    <MESSAGE value="map : improve" />
+    <MESSAGE value="map : erase" />
+    <MESSAGE value="map : complete map zoom" />
+    <MESSAGE value="map : increase &amp; decrease - undo &amp; redo (beta) , menu : radio buttons" />
+    <MESSAGE value="map : improve mouse dragging on button" />
+    <MESSAGE value="map : redo &amp; undo" />
+    <MESSAGE value="map : improve increase &amp; decrease" />
+    <MESSAGE value="map : improve increase &amp; decrease ( remove -&gt; removeLast )" />
+    <MESSAGE value="Update images" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update images" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="45" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="x0_inDefaultScale" language="JAVA" custom="" />
+        <watch expression="y0_inDefaultScale" language="JAVA" custom="" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1484#1485#0" expanded="true" />
-            <element signature="e#1564#1565#0" expanded="true" />
-            <element signature="e#1712#1713#0" expanded="true" />
-            <element signature="e#1747#1748#0" expanded="true" />
-            <element signature="e#1786#1787#0" expanded="true" />
-            <element signature="e#1810#1811#0" expanded="true" />
-            <element signature="e#1988#1989#0" expanded="true" />
-            <element signature="e#2017#2018#0" expanded="true" />
-            <element signature="e#2076#2077#0" expanded="true" />
-            <element signature="e#2117#2118#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/DynamicObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1192#1193#0" expanded="true" />
-            <element signature="e#1230#1231#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/game/Panel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/res/values/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/GraphicHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1192#1193#0" expanded="true" />
-            <element signature="e#1230#1231#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1527#1548#0" expanded="true" />
+            <element signature="e#1608#1629#0" expanded="true" />
+            <element signature="e#19011#19012#0" expanded="true" />
+            <element signature="e#19046#19047#0" expanded="true" />
+            <element signature="e#22656#22666#0" expanded="true" />
+            <element signature="e#31537#31547#0" expanded="true" />
+            <element signature="e#33423#33434#0" expanded="true" />
+            <element signature="e#34138#34149#0" expanded="true" />
+            <element signature="e#38458#38459#0" expanded="true" />
+            <element signature="e#38493#38494#0" expanded="true" />
+            <element signature="e#38555#38556#0" expanded="true" />
+            <element signature="e#38604#38605#0" expanded="true" />
+            <element signature="e#39015#39016#0" expanded="true" />
+            <element signature="e#39052#39053#0" expanded="true" />
+            <element signature="e#44136#44137#0" expanded="true" />
+            <element signature="e#44194#44195#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1289,7 +1415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1304,97 +1429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1192#1193#0" expanded="true" />
-            <element signature="e#1230#1231#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/res/values/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/GraphicHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1192#1193#0" expanded="true" />
-            <element signature="e#1230#1231#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/res/values/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/GraphicHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1402,11 +1436,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1192#1193#0" expanded="true" />
-            <element signature="e#1230#1231#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1416,6 +1446,22 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1527#1548#0" expanded="true" />
+            <element signature="e#1608#1629#0" expanded="true" />
+            <element signature="e#19011#19012#0" expanded="true" />
+            <element signature="e#19046#19047#0" expanded="true" />
+            <element signature="e#22656#22666#0" expanded="true" />
+            <element signature="e#31537#31547#0" expanded="true" />
+            <element signature="e#33423#33434#0" expanded="true" />
+            <element signature="e#34138#34149#0" expanded="true" />
+            <element signature="e#38458#38459#0" expanded="true" />
+            <element signature="e#38493#38494#0" expanded="true" />
+            <element signature="e#38555#38556#0" expanded="true" />
+            <element signature="e#38604#38605#0" expanded="true" />
+            <element signature="e#39015#39016#0" expanded="true" />
+            <element signature="e#39052#39053#0" expanded="true" />
+            <element signature="e#44136#44137#0" expanded="true" />
+            <element signature="e#44194#44195#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1424,7 +1470,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1439,7 +1484,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1447,11 +1491,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1192#1193#0" expanded="true" />
-            <element signature="e#1230#1231#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1461,6 +1501,22 @@
           <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1527#1548#0" expanded="true" />
+            <element signature="e#1608#1629#0" expanded="true" />
+            <element signature="e#19011#19012#0" expanded="true" />
+            <element signature="e#19046#19047#0" expanded="true" />
+            <element signature="e#22656#22666#0" expanded="true" />
+            <element signature="e#31537#31547#0" expanded="true" />
+            <element signature="e#33423#33434#0" expanded="true" />
+            <element signature="e#34138#34149#0" expanded="true" />
+            <element signature="e#38458#38459#0" expanded="true" />
+            <element signature="e#38493#38494#0" expanded="true" />
+            <element signature="e#38555#38556#0" expanded="true" />
+            <element signature="e#38604#38605#0" expanded="true" />
+            <element signature="e#39015#39016#0" expanded="true" />
+            <element signature="e#39052#39053#0" expanded="true" />
+            <element signature="e#44136#44137#0" expanded="true" />
+            <element signature="e#44194#44195#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1469,7 +1525,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1477,13 +1532,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1494,67 +1542,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/res/values/Constant.java">
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/gameSpace/Circle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
+          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/Main.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-          <folding />
+        <state vertical-scroll-proportion="0.37414965">
+          <caret line="20" column="11" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14804064">
+          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/gameSpace/Rectangle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/gameSpace/Circle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/DynamicObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="42" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#623#624#0" expanded="true" />
-            <element signature="e#680#681#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/StaticObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6360544">
-          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#624#625#0" expanded="true" />
-            <element signature="e#681#682#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GameFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-          <folding />
+          <caret line="16" column="45" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -1562,85 +1574,365 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/res/images/cursor/main.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/Tools/Cursor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.thrumania.src.mapEditor.Panel">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.thrumania.src.mapEditor.Panel</OriginalElement>
+          <nodes>
+            <node x="350.0" y="84.0">com.thrumania.src.GraphicHandler</node>
+            <node x="117.44999999999999" y="0.0">java.util.EventListener</node>
+            <node x="0.0" y="84.0">java.awt.event.MouseMotionListener</node>
+            <node x="228.5" y="168.0">com.thrumania.src.mapEditor.Panel</node>
+            <node x="199.0" y="84.0">java.awt.event.MouseListener</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="com.thrumania.src.mapEditor.Panel" target="com.thrumania.src.GraphicHandler">
+              <point x="24.0" y="-17.0" />
+              <point x="288.5" y="143.0" />
+              <point x="420.0" y="143.0" />
+              <point x="0.0" y="17.0" />
+            </edge>
+            <edge source="com.thrumania.src.mapEditor.Panel" target="java.awt.event.MouseListener">
+              <point x="0.0" y="-17.0" />
+              <point x="0.0" y="17.0" />
+            </edge>
+            <edge source="java.awt.event.MouseListener" target="java.util.EventListener">
+              <point x="0.0" y="-17.0" />
+              <point x="264.5" y="59.0" />
+              <point x="209.7" y="59.0" />
+              <point x="30.75" y="17.0" />
+            </edge>
+            <edge source="java.awt.event.MouseMotionListener" target="java.util.EventListener">
+              <point x="0.0" y="-17.0" />
+              <point x="89.5" y="59.0" />
+              <point x="148.2" y="59.0" />
+              <point x="-30.75" y="17.0" />
+            </edge>
+            <edge source="com.thrumania.src.mapEditor.Panel" target="java.awt.event.MouseMotionListener">
+              <point x="-24.0" y="-17.0" />
+              <point x="240.5" y="143.0" />
+              <point x="89.5" y="143.0" />
+              <point x="0.0" y="17.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="-301.0" y="28.0" />
+          <SelectedNodes>
+            <node>com.thrumania.src.mapEditor.Panel</node>
+          </SelectedNodes>
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_51/src.zip!/java/lang/Runnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7936267">
+          <caret line="67" column="25" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/Tools/PlaySound.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.80898875">
+          <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_51/src.zip!/java/util/LinkedList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3323217">
+          <caret line="554" column="0" selection-start-line="554" selection-start-column="0" selection-end-line="554" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_51/src.zip!/javax/swing/JComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="5166" column="0" selection-start-line="5166" selection-start-column="0" selection-end-line="5166" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.thrumania.src.draw.Main">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.thrumania.src.draw.Main</OriginalElement>
+          <nodes>
+            <node x="0.0" y="0.0">com.thrumania.src.draw.Main</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-503.0" y="-167.0" />
+          <SelectedNodes>
+            <node>com.thrumania.src.draw.Main</node>
+          </SelectedNodes>
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://SpringLocalModels/com.thrumania.src.draw.GamePanel">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>SpringLocalModels</ID>
+          <OriginalElement>com.thrumania.src.draw.GamePanel</OriginalElement>
+          <nodes>
+            <node x="0.0" y="0.0">com.thrumania.src.draw.GamePanel</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-486.0" y="-172.0" />
+          <SelectedNodes>
+            <node>com.thrumania.src.draw.GamePanel</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Show filesets as groups</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.thrumania.src.draw.GamePanel">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.thrumania.src.draw.GamePanel</OriginalElement>
+          <nodes>
+            <node x="" y="">javax.swing.JComponent</node>
+            <node x="" y="">javax.swing.TransferHandler.HasGetTransferHandler</node>
+            <node x="" y="">java.awt.MenuContainer</node>
+            <node x="" y="">javax.accessibility.Accessible</node>
+            <node x="" y="">java.awt.Component</node>
+            <node x="" y="">java.awt.image.ImageObserver</node>
+            <node x="" y="">java.io.Serializable</node>
+            <node x="" y="">com.thrumania.src.draw.GamePanel</node>
+            <node x="" y="">java.util.EventListener</node>
+            <node x="" y="">java.awt.event.MouseMotionListener</node>
+            <node x="" y="">java.awt.Container</node>
+            <node x="" y="">javax.swing.JPanel</node>
+            <node x="" y="">java.awt.event.MouseListener</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.9" x="300.0" y="227.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.thrumania.src.objects.DragableObject">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.thrumania.src.objects.DragableObject</OriginalElement>
+          <nodes>
+            <node x="" y="">com.thrumania.src.objects.DragableObject</node>
+            <node x="" y="">com.thrumania.src.objects.GameObject</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="71.0" y="59.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GameFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49088147">
+          <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/GraphicHandler.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33586627">
+          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_51/src.zip!/javax/swing/JFileChooser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17781155">
+          <caret line="1643" column="55" selection-start-line="1643" selection-start-column="55" selection-end-line="1643" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/Tools/Division.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14934114">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/res/images/menu/radio button/1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/res/images/map/editor/button/decrease.1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/Radio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#846#847#0" expanded="true" />
+            <element signature="e#874#875#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/res/values/Constant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25963148">
+          <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/GameObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.59799">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/RadioButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.85762143">
+          <caret line="122" column="5" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2379#2380#0" expanded="true" />
+            <element signature="e#2407#2408#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/DynamicObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8291457">
+          <caret line="58" column="4" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/DrawToolButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5695142">
+          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/DragableObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.74371856">
+          <caret line="106" column="5" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59799">
+          <caret line="29" column="35" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06398538">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/can-stock-photo_csp3787837.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0448505">
+          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/game/Panel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="124" selection-start-line="42" selection-start-column="124" selection-end-line="42" selection-end-column="124" />
+          <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="31" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1192#1193#0" expanded="true" />
-            <element signature="e#1230#1231#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="27" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1484#1485#0" expanded="true" />
-            <element signature="e#1564#1565#0" expanded="true" />
-            <element signature="e#1712#1713#0" expanded="true" />
-            <element signature="e#1747#1748#0" expanded="true" />
-            <element signature="e#1786#1787#0" expanded="true" />
-            <element signature="e#1810#1811#0" expanded="true" />
-            <element signature="e#1988#1989#0" expanded="true" />
-            <element signature="e#2017#2018#0" expanded="true" />
-            <element signature="e#2076#2077#0" expanded="true" />
-            <element signature="e#2117#2118#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="27" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="27" />
+        <state vertical-scroll-proportion="1.9318937">
+          <caret line="155" column="42" selection-start-line="155" selection-start-column="42" selection-end-line="155" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1527#1548#0" expanded="true" />
+            <element signature="e#1608#1629#0" expanded="true" />
+            <element signature="e#19011#19012#0" expanded="true" />
+            <element signature="e#19046#19047#0" expanded="true" />
+            <element signature="e#22656#22666#0" expanded="true" />
+            <element signature="e#31537#31547#0" expanded="true" />
+            <element signature="e#33423#33434#0" expanded="true" />
+            <element signature="e#34138#34149#0" expanded="true" />
+            <element signature="e#38458#38459#0" expanded="true" />
+            <element signature="e#38493#38494#0" expanded="true" />
+            <element signature="e#38555#38556#0" expanded="true" />
+            <element signature="e#38604#38605#0" expanded="true" />
+            <element signature="e#39015#39016#0" expanded="true" />
+            <element signature="e#39052#39053#0" expanded="true" />
+            <element signature="e#44136#44137#0" expanded="true" />
+            <element signature="e#44194#44195#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.39576548">
-          <caret line="76" column="19" selection-start-line="76" selection-start-column="19" selection-end-line="76" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>

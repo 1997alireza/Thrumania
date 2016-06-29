@@ -84,9 +84,7 @@ public class Panel implements GraphicHandler {
         y0 = y0_inDefaultScale + (Constant.Screen_Height-Constant.BOTTOM_FRAME_HEIGHT - Division.division(Constant.Screen_Height-Constant.BOTTOM_FRAME_HEIGHT,scale))/2;
 
         Graphics2D g2d = (Graphics2D)g;
-        //g2d.translate(Constant.DEFAULT_SCREEN_SIZE.width/2, Constant.DEFAULT_SCREEN_SIZE.height/2);
         g2d.scale(scale, scale);
-        // g2d.translate(-Constant.DEFAULT_SCREEN_SIZE.width/2, -Constant.DEFAULT_SCREEN_SIZE.height/2);
 
         for (int i = 0; i < Constant.NUM_OF_SEA_IN_EACH_ROW  ; i++)
             for (int j = 0; j < Constant.NUM_OF_SEA_IN_EACH_COLUMN  ; j++) {
@@ -97,6 +95,17 @@ public class Panel implements GraphicHandler {
             for (int j = y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND; j < Division.division ( Constant.DEFAULT_SCREEN_SIZE.height - Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/   ,scale*Constant.MIN_HEIGHT_OF_EACH_GROUND)+ Division.division(y0 ,Constant.MIN_HEIGHT_OF_EACH_GROUND )+ 1 + 1/*for tall objects*/ && j < ground.get(i).size(); j++) {
                 Constant.GROUND thisGround = (Constant.GROUND) ground.get(i).get(j)[0];
                 switch (thisGround) {
+                    case SEA:
+                        if (ground.get(i).get(j)[1] != null) {
+                            switch ((Constant.OBJECT) ground.get(i).get(j)[1]) {
+                                case FISH1:
+                                    g.drawImage(new ImageIcon("src/res/images/map/fish/fish1.png").getImage(),10 -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND,10 -y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND,144,120, null);
+                                    break;
+                                case FISH2:
+                                    break;
+                            }
+                        }
+                        break;
                     case LOWLAND:
                         int imageNum = chooseLandImageNumber(Constant.GROUND.LOWLAND, i, j);
                         g.drawImage(new ImageIcon("src/res/images/map/ground/lowLand/" + season + "-" + imageNum + ".png").getImage(), -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, Constant.MIN_WIDTH_OF_EACH_GROUND, Constant.MIN_HEIGHT_OF_EACH_GROUND, null);
@@ -104,14 +113,27 @@ public class Panel implements GraphicHandler {
                         if (ground.get(i).get(j)[1] != null) {
                             switch ((Constant.OBJECT) ground.get(i).get(j)[1]) {
                                 case TREE1:
-                                    /////////////FFFFFFFFFFirst must paint shadows
-                                    ///////////// MUSTTT PROVE MOKHTASSATTE va size SHADOW va tree
-                                    g.drawImage(new ImageIcon("src/res/images/map/tree/1/" + season + ".png").getImage(), -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -60 - y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, 120, 120, null);
+                                    switch (season){        // shadow for tree 1
+                                        case 0:
+                                        case 1:
+                                        case 2:
+                                            g.drawImage(new ImageIcon("src/res/images/map/tree/1/0,1,2_shadow.png").getImage(),60 -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -45 - y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, 120, 120, null);
+                                            break;
+                                        case 3:
+                                            g.drawImage(new ImageIcon("src/res/images/map/tree/1/3_shadow.png").getImage(),57 -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -43 - y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, 120, 120, null);
+                                    }
+
+                                    g.drawImage(new ImageIcon("src/res/images/map/tree/1/" + season + ".png").getImage(),20 -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -60 - y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, 120, 120, null);
+
                                     break;
+
                                 case TREE2:
-                                    g.drawImage(new ImageIcon("src/res/images/map/tree/2/" + season + ".png").getImage(), -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -60 - y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, 120, 120, null);
+                                    g.drawImage(new ImageIcon("src/res/images/map/tree/2/" + season + "_shadow.png").getImage(),65 -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -45 - y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, 120, 120, null);
+                                         // shadow for tree 2
+                                    g.drawImage(new ImageIcon("src/res/images/map/tree/2/" + season + ".png").getImage(),20 -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -60 - y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, 120, 120, null);
                                     break;
                                 case FARMLAND:
+                                    g.drawImage(new ImageIcon("src/res/images/map/farmLand/farm.png").getImage(),40 -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, 27 - y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, 94, 67, null);
                                     break;
                             }
                         }
@@ -123,7 +145,21 @@ public class Panel implements GraphicHandler {
 
                         int imageNum2 = chooseLandImageNumber(Constant.GROUND.HIGHLAND, i, j);
                         g.drawImage(new ImageIcon("src/res/images/map/ground/highLand/" + imageNum2 + ".png").getImage(), -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, Constant.MIN_WIDTH_OF_EACH_GROUND, Constant.MIN_HEIGHT_OF_EACH_GROUND, null);
+
+
+
+                        if (ground.get(i).get(j)[1] != null) {
+                            switch ((Constant.OBJECT) ground.get(i).get(j)[1]) {
+                                case IRON_MINE:
+                                    break;
+                                case GOLD_MINE:
+                                    break;
+                            }
+                        }
+
                         break;
+
+
 
 
                 }
@@ -131,9 +167,7 @@ public class Panel implements GraphicHandler {
 
             }
 
-        // g2d.translate(Constant.DEFAULT_SCREEN_SIZE.width/2, Constant.DEFAULT_SCREEN_SIZE.height/2);
         g2d.scale((1f)/scale, (1f)/scale);
-        // g2d.translate(-Constant.DEFAULT_SCREEN_SIZE.width/2, -Constant.DEFAULT_SCREEN_SIZE.height/2);
 
         ImageIcon bottomFrame = new ImageIcon("src/res/images/map/editor/frame.png");
         g.drawImage(bottomFrame.getImage(), 0, 0, Constant.DEFAULT_SCREEN_SIZE.width, Constant.DEFAULT_SCREEN_SIZE.height, null);
