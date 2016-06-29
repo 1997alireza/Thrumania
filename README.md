@@ -17,7 +17,7 @@ Thrumania is a strategy game network.
 ## Team Members
 
 - ["AliReza Torabian"][ATGithub] : <torabian.alireza@gmail.com>
-- ["Ali Jafari"][AJGithub] 
+- ["Ali Jafari"][AJGithub] : <alijafari2019@gmail.com>
 - ["Reza Bayat"][RBGithub]
 
 ##License
