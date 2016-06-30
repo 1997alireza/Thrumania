@@ -1,6 +1,4 @@
-package com.thrumania.src.objects;
-
-import java.awt.*;
+package com.thrumania.src.menu.objects;
 
 /**
  * Created by AliReza on 28/06/2016.
@@ -8,7 +6,7 @@ import java.awt.*;
 public class Radio {
     private String decribtion;
     private int value;
-    private RadioButton [] buttons;
+    private RadioButton[] buttons;
 
     public Radio(String decribtion , RadioButton button1 , RadioButton button2 , RadioButton button3){
         this.decribtion = decribtion;

@@ -1,10 +1,11 @@
-package com.thrumania.src.objects;
+package com.thrumania.src.menu.objects;
 
 import com.thrumania.src.GraphicHandler;
 import com.thrumania.src.Tools.Division;
 import com.thrumania.src.Tools.PlaySound;
 import com.thrumania.src.gameSpace.Area;
 import com.thrumania.src.gameSpace.Circle;
+import com.thrumania.src.objects.GameObject;
 
 import javax.sound.sampled.FloatControl;
 import java.awt.*;

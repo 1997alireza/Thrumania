@@ -1,21 +1,17 @@
 package com.thrumania.src.mapEditor;
 
-import com.sun.glass.ui.Screen;
-import com.sun.javafx.collections.SourceAdapterChange;
 import com.thrumania.src.GraphicHandler;
 import com.thrumania.src.Tools.Division;
 import com.thrumania.src.draw.GamePanel;
-import com.thrumania.src.objects.DrawToolButton;
+import com.thrumania.src.mapEditor.objects.DrawToolButton;
 import com.thrumania.src.objects.GameButton;
 import com.thrumania.src.objects.GameObject;
 import res.values.Constant;
-import sun.invoke.empty.Empty;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -47,6 +43,13 @@ public class Panel implements GraphicHandler {
 
     private static boolean isRunningMap;
 
+    // <-- mini map
+    private double scaleScreen;
+    private int widthRecFill;
+    private int heightRecFill;
+    private int xRecFill;
+    private int yRecFill;
+    // mini map -->
 
     public Panel(com.thrumania.src.draw.GamePanel drawPanel, com.thrumania.src.menu.Panel menuPanel,LinkedList<LinkedList< Object[/* Constant.GROUND , Constant.OBJECT*/] >> ground ) {
 
@@ -72,6 +75,8 @@ public class Panel implements GraphicHandler {
         y0_inDefaultScale = y0;
 
         this.ground = ground;
+
+        scaleScreen = (double)mapSize.width / 400;
 
 
     }
@@ -168,6 +173,8 @@ public class Panel implements GraphicHandler {
             }
 
         g2d.scale((1f)/scale, (1f)/scale);
+
+        drawMiniMap(g);
 
         ImageIcon bottomFrame = new ImageIcon("src/res/images/map/editor/frame.png");
         g.drawImage(bottomFrame.getImage(), 0, 0, Constant.DEFAULT_SCREEN_SIZE.width, Constant.DEFAULT_SCREEN_SIZE.height, null);
@@ -461,7 +468,11 @@ public class Panel implements GraphicHandler {
         int x = e.getX();
         int y = e.getY();
 
-        if(y>=Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT) {
+
+        if ((x >= 24 && x <= 24 + 420) && (y >= Constant.Screen_Height - 260 && y <= Constant.Screen_Height - 12))
+            miniMapMovingRect(x,y);
+
+        else if(y>=Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT) {
             for (GameObject GO : gameObjects) {
                 if (GO.isInArea(x, y)) {
                     GO.mouseClicked();
@@ -530,7 +541,12 @@ public class Panel implements GraphicHandler {
 
         int x = e.getX();
         int y = e.getY();
-        if (!(y >= Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT)) {
+
+        if ((x >= 24 && x <= 24 + 420) && (y >= Constant.Screen_Height - 260 && y <= Constant.Screen_Height - 12))
+            miniMapMovingRect(x,y);
+
+
+        else if (!(y >= Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT)) {
             if(SwingUtilities.isRightMouseButton(e)) {
                 int temp= selectedDrawTool;
                 selectedDrawTool = 8;
@@ -961,6 +977,10 @@ public class Panel implements GraphicHandler {
         if(y0_inDefaultScale<minYMap)
             y0_inDefaultScale = minYMap;
 
+
+        scaleScreen = (double)mapSize.width / 400;  // mini map
+
+
         repaint();
     }
 
@@ -1064,7 +1084,7 @@ public class Panel implements GraphicHandler {
             undo.peek().add(o);
             ground.get(i).set(j-1 ,room1);
         }
-        if(i<maxXMap && j>0 && ground.get(i+1).get(j-1)[0]== Constant.GROUND.HIGHLAND){
+        if(i<mapSize.width -1  && j>0 && ground.get(i+1).get(j-1)[0]== Constant.GROUND.HIGHLAND){
             Object [] room1 = {Constant.GROUND.LOWLAND , null};
             Object o[] = {new Integer(i+1), new Integer(j-1), ground.get(i+1).get(j-1)};
             undo.peek().add(o);
@@ -1076,25 +1096,25 @@ public class Panel implements GraphicHandler {
             undo.peek().add(o);
             ground.get(i-1).set(j ,room1);
         }
-        if(i<maxXMap&& ground.get(i+1).get(j)[0]== Constant.GROUND.HIGHLAND){
+        if(i<mapSize.width - 1&& ground.get(i+1).get(j)[0]== Constant.GROUND.HIGHLAND){
             Object [] room1 = {Constant.GROUND.LOWLAND , null};
             Object o[] = {new Integer(i+1), new Integer(j), ground.get(i+1).get(j)};
             undo.peek().add(o);
             ground.get(i+1).set(j ,room1);
         }
-        if(i>0 && j<maxYMap && ground.get(i-1).get(j+1)[0]== Constant.GROUND.HIGHLAND){
+        if(i>0 && j<mapSize.height -1  && ground.get(i-1).get(j+1)[0]== Constant.GROUND.HIGHLAND){
             Object [] room1 = {Constant.GROUND.LOWLAND , null};
             Object o[] = {new Integer(i-1), new Integer(j+1), ground.get(i-1).get(j+1)};
             undo.peek().add(o);
             ground.get(i-1).set(j+1 ,room1);
         }
-        if(j<maxYMap && ground.get(i).get(j+1)[0]== Constant.GROUND.HIGHLAND){
+        if(j<mapSize.height-1 && ground.get(i).get(j+1)[0]== Constant.GROUND.HIGHLAND){
             Object [] room1 = {Constant.GROUND.LOWLAND , null};
             Object o[] = {new Integer(i), new Integer(j+1), ground.get(i).get(j+1)};
             undo.peek().add(o);
             ground.get(i).set(j+1 ,room1);
         }
-        if(i<maxXMap && j<maxYMap && ground.get(i+1).get(j+1)[0]== Constant.GROUND.HIGHLAND){
+        if(i<mapSize.width - 1 && j<mapSize.height - 1 && ground.get(i+1).get(j+1)[0]== Constant.GROUND.HIGHLAND){
             Object [] room1 = {Constant.GROUND.LOWLAND , null};
             Object o[] = {new Integer(i+1), new Integer(j+1), ground.get(i+1).get(j+1)};
             undo.peek().add(o);
@@ -1102,6 +1122,127 @@ public class Panel implements GraphicHandler {
         }
     }
 
+
+    private void miniMapMovingRect(int x,int y){
+        if ((x >= 24 && x <= 24 + (widthRecFill / 2))) {
+            if ((y >= Constant.Screen_Height - 260 && y <= Constant.Screen_Height - 260 + (heightRecFill / 2))) {
+                x0 = 0;
+                y0 = 0;
+                x0_inDefaultScale = x0 - (Constant.Screen_Width - Division.division(Constant.Screen_Width, scale)) / 2;
+                y0_inDefaultScale = y0 - (Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT - Division.division(Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT, scale)) / 2;
+            }
+            else if ((y > Constant.Screen_Height - 260 + (heightRecFill / 2)) && (y < Constant.Screen_Height - 12 - (heightRecFill / 2))) {
+                x0 = 0;
+                y0 = (int)((y - (Constant.Screen_Height - 260) - heightRecFill / 2) * scaleScreen);
+                x0_inDefaultScale = x0 - (Constant.Screen_Width - Division.division(Constant.Screen_Width, scale)) / 2;
+                y0_inDefaultScale = y0 - (Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT - Division.division(Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT, scale)) / 2;
+
+            }
+            else if ((y <= Constant.Screen_Height - 12 && y >= Constant.Screen_Height - 12 - (heightRecFill / 2))) {
+                x0 = 0;
+                y0 = (int)(mapSize.height - heightRecFill * scaleScreen);
+                x0_inDefaultScale = x0 - (Constant.Screen_Width - Division.division(Constant.Screen_Width, scale)) / 2;
+                y0_inDefaultScale = y0 - (Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT - Division.division(Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT, scale)) / 2;
+
+            }
+        }
+        else if ((x >= 24 + 420 - widthRecFill / 2 && x <= 24 + 420)) {
+            if ((y >= Constant.Screen_Height - 260 && y <= Constant.Screen_Height - 260 + (heightRecFill / 2))) {
+                x0 = (int)(mapSize.width - widthRecFill * scaleScreen);
+                y0 = 0;
+                x0_inDefaultScale = x0 - (Constant.Screen_Width - Division.division(Constant.Screen_Width, scale)) / 2;
+                y0_inDefaultScale = y0 - (Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT - Division.division(Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT, scale)) / 2;
+            }
+            else if ((y > Constant.Screen_Height - 260 + (heightRecFill / 2)) && (y < Constant.Screen_Height - 12 - (heightRecFill / 2))) {
+                x0 = (int)(mapSize.width - widthRecFill * scaleScreen);
+                y0 = (int)((y - (Constant.Screen_Height - 260) - heightRecFill / 2) * scaleScreen);
+                x0_inDefaultScale = x0 - (Constant.Screen_Width - Division.division(Constant.Screen_Width, scale)) / 2;
+                y0_inDefaultScale = y0 - (Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT - Division.division(Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT, scale)) / 2;
+
+            }
+            else if ((y <= Constant.Screen_Height - 12 && y >= Constant.Screen_Height - 12 - (heightRecFill / 2))) {
+                x0 = (int)(mapSize.width - widthRecFill * scaleScreen);
+                y0 = (int)(mapSize.height - (heightRecFill * scaleScreen));
+                x0_inDefaultScale = x0 - (Constant.Screen_Width - Division.division(Constant.Screen_Width, scale)) / 2;
+                y0_inDefaultScale = y0 - (Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT - Division.division(Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT, scale)) / 2;
+
+            }
+
+        }
+        else if (x > 24 + (widthRecFill / 2) && x < 24 + 420 - (widthRecFill / 2) && y >  Constant.Screen_Height - 260 && y < Constant.Screen_Height - 260 + (heightRecFill / 2)) {
+            x0 = (int)((x - 24 - widthRecFill / 2) * scaleScreen);
+            y0 = 0;
+            x0_inDefaultScale = x0 - (Constant.Screen_Width - Division.division(Constant.Screen_Width, scale)) / 2;
+            y0_inDefaultScale = y0 - (Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT - Division.division(Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT, scale)) / 2;
+
+        }
+        else if (x > 24 + (widthRecFill / 2) && x < 24 + 420 - (widthRecFill / 2) && y < Constant.Screen_Height - 12 && y > Constant.Screen_Height - 12 - (heightRecFill / 2)) {
+            x0 = (int)((x - 24 - widthRecFill / 2) * scaleScreen);
+            y0 =(int)( mapSize.height - (heightRecFill * scaleScreen));
+            x0_inDefaultScale = x0 - (Constant.Screen_Width - Division.division(Constant.Screen_Width, scale)) / 2;
+            y0_inDefaultScale = y0 - (Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT - Division.division(Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT, scale)) / 2;
+        }
+        else if ((x > 24 + widthRecFill / 2 && x < 24 + 420 - widthRecFill / 2) && (y > Constant.Screen_Height - 260 + heightRecFill / 2 && y < Constant.Screen_Height - 12 - heightRecFill / 2)) {
+            x0 = (int)((x - 24 - widthRecFill / 2) * scaleScreen);
+            y0 = (int)((y - (Constant.Screen_Height - 260) - heightRecFill / 2) * scaleScreen);
+            x0_inDefaultScale = x0 - (Constant.Screen_Width - Division.division(Constant.Screen_Width, scale)) / 2;
+            y0_inDefaultScale = y0 - (Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT - Division.division(Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT, scale)) / 2;
+
+        }
+
+    }
+
+    private void drawMiniMap(Graphics g){
+
+
+        int xTransfer = 24;
+        int yTransfer = 820;
+
+        Color color = new Color(40, 130, 240);
+        g.setColor(color);
+        g.fillRect(22, 818, 425, 270);
+
+        for (int i = 0; i < ground.size(); i++) {
+            for (int j = 0; j < ground.get(i).size(); j++) {
+                Constant.GROUND thisGround = (Constant.GROUND) ground.get(i).get(j)[0];
+                switch (thisGround) {
+                    case LOWLAND:
+                        int imageNum = chooseLandImageNumber(Constant.GROUND.LOWLAND, i, j);
+                        g.drawImage(new ImageIcon("src/res/images/map/ground/lowLand/" + season + "-" + imageNum + ".png").getImage(), (int) (xTransfer + ((double)(i * Constant.MIN_WIDTH_OF_EACH_GROUND) / scaleScreen)), (int) (yTransfer + ((double)(j * Constant.MIN_HEIGHT_OF_EACH_GROUND) / scaleScreen)), (int) ((double)Constant.MIN_WIDTH_OF_EACH_GROUND / scaleScreen), (int) ((double)Constant.MIN_HEIGHT_OF_EACH_GROUND / scaleScreen), null);
+
+                        if (ground.get(i).get(j)[1] != null) {
+                            switch ((Constant.OBJECT) ground.get(i).get(j)[1]) {
+                                case TREE1:
+                                    g.drawImage(new ImageIcon("src/res/images/map/tree/1/" + season + ".png").getImage(), (int) (xTransfer + ((i * Constant.MIN_WIDTH_OF_EACH_GROUND) / scaleScreen)), (int) (yTransfer + ((j * Constant.MIN_HEIGHT_OF_EACH_GROUND) / scaleScreen)), (int) (Constant.MIN_WIDTH_OF_EACH_GROUND / scaleScreen), (int) (Constant.MIN_HEIGHT_OF_EACH_GROUND / scaleScreen), null);
+                                    break;
+                                case TREE2:
+                                    g.drawImage(new ImageIcon("src/res/images/map/tree/2/" + season + ".png").getImage(), (int) (xTransfer + ((i * Constant.MIN_WIDTH_OF_EACH_GROUND) / scaleScreen)), (int) (yTransfer + ((j * Constant.MIN_HEIGHT_OF_EACH_GROUND) / scaleScreen)), (int) (Constant.MIN_WIDTH_OF_EACH_GROUND / scaleScreen), (int) (Constant.MIN_HEIGHT_OF_EACH_GROUND / scaleScreen), null);
+                                    break;
+                                case FARMLAND:
+                                    break;
+                            }
+                        }
+
+                        break;
+                    case HIGHLAND:
+                        g.drawImage(new ImageIcon("src/res/images/map/ground/lowLand/" + season + "-" + 15 + ".png").getImage(), (int) (xTransfer + ((i * Constant.MIN_WIDTH_OF_EACH_GROUND) / scaleScreen)), (int) (yTransfer + ((j * Constant.MIN_HEIGHT_OF_EACH_GROUND) / scaleScreen)), (int) (Constant.MIN_WIDTH_OF_EACH_GROUND / scaleScreen), (int) (Constant.MIN_HEIGHT_OF_EACH_GROUND / scaleScreen), null);
+                        int imageNum2 = chooseLandImageNumber(Constant.GROUND.HIGHLAND, i, j);
+                        g.drawImage(new ImageIcon("src/res/images/map/ground/highLand/" + imageNum2 + ".png").getImage(), (int) (xTransfer + ((i * Constant.MIN_WIDTH_OF_EACH_GROUND) / scaleScreen)), (int) (yTransfer + ((j * Constant.MIN_HEIGHT_OF_EACH_GROUND) / scaleScreen)), (int) (Constant.MIN_WIDTH_OF_EACH_GROUND / scaleScreen), (int) (Constant.MIN_HEIGHT_OF_EACH_GROUND / scaleScreen), null);
+                        break;
+                }
+            }
+        }
+
+        // <-- rectangle
+        Color color2 = new Color(220, 20, 40, 130);
+        g.setColor(color2);
+        xRecFill = (int) (xTransfer + ((double)(x0) / scaleScreen) - 5);
+        yRecFill = (int) (yTransfer + ((double)(y0) / scaleScreen) - 5);
+        widthRecFill = 10 + (int) (((double)Constant.Screen_Width / scaleScreen) / scale);
+        heightRecFill = 10 + (int) (((double)(Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT - 60) / scaleScreen) / scale);
+        g.fillRect(xRecFill, yRecFill, widthRecFill, heightRecFill);
+        // rectangle -->
+    }
 
 
 }

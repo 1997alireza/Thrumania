@@ -1,7 +1,8 @@
-package com.thrumania.src.objects;
+package com.thrumania.src.mapEditor.objects;
 
 import com.thrumania.src.GraphicHandler;
 import com.thrumania.src.menu.Panel;
+import com.thrumania.src.objects.GameButton;
 
 import java.awt.*;
 import java.util.Map;

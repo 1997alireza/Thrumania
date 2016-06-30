@@ -1,7 +1,9 @@
-package com.thrumania.src.objects;
+package com.thrumania.src.menu.objects;
 
 import com.thrumania.src.gameSpace.Area;
 import com.thrumania.src.gameSpace.Circle;
+import com.thrumania.src.menu.objects.Radio;
+import com.thrumania.src.objects.GameObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

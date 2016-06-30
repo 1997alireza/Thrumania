@@ -5,17 +5,28 @@
     <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java" line="36" />
     <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java" line="81" />
     <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java" line="42" />
-    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java" line="272" />
-    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java" line="283" />
+    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java" line="278" />
+    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java" line="296" />
     <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java" line="47" />
     <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java" />
-    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java" line="473" />
+    <bookmark url="file://$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java" line="484" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b5555ea-9629-4dd5-be67-a0cfc6b81a41" name="Default" comment="Update images">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/images/map/farmLand/farm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/images/map/fish/fish1.png" />
+    <list default="true" id="4b5555ea-9629-4dd5-be67-a0cfc6b81a41" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/thrumania/src/menu/Host.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/thrumania/src/menu/objects/PlayerName.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/thrumania/src/objects/DragableObject.java" afterPath="$PROJECT_DIR$/src/com/thrumania/src/menu/objects/DragableObject.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/thrumania/src/objects/DrawToolButton.java" afterPath="$PROJECT_DIR$/src/com/thrumania/src/mapEditor/objects/DrawToolButton.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/thrumania/src/objects/Radio.java" afterPath="$PROJECT_DIR$/src/com/thrumania/src/menu/objects/Radio.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/thrumania/src/objects/RadioButton.java" afterPath="$PROJECT_DIR$/src/com/thrumania/src/menu/objects/RadioButton.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/draw/GameFrame.class" afterPath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/draw/GameFrame.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/menu/Panel.class" afterPath="$PROJECT_DIR$/out/production/Thrumania/com/thrumania/src/menu/Panel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Thrumania/res/values/Constant.class" afterPath="$PROJECT_DIR$/out/production/Thrumania/res/values/Constant.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thrumania/src/draw/GameFrame.java" afterPath="$PROJECT_DIR$/src/com/thrumania/src/draw/GameFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java" afterPath="$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java" afterPath="$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/res/values/Constant.java" afterPath="$PROJECT_DIR$/src/res/values/Constant.java" />
     </list>
     <list id="14e6d9ff-ef15-4ce0-a9ce-146286ea0dbe" name="Rejected commit: Default" comment="Initial" />
     <ignored path="Thrumania-StartAgain.iws" />
@@ -39,40 +50,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Panel.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java">
+      <file leaf-file-name="Constant.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/res/values/Constant.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60465115">
-              <caret line="108" column="33" selection-start-line="108" selection-start-column="33" selection-end-line="108" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Host.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/menu/Host.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1527#1548#0" expanded="true" />
-                <element signature="e#1608#1629#0" expanded="true" />
-                <element signature="e#19011#19012#0" expanded="true" />
-                <element signature="e#19046#19047#0" expanded="true" />
-                <element signature="e#22656#22666#0" expanded="true" />
-                <element signature="e#31537#31547#0" expanded="true" />
-                <element signature="e#33423#33434#0" expanded="true" />
-                <element signature="e#34138#34149#0" expanded="true" />
-                <element signature="e#38458#38459#0" expanded="true" />
-                <element signature="e#38493#38494#0" expanded="true" />
-                <element signature="e#38555#38556#0" expanded="true" />
-                <element signature="e#38604#38605#0" expanded="true" />
-                <element signature="e#39015#39016#0" expanded="true" />
-                <element signature="e#39052#39053#0" expanded="true" />
-                <element signature="e#44136#44137#0" expanded="true" />
-                <element signature="e#44194#44195#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Panel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/game/Panel.java">
+      <file leaf-file-name="Panel.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
-              <folding />
+            <state vertical-scroll-proportion="-11.305115">
+              <caret line="111" column="25" selection-start-line="111" selection-start-column="25" selection-end-line="111" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#31966#31976#0" expanded="true" />
+                <element signature="e#33852#33863#0" expanded="true" />
+                <element signature="e#34567#34578#0" expanded="true" />
+                <element signature="e#38887#38888#0" expanded="true" />
+                <element signature="e#38922#38923#0" expanded="true" />
+                <element signature="e#38984#38985#0" expanded="true" />
+                <element signature="e#39033#39034#0" expanded="true" />
+                <element signature="e#39444#39445#0" expanded="true" />
+                <element signature="e#39481#39482#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -82,8 +98,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Singleton" />
         <option value="Interface" />
+        <option value="Singleton" />
         <option value="Class" />
       </list>
     </option>
@@ -116,13 +132,11 @@
         <option value="$PROJECT_DIR$/src/com/thrumania/src/gameSpace/Rectangle.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/objects/StaticObject.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/Tools/Cursor.java" />
-        <option value="$PROJECT_DIR$/src/com/thrumania/src/draw/GameFrame.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/Tools/PlaySound.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/GraphicHandler.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/game/Panel.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/objects/Radio.java" />
-        <option value="$PROJECT_DIR$/src/res/values/Constant.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/objects/GameButton.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/objects/GameObject.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/objects/DragableObject.java" />
@@ -130,7 +144,12 @@
         <option value="$PROJECT_DIR$/src/com/thrumania/src/objects/RadioButton.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/objects/DrawToolButton.java" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/menu/objects/PlayerName.java" />
+        <option value="$USER_HOME$/Desktop/New Text Document.java" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/draw/GameFrame.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java" />
+        <option value="$PROJECT_DIR$/src/res/values/Constant.java" />
+        <option value="$PROJECT_DIR$/src/com/thrumania/src/menu/Host.java" />
         <option value="$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java" />
       </list>
     </option>
@@ -227,8 +246,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -264,6 +281,10 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -284,6 +305,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="sounds" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Thrumania-StartAgain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Thrumania" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="maps" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -493,7 +536,59 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="menu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Host.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Thrumania-StartAgain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Thrumania" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="mapEditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Thrumania-StartAgain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Thrumania" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapEditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="objects" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -565,7 +660,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1109,7 +1206,9 @@
       <workItem from="1467060406692" duration="9550000" />
       <workItem from="1467112835803" duration="2696000" />
       <workItem from="1467116239482" duration="18887000" />
-      <workItem from="1467171690075" duration="15894000" />
+      <workItem from="1467171690075" duration="21119000" />
+      <workItem from="1467270378876" duration="21067000" />
+      <workItem from="1467309243916" duration="655000" />
     </task>
     <task id="LOCAL-00001" summary="Initial">
       <created>1464348441777</created>
@@ -1285,15 +1384,27 @@
       <option name="project" value="LOCAL" />
       <updated>1467185067168</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="fish $ farmLand images">
+      <created>1467207552431</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1467207552431</updated>
+    </task>
+    <task id="LOCAL-00031" summary="map : mini map">
+      <created>1467290691001</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1467290691001</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="316543000" />
+    <option name="totallyTimeSpent" value="343490000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1302,16 +1413,16 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.50208336" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.49791667" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30601093" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30491802" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18697916" sideWeight="0.49617487" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19166666" sideWeight="0.49617487" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18489583" sideWeight="0.5038251" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50163937" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.420765" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1333,10 +1444,10 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.49791667" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30601093" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30491802" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18697916" sideWeight="0.49617487" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19166666" sideWeight="0.49617487" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1344,7 +1455,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18489583" sideWeight="0.5038251" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.50163937" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.420765" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1359,8 +1470,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Imporve painting" />
-    <MESSAGE value="delete component and use images with coordinates" />
     <MESSAGE value="game objects , game spaces ( Area )" />
     <MESSAGE value="new state for menu" />
     <MESSAGE value="focus and click in menu" />
@@ -1384,14 +1493,16 @@
     <MESSAGE value="map : improve increase &amp; decrease" />
     <MESSAGE value="map : improve increase &amp; decrease ( remove -&gt; removeLast )" />
     <MESSAGE value="Update images" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update images" />
+    <MESSAGE value="fish $ farmLand images" />
+    <MESSAGE value="map : mini map" />
+    <option name="LAST_COMMIT_MESSAGE" value="map : mini map" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="45" />
+      <option name="time" value="53" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1405,39 +1516,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1527#1548#0" expanded="true" />
-            <element signature="e#1608#1629#0" expanded="true" />
-            <element signature="e#19011#19012#0" expanded="true" />
-            <element signature="e#19046#19047#0" expanded="true" />
-            <element signature="e#22656#22666#0" expanded="true" />
-            <element signature="e#31537#31547#0" expanded="true" />
-            <element signature="e#33423#33434#0" expanded="true" />
-            <element signature="e#34138#34149#0" expanded="true" />
-            <element signature="e#38458#38459#0" expanded="true" />
-            <element signature="e#38493#38494#0" expanded="true" />
-            <element signature="e#38555#38556#0" expanded="true" />
-            <element signature="e#38604#38605#0" expanded="true" />
-            <element signature="e#39015#39016#0" expanded="true" />
-            <element signature="e#39052#39053#0" expanded="true" />
-            <element signature="e#44136#44137#0" expanded="true" />
-            <element signature="e#44194#44195#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/res/values/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/GraphicHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1466,22 +1544,15 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1527#1548#0" expanded="true" />
-            <element signature="e#1608#1629#0" expanded="true" />
-            <element signature="e#19011#19012#0" expanded="true" />
-            <element signature="e#19046#19047#0" expanded="true" />
-            <element signature="e#22656#22666#0" expanded="true" />
-            <element signature="e#31537#31547#0" expanded="true" />
-            <element signature="e#33423#33434#0" expanded="true" />
-            <element signature="e#34138#34149#0" expanded="true" />
-            <element signature="e#38458#38459#0" expanded="true" />
-            <element signature="e#38493#38494#0" expanded="true" />
-            <element signature="e#38555#38556#0" expanded="true" />
-            <element signature="e#38604#38605#0" expanded="true" />
-            <element signature="e#39015#39016#0" expanded="true" />
-            <element signature="e#39052#39053#0" expanded="true" />
-            <element signature="e#44136#44137#0" expanded="true" />
-            <element signature="e#44194#44195#0" expanded="true" />
+            <element signature="e#31966#31976#0" expanded="true" />
+            <element signature="e#33852#33863#0" expanded="true" />
+            <element signature="e#34567#34578#0" expanded="true" />
+            <element signature="e#38887#38888#0" expanded="true" />
+            <element signature="e#38922#38923#0" expanded="true" />
+            <element signature="e#38984#38985#0" expanded="true" />
+            <element signature="e#39033#39034#0" expanded="true" />
+            <element signature="e#39444#39445#0" expanded="true" />
+            <element signature="e#39481#39482#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1521,22 +1592,15 @@
           <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1527#1548#0" expanded="true" />
-            <element signature="e#1608#1629#0" expanded="true" />
-            <element signature="e#19011#19012#0" expanded="true" />
-            <element signature="e#19046#19047#0" expanded="true" />
-            <element signature="e#22656#22666#0" expanded="true" />
-            <element signature="e#31537#31547#0" expanded="true" />
-            <element signature="e#33423#33434#0" expanded="true" />
-            <element signature="e#34138#34149#0" expanded="true" />
-            <element signature="e#38458#38459#0" expanded="true" />
-            <element signature="e#38493#38494#0" expanded="true" />
-            <element signature="e#38555#38556#0" expanded="true" />
-            <element signature="e#38604#38605#0" expanded="true" />
-            <element signature="e#39015#39016#0" expanded="true" />
-            <element signature="e#39052#39053#0" expanded="true" />
-            <element signature="e#44136#44137#0" expanded="true" />
-            <element signature="e#44194#44195#0" expanded="true" />
+            <element signature="e#31966#31976#0" expanded="true" />
+            <element signature="e#33852#33863#0" expanded="true" />
+            <element signature="e#34567#34578#0" expanded="true" />
+            <element signature="e#38887#38888#0" expanded="true" />
+            <element signature="e#38922#38923#0" expanded="true" />
+            <element signature="e#38984#38985#0" expanded="true" />
+            <element signature="e#39033#39034#0" expanded="true" />
+            <element signature="e#39444#39445#0" expanded="true" />
+            <element signature="e#39481#39482#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1606,13 +1670,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -1787,13 +1844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GameFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49088147">
-          <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/GraphicHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33586627">
@@ -1825,30 +1875,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/Radio.java">
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/menu/objects/Radio.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="e#846#847#0" expanded="true" />
-            <element signature="e#874#875#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/res/values/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25963148">
-          <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1859,15 +1889,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/RadioButton.java">
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/menu/objects/RadioButton.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.85762143">
           <caret line="122" column="5" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2379#2380#0" expanded="true" />
-            <element signature="e#2407#2408#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1878,7 +1903,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/DrawToolButton.java">
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/mapEditor/objects/DrawToolButton.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5695142">
           <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
@@ -1886,7 +1911,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/objects/DragableObject.java">
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/menu/objects/DragableObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.74371856">
           <caret line="106" column="5" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
@@ -1905,20 +1930,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.06398538">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/can-stock-photo_csp3787837.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0448505">
-          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1926,32 +1937,82 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GamePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/GameFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/draw/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/menu/Panel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="298" column="22" selection-start-line="298" selection-start-column="22" selection-end-line="298" selection-end-column="22" />
+          <folding>
+            <element signature="e#16377#16378#0" expanded="true" />
+            <element signature="e#16412#16413#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/menu/objects/PlayerName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.73300165">
+          <caret line="26" column="58" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/res/values/Constant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/menu/Host.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/thrumania/src/mapEditor/Panel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60465115">
-          <caret line="108" column="33" selection-start-line="108" selection-start-column="33" selection-end-line="108" selection-end-column="33" />
+        <state vertical-scroll-proportion="-11.305115">
+          <caret line="111" column="25" selection-start-line="111" selection-start-column="25" selection-end-line="111" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1527#1548#0" expanded="true" />
-            <element signature="e#1608#1629#0" expanded="true" />
-            <element signature="e#19011#19012#0" expanded="true" />
-            <element signature="e#19046#19047#0" expanded="true" />
-            <element signature="e#22656#22666#0" expanded="true" />
-            <element signature="e#31537#31547#0" expanded="true" />
-            <element signature="e#33423#33434#0" expanded="true" />
-            <element signature="e#34138#34149#0" expanded="true" />
-            <element signature="e#38458#38459#0" expanded="true" />
-            <element signature="e#38493#38494#0" expanded="true" />
-            <element signature="e#38555#38556#0" expanded="true" />
-            <element signature="e#38604#38605#0" expanded="true" />
-            <element signature="e#39015#39016#0" expanded="true" />
-            <element signature="e#39052#39053#0" expanded="true" />
-            <element signature="e#44136#44137#0" expanded="true" />
-            <element signature="e#44194#44195#0" expanded="true" />
+            <element signature="e#31966#31976#0" expanded="true" />
+            <element signature="e#33852#33863#0" expanded="true" />
+            <element signature="e#34567#34578#0" expanded="true" />
+            <element signature="e#38887#38888#0" expanded="true" />
+            <element signature="e#38922#38923#0" expanded="true" />
+            <element signature="e#38984#38985#0" expanded="true" />
+            <element signature="e#39033#39034#0" expanded="true" />
+            <element signature="e#39444#39445#0" expanded="true" />
+            <element signature="e#39481#39482#0" expanded="true" />
           </folding>
         </state>
       </provider>

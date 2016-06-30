@@ -37,6 +37,10 @@ public class Constant {
 
     }
 
+    public enum PLAYER_TYPE{
+        SINGLE , MULTI_HOST , MULTI_CLIENT ;
+    }
+
     public static final Dimension DEFAULT_SCREEN_SIZE = new Dimension(1920 , 1080);
 
     public static final Dimension MIN_MAP_SIZE = new Dimension(1920 * 2, 1200 * 2);    // height / width = 8 / 5
@@ -56,6 +60,13 @@ public class Constant {
 
     public static final float MAX_OF_SCALE = 2f;
     public static final float ONE_SCALE_CHANGING = 0.05f;
+
+    public static String PLAYER_NAME ;
+
+    public static final String HOST_BROADCAST_MESSAGE = "Thrumania host";
+    public static final String CLIENT_CONNECTING_MESSAGE = "Thrumania client"; // Message = CLIENT_CONNECTING_MESSAGE+":"+ClientName
+    public static final int HOST_SENDING_PORT_NUMBER /*client entering port number*/ = 4040;  //port to sending data from host to client
+    public static final int HOST_ENTERING_PORT_NUMBER /*client sending port number*/ = 4050 ; //port to entering data from client to host
 
 
 }

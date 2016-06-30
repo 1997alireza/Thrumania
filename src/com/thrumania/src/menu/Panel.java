@@ -5,17 +5,17 @@ package com.thrumania.src.menu;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
-import com.sun.prism.*;
 import com.thrumania.src.GraphicHandler;
 import com.thrumania.src.Tools.Cursor;
 import com.thrumania.src.draw.GamePanel;
+import com.thrumania.src.menu.objects.DragableObject;
+import com.thrumania.src.menu.objects.PlayerName;
+import com.thrumania.src.menu.objects.Radio;
+import com.thrumania.src.menu.objects.RadioButton;
 import com.thrumania.src.objects.*;
 import res.values.*;
 import com.thrumania.src.Tools.*;
@@ -95,21 +95,28 @@ public class Panel implements GraphicHandler{
 
 
 
+        switch (state) {
+            case 6:
+                int slider_bar_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 4.266)) / 2;
+                int slider_bar_right = slider_bar_left;
+                int slider_bar_up = Division.division(Constant.Screen_Height, 2.541);
+                int slider_bar_height = Division.division(Division.division(Constant.Screen_Width, 4.266), 75);
+                ImageIcon slider_bar = new ImageIcon("src/res/images/menu/sound/slider bar.png");
 
-        if (state == 6){
-            int slider_bar_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 4.266)) / 2;
-            int slider_bar_right = slider_bar_left;
-            int slider_bar_up = Division.division(Constant.Screen_Height, 2.541);
-            int slider_bar_height = Division.division(Division.division(Constant.Screen_Width, 4.266), 75);
-            ImageIcon slider_bar = new ImageIcon("src/res/images/menu/sound/slider bar.png");
-
-            int sound_text_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 11.294)) / 2;
-            int sound_text_right = sound_text_left;
-            int sound_text_up = Division.division(Constant.Screen_Height, 3.253);
-            int sound_text_height = Division.division(Division.division(Constant.Screen_Width, 11.294), 4.483);
-            ImageIcon sound_text = new ImageIcon("src/res/images/menu/sound/sound text.png");
-            g.drawImage(slider_bar.getImage(),slider_bar_left,slider_bar_up,Constant.Screen_Width-slider_bar_left-slider_bar_right,slider_bar_height,null);
-            g.drawImage(sound_text.getImage(),sound_text_left,sound_text_up,Constant.Screen_Width-sound_text_left-sound_text_right,sound_text_height,null);
+                int sound_text_left = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 11.294)) / 2;
+                int sound_text_right = sound_text_left;
+                int sound_text_up = Division.division(Constant.Screen_Height, 3.253);
+                int sound_text_height = Division.division(Division.division(Constant.Screen_Width, 11.294), 4.483);
+                ImageIcon sound_text = new ImageIcon("src/res/images/menu/sound/sound text.png");
+                g.drawImage(slider_bar.getImage(), slider_bar_left, slider_bar_up, Constant.Screen_Width - slider_bar_left - slider_bar_right, slider_bar_height, null);
+                g.drawImage(sound_text.getImage(), sound_text_left, sound_text_up, Constant.Screen_Width - sound_text_left - sound_text_right, sound_text_height, null);
+                break;
+            case 4 :
+                g.setColor(new Color(100,100,100,50));
+                int boxWidth = 400;
+                int boxHeight = 210;
+                g.fillRect((Constant.Screen_Width-boxWidth)/2,(Constant.Screen_Height-boxHeight)/2 - 120,boxWidth,boxHeight);
+                break;
         }
 
         for(GameObject GO : gameObjects){
@@ -230,18 +237,17 @@ public class Panel implements GraphicHandler{
                 ImageIcon creat_2 = new ImageIcon("src/res/images/menu/button/creat 2.png");
 
 
-                RadioButton _2multiPlayer = new RadioButton(2,(Constant.Screen_Width - Division.division(Constant.Screen_Width, 10.54)) / 2 + 30  ,Division.division(Constant.Screen_Height, 3.5) - 50 , 30);
-                RadioButton _3multiPlayer = new RadioButton(3,50 + (Constant.Screen_Width - Division.division(Constant.Screen_Width, 10.54)) / 2 + 30  ,Division.division(Constant.Screen_Height, 3.5) - 50, 30);
-                RadioButton _4multiPlayer = new RadioButton(4,100 + (Constant.Screen_Width - Division.division(Constant.Screen_Width, 10.54)) / 2 + 30  ,Division.division(Constant.Screen_Height, 3.5) - 50, 30);
-                Radio NsmultiPlayers = new Radio("Number of players in single mode",_2multiPlayer,_3multiPlayer,_4multiPlayer);
-                gameObjects.add(_2multiPlayer);
-                gameObjects.add(_3multiPlayer);
-                gameObjects.add(_4multiPlayer);
-
-
-                gameObjects.add(new GameButton(this, "creat", 5, creat_left, creat_up, Constant.Screen_Width - creat_left - creat_right, creat_height, creat_1.getImage(), creat_2.getImage()));
+                gameObjects.add(new GameButton(this, "creat", 6, creat_left, creat_up, Constant.Screen_Width - creat_left - creat_right, creat_height, creat_1.getImage(), creat_2.getImage()));
                 gameObjects.add(new GameButton(this, "edit map", 8, edit_map_left, edit_map_up, Constant.Screen_Width - edit_map_left - edit_map_right, edit_map_height, edit_map_1.getImage(), edit_map_2.getImage()));
                 gameObjects.add(new GameButton(this, "back", 0, back_left, back_up, back_right, back_height, back_1.getImage(), back_2.getImage()));
+                break;
+            case 4:     // create
+                gameObjects.add(new GameButton(this, "back", 1, back_left, back_up, back_right, back_height, back_1.getImage(), back_2.getImage()));
+                int textWidth = 350;
+                gameObjects.add(new PlayerName("AliReza Torabian",(Constant.Screen_Width-textWidth)/2 + 25,320,textWidth,48,true));
+                gameObjects.add(new PlayerName("Ali jafarii",(Constant.Screen_Width-textWidth)/2 + 25,320 + 50,textWidth,48,false));
+                gameObjects.add(new PlayerName("Reza Bayat",(Constant.Screen_Width-textWidth)/2 + 25,320 + 50 * 2,textWidth,48,false));
+                gameObjects.add(new PlayerName("ismal kir koloft",(Constant.Screen_Width-textWidth)/2 + 25,320 + 50 * 3 , textWidth,48,false));
                 break;
             case 6:
 
@@ -271,7 +277,14 @@ public class Panel implements GraphicHandler{
 
     @Override
     public void pressButton(int code){
-        //check if is a final state
+
+        if(code == 0 && state == 4) {
+            // stop server broadcasting
+        }
+
+        else if( code == 0 && state == 5 ){
+            // stop server finding by client
+        }
         lastState = state;
         state = PT[state][code];
         switch (state){
