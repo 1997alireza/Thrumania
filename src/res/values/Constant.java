@@ -23,7 +23,7 @@ public class Constant {
         }
     }
     public enum OBJECT{
-        FARMLAND(111) , IRON_MINE(112) , GOLD_MINE(113) , TREE1(114) , TREE2(115) , FISH1(116) , FISH2(117) ;
+        FARMLAND(111) , IRON_MINE(112) , GOLD_MINE(113) , TREE1(114) , TREE2(115) , FISH1(116) , FISH2(117) , CASTLE_ONE(121) ,CASTLE_TWO(122) ,CASTLE_THREE(123) ,CASTLE_FOUR(124) ;
 
         private int code;
 
@@ -38,7 +38,7 @@ public class Constant {
     }
 
     public enum PLAYER_TYPE{
-        SINGLE , MULTI_HOST , MULTI_CLIENT ;
+        SINGLE , MULTI_HOST , MULTI_CLIENT
     }
 
     public static final Dimension DEFAULT_SCREEN_SIZE = new Dimension(1920 , 1080);
@@ -48,6 +48,7 @@ public class Constant {
     public static final Dimension ONE_MAP_SIZE_CHANGING = new Dimension(ONE_MAP_NUM_CHANGING.width*Constant.MIN_WIDTH_OF_EACH_GROUND ,ONE_MAP_NUM_CHANGING.height*Constant.MIN_HEIGHT_OF_EACH_GROUND);  // height / width = 8 / 5
     public static final Dimension MAX_MAP_SIZE = new Dimension(MIN_MAP_SIZE.width + ONE_MAP_SIZE_CHANGING.width * 4 , MIN_MAP_SIZE.height + ONE_MAP_SIZE_CHANGING.height * 4);
     public static final Dimension Mini_Map_Size_Ratio = new Dimension(8,5);
+    public static Dimension MAP_SIZE = MIN_MAP_SIZE;
 
     public static final int MIN_WIDTH_OF_EACH_GROUND = 175;
     public static final int MIN_HEIGHT_OF_EACH_GROUND = 125;
@@ -65,8 +66,12 @@ public class Constant {
 
     public static final String HOST_BROADCAST_MESSAGE = "Thrumania host";
     public static final String CLIENT_CONNECTING_MESSAGE = "Thrumania client"; // Message = CLIENT_CONNECTING_MESSAGE+":"+ClientName
+    public static final String HOST_CHECK_MESSAGE = "Are you there?";
+    public static final String CLIENT_ANSWER_CHECK = "I am alive";
     public static final int HOST_SENDING_PORT_NUMBER /*client entering port number*/ = 4040;  //port to sending data from host to client
     public static final int HOST_ENTERING_PORT_NUMBER /*client sending port number*/ = 4050 ; //port to entering data from client to host
-
+    public static final int HOST_ENTERING_CHECK_PORT = 4060;
+    public static final int HOST_SENDING_CHECK_PORT = 4070;
+    public static final int HOST_SENDING_UPDATE_PORT /*client entering port for update list*/= 4080;
 
 }

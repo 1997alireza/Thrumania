@@ -27,7 +27,7 @@ public class GameFrame extends JFrame {
         setVisible(true);
 
         String s = "";
-        while(s == null || "".equals(s.trim()) )
+        while(s == null || "".equals(s.trim()) || s.indexOf(',')>=0 )
             s = JOptionPane.showInputDialog(null,"Enter yout name please","Player Name" ,JOptionPane.QUESTION_MESSAGE);
 
         Constant.PLAYER_NAME = s;

@@ -12,8 +12,8 @@ import java.util.LinkedList;
 import com.thrumania.src.GraphicHandler;
 import com.thrumania.src.Tools.Cursor;
 import com.thrumania.src.draw.GamePanel;
+import com.thrumania.src.game.InitGame;
 import com.thrumania.src.menu.objects.DragableObject;
-import com.thrumania.src.menu.objects.PlayerName;
 import com.thrumania.src.menu.objects.Radio;
 import com.thrumania.src.menu.objects.RadioButton;
 import com.thrumania.src.objects.*;
@@ -23,6 +23,8 @@ public class Panel implements GraphicHandler{
 
     private com.thrumania.src.draw.GamePanel drawPanel;private com.thrumania.src.mapEditor.Panel mapPanel;private com.thrumania.src.game.Panel gamePanel;
 
+
+    private  Radio NsinglePlayers;
     private int state ;
     private int lastState ;
 
@@ -46,8 +48,8 @@ public class Panel implements GraphicHandler{
             {-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1},
             {-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1}            //state = PT[state][code]
     };
-    private final int eventNumber_ForFinishingMapEditing_InAutomata = 9;
 
+    private Host host = null;
     private LinkedList<LinkedList< Object[/* Constant.GROUND , Constant.OBJECT*/] >> ground ;
 
     public Panel(com.thrumania.src.draw.GamePanel drawPanel,com.thrumania.src.mapEditor.Panel mapPanel,com.thrumania.src.game.Panel gamePanel){
@@ -200,7 +202,7 @@ public class Panel implements GraphicHandler{
                 RadioButton _2singlePlayer = new RadioButton(2,(Constant.Screen_Width - Division.division(Constant.Screen_Width, 10.54)) / 2 + 30  ,Division.division(Constant.Screen_Height, 3.5) - 50 , 30);
                 RadioButton _3singlePlayer = new RadioButton(3,play_left + 30 + 50 , play_up - 50 , 30);
                 RadioButton _4singlePlayer = new RadioButton(4,play_left + 30 + 100 , play_up - 50, 30);
-                Radio NsinglePlayers = new Radio("Number of players in single mode",_2singlePlayer,_3singlePlayer,_4singlePlayer);
+                NsinglePlayers = new Radio("Number of players in single mode",_2singlePlayer,_3singlePlayer,_4singlePlayer);
                 gameObjects.add(_2singlePlayer);
                 gameObjects.add(_3singlePlayer);
                 gameObjects.add(_4singlePlayer);
@@ -242,12 +244,21 @@ public class Panel implements GraphicHandler{
                 gameObjects.add(new GameButton(this, "back", 0, back_left, back_up, back_right, back_height, back_1.getImage(), back_2.getImage()));
                 break;
             case 4:     // create
-                gameObjects.add(new GameButton(this, "back", 1, back_left, back_up, back_right, back_height, back_1.getImage(), back_2.getImage()));
+
+                System.out.println("create is not complete"); // if click on play host.stopBroadcating() and host = null;
+                gameObjects.add(new GameButton(this, "back", 0, back_left, back_up, back_right, back_height, back_1.getImage(), back_2.getImage()));
+
                 int textWidth = 350;
-                gameObjects.add(new PlayerName("AliReza Torabian",(Constant.Screen_Width-textWidth)/2 + 25,320,textWidth,48,true));
-                gameObjects.add(new PlayerName("Ali jafarii",(Constant.Screen_Width-textWidth)/2 + 25,320 + 50,textWidth,48,false));
-                gameObjects.add(new PlayerName("Reza Bayat",(Constant.Screen_Width-textWidth)/2 + 25,320 + 50 * 2,textWidth,48,false));
-                gameObjects.add(new PlayerName("ismal kir koloft",(Constant.Screen_Width-textWidth)/2 + 25,320 + 50 * 3 , textWidth,48,false));
+
+                host = new Host(this,gameObjects,(Constant.Screen_Width-textWidth)/2 + 25 , 320,50,textWidth,48);
+
+                int play_left1 = (Constant.Screen_Width - Division.division(Constant.Screen_Width, 10.54)) / 2;
+                int play_height1 = Division.division(Division.division(Constant.Screen_Width, 10.54),1.26);
+                ImageIcon play_11 = new ImageIcon("src/res/images/menu/button/play 1.png");
+                ImageIcon play_22 = new ImageIcon("src/res/images/menu/button/play 2.png");
+                gameObjects.add(new GameButton(this, "play",10, play_left1, 530, Constant.Screen_Width - play_left1*2, play_height1, play_11.getImage(), play_22.getImage()));
+
+
                 break;
             case 6:
 
@@ -279,7 +290,9 @@ public class Panel implements GraphicHandler{
     public void pressButton(int code){
 
         if(code == 0 && state == 4) {
-            // stop server broadcasting
+            if(host != null)
+                host.stopBroadcast();
+            host = null;
         }
 
         else if( code == 0 && state == 5 ){
@@ -289,7 +302,11 @@ public class Panel implements GraphicHandler{
         state = PT[state][code];
         switch (state){
             case 101:   //play game event : single player mode
-                drawPanel.changeState(GamePanel.STATE.GAME);
+                InitGame initial =  new InitGame(ground, Constant.PLAYER_TYPE.SINGLE,NsinglePlayers.getValue(),drawPanel);
+                if(initial.isSuccessful())
+                   drawPanel.changeState(GamePanel.STATE.GAME);
+                else
+                    state = lastState;
                 break;
             case 102:   //play game event : multi player mode as host
                 drawPanel.changeState(GamePanel.STATE.GAME);
@@ -315,10 +332,6 @@ public class Panel implements GraphicHandler{
 
     }
 
-    public void editMap(LinkedList<LinkedList< Object[/* Constant.GROUND , Constant.OBJECT*/] >> ground ){
-        this.ground = ground;
-        pressButton(eventNumber_ForFinishingMapEditing_InAutomata);
-    }
 
     @Override
     public void mouseClick(MouseEvent e) {

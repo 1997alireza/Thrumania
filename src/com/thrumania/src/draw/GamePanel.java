@@ -53,6 +53,7 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
         BufferedImage BI = new BufferedImage(Constant.Screen_Width,Constant.Screen_Height,BufferedImage.TYPE_3BYTE_BGR);
         Graphics BG = BI.getGraphics();
         if(isJustChangedState){
+            System.out.println("aaaa");
             BG.setColor(Color.BLACK);
             BG.fillRect(0,0,Constant.Screen_Width,Constant.Screen_Height);
             isJustChangedState = false;
@@ -100,6 +101,7 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
         switch(state){
             case MENU:
                 currentPanel = menu_panel;
+                map_panel.setRunningMap(false);
                 map_panel = null;
                 lastState = STATE.MENU;
                 break;
@@ -110,6 +112,7 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
             default:    // It's for GAME state
                 currentPanel = game_panel;
                 menu_panel = null;
+                map_panel.setRunningMap(false);
                 map_panel = null;
                 lastState = STATE.GAME;
         }

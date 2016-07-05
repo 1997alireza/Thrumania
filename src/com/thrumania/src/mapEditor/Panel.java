@@ -3,6 +3,7 @@ package com.thrumania.src.mapEditor;
 import com.thrumania.src.GraphicHandler;
 import com.thrumania.src.Tools.Division;
 import com.thrumania.src.draw.GamePanel;
+import com.thrumania.src.game.FindCastles;
 import com.thrumania.src.mapEditor.objects.DrawToolButton;
 import com.thrumania.src.objects.GameButton;
 import com.thrumania.src.objects.GameObject;
@@ -25,7 +26,7 @@ public class Panel implements GraphicHandler {
     private LinkedList<LinkedList<Object[/* Constant.GROUND , Constant.OBJECT*/]>> ground;
 
     private LinkedList<GameObject> gameObjects;
-    // another linkedlist for staticObjects
+
 
 
     private int season = 0; // 0->spring , 1->summer , 2->autumn , 3->winter
@@ -107,6 +108,7 @@ public class Panel implements GraphicHandler {
                                     g.drawImage(new ImageIcon("src/res/images/map/fish/fish1.png").getImage(), 10 - x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, 10 - y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, 144, 120, null);
                                     break;
                                 case FISH2:
+                                    g.drawImage(new ImageIcon("src/res/images/map/fish/fish2.png").getImage(), 10 - x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, 10 - y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, 144, 120, null);
                                     break;
                             }
                         }
@@ -155,8 +157,10 @@ public class Panel implements GraphicHandler {
                         if (ground.get(i).get(j)[1] != null) {
                             switch ((Constant.OBJECT) ground.get(i).get(j)[1]) {
                                 case IRON_MINE:
+                                    g.drawImage(new ImageIcon("src/res/images/map/mine/ironMine.png").getImage(), 40 - x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, - y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, 85,92, null);
                                     break;
                                 case GOLD_MINE:
+                                    g.drawImage(new ImageIcon("src/res/images/map/mine/goldMine.png").getImage(), 40 - x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND,  - y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, 120, 111, null);
                                     break;
                             }
                         }
@@ -346,7 +350,7 @@ public class Panel implements GraphicHandler {
         }
 
         if (t) {
-            if (dragstate == 0 && (last_i != i || last_j != j)) {
+            if (dragstate == 0 && (last_i != i || last_j != j) && !undo.isEmpty()) {
                 Object o[] = {new Integer(i), new Integer(j), ground.get(i).get(j)};
                 undo.peek().add(o);
             } else if (dragstate > 0) {
@@ -417,7 +421,7 @@ public class Panel implements GraphicHandler {
             case (113):      //gold
                 if (ground.get(i).get(j)[0] == Constant.GROUND.HIGHLAND) {
                     room[0] = Constant.GROUND.HIGHLAND;
-                    room[1] = Constant.OBJECT.IRON_MINE;
+                    room[1] = Constant.OBJECT.GOLD_MINE;
                     ground.get(i).set(j, room);
                 }
                 break;
@@ -490,7 +494,7 @@ public class Panel implements GraphicHandler {
 
     private int startDraggingX = -1;
     private int startDraggingY = -1;
-    private boolean inMovavleArea = false;
+    private boolean inMovableArea = false;
 
     @Override
     public void mouseEnter(int x, int y) {
@@ -505,12 +509,12 @@ public class Panel implements GraphicHandler {
         if (x <= 5 || x >= Constant.Screen_Width - 5 || y <= 5 || y >= Constant.Screen_Height - 5) {
             if (!inMovablePosition) {
                 inMovablePosition = true;
-                inMovavleArea = true;
+                inMovableArea = true;
                 new Thread(this::moveMap).start();
             }
         } else if (!(movingUp || movingDown || movingRight || movingLeft)) {
             inMovablePosition = false;
-            inMovavleArea = false;
+            inMovableArea = false;
         }
     }
 
@@ -532,11 +536,11 @@ public class Panel implements GraphicHandler {
         int x = e.getX();
         int y = e.getY();
 
-        if ((x >= 24 && x <= 24 + 420) && (y >= Constant.Screen_Height - 260 && y <= Constant.Screen_Height - 12))
+        if ((startDraggingX >= 24 && startDraggingX <= 24 + 420) && (startDraggingY >= Constant.Screen_Height - 260 && startDraggingY <= Constant.Screen_Height - 12) && (x >= 24 && x <= 24 + 420) && (y >= Constant.Screen_Height - 260 && y <= Constant.Screen_Height - 12))
             miniMapMovingRect(x, y);
 
 
-        else if (!(y >= Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT)) {
+        else if ( (startDraggingY < Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT) && (y < Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT)) {
             if (SwingUtilities.isRightMouseButton(e)) {
                 int temp = selectedDrawTool;
                 selectedDrawTool = 8;
@@ -544,7 +548,7 @@ public class Panel implements GraphicHandler {
                 selectedDrawTool = temp;
             } else if (SwingUtilities.isLeftMouseButton(e))
                 drawIntoGround(x, y);
-        } else {
+        } else if( !((x >= 24 && x <= 24 + 420) && (y >= Constant.Screen_Height - 260 && y <= Constant.Screen_Height - 12)) && !((y < Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT))){
             for (GameObject GO : gameObjects) {
                 if (GO.isInArea(x, y)) {
                     if (GO.isInArea(startDraggingX, startDraggingY))
@@ -708,7 +712,7 @@ public class Panel implements GraphicHandler {
 
         }
 
-        if (!inMovavleArea && (movingUp || movingDown || movingRight || movingLeft)) {
+        if (!inMovableArea && (movingUp || movingDown || movingRight || movingLeft)) {
             if (!inMovablePosition) {
                 inMovablePosition = true;
                 new Thread(this::moveMap).start();
@@ -809,7 +813,7 @@ public class Panel implements GraphicHandler {
 
 
             movingFast = movingUp || movingDown || movingRight || movingLeft;
-            if (!movingFast && !inMovavleArea)
+            if (!movingFast && !inMovableArea)
                 inMovablePosition = false;
 
             x0_inDefaultScale = x0_inDefaultScale - x0_inDefaultScale % 3;
@@ -956,6 +960,8 @@ public class Panel implements GraphicHandler {
 
         scaleScreen = (double) mapSize.width / 400;  // mini map
 
+
+        Constant.MAP_SIZE = mapSize;
 
         repaint();
     }
@@ -1174,18 +1180,18 @@ public class Panel implements GraphicHandler {
                         int imageNum = chooseLandImageNumber(Constant.GROUND.LOWLAND, i, j);
                         g.drawImage(new ImageIcon("src/res/images/map/ground/lowLand/" + season + "-" + imageNum + ".png").getImage(), (int) (xTransfer + ((double) (i * Constant.MIN_WIDTH_OF_EACH_GROUND) / scaleScreen)), (int) (yTransfer + ((double) (j * Constant.MIN_HEIGHT_OF_EACH_GROUND) / scaleScreen)), (int) ((double) Constant.MIN_WIDTH_OF_EACH_GROUND / scaleScreen), (int) ((double) Constant.MIN_HEIGHT_OF_EACH_GROUND / scaleScreen), null);
 
-                        if (ground.get(i).get(j)[1] != null) {
-                            switch ((Constant.OBJECT) ground.get(i).get(j)[1]) {
-                                case TREE1:
-                                    g.drawImage(new ImageIcon("src/res/images/map/tree/1/" + season + ".png").getImage(), (int) (xTransfer + ((double) (i * Constant.MIN_WIDTH_OF_EACH_GROUND) / scaleScreen)), (int) (yTransfer + ((double) (j * Constant.MIN_HEIGHT_OF_EACH_GROUND) / scaleScreen)), (int) (Constant.MIN_WIDTH_OF_EACH_GROUND / scaleScreen), (int) (Constant.MIN_HEIGHT_OF_EACH_GROUND / scaleScreen), null);
-                                    break;
-                                case TREE2:
-                                    g.drawImage(new ImageIcon("src/res/images/map/tree/2/" + season + ".png").getImage(), (int) (xTransfer + ((double) (i * Constant.MIN_WIDTH_OF_EACH_GROUND) / scaleScreen)), (int) (yTransfer + ((double) (j * Constant.MIN_HEIGHT_OF_EACH_GROUND) / scaleScreen)), (int) (Constant.MIN_WIDTH_OF_EACH_GROUND / scaleScreen), (int) (Constant.MIN_HEIGHT_OF_EACH_GROUND / scaleScreen), null);
-                                    break;
-                                case FARMLAND:
-                                    break;
-                            }
-                        }
+//                        if (ground.get(i).get(j)[1] != null) {
+//                            switch ((Constant.OBJECT) ground.get(i).get(j)[1]) {
+//                                case TREE1:
+//                                    g.drawImage(new ImageIcon("src/res/images/map/tree/1/" + season + ".png").getImage(), (int) (xTransfer + ((double) (i * Constant.MIN_WIDTH_OF_EACH_GROUND) / scaleScreen)), (int) (yTransfer + ((double) (j * Constant.MIN_HEIGHT_OF_EACH_GROUND) / scaleScreen)), (int) (Constant.MIN_WIDTH_OF_EACH_GROUND / scaleScreen), (int) (Constant.MIN_HEIGHT_OF_EACH_GROUND / scaleScreen), null);
+//                                    break;
+//                                case TREE2:
+//                                    g.drawImage(new ImageIcon("src/res/images/map/tree/2/" + season + ".png").getImage(), (int) (xTransfer + ((double) (i * Constant.MIN_WIDTH_OF_EACH_GROUND) / scaleScreen)), (int) (yTransfer + ((double) (j * Constant.MIN_HEIGHT_OF_EACH_GROUND) / scaleScreen)), (int) (Constant.MIN_WIDTH_OF_EACH_GROUND / scaleScreen), (int) (Constant.MIN_HEIGHT_OF_EACH_GROUND / scaleScreen), null);
+//                                    break;
+//                                case FARMLAND:
+//                                    break;
+//                            }
+//                        }
                         break;
                     case HIGHLAND:
                         g.drawImage(new ImageIcon("src/res/images/map/ground/lowLand/" + season + "-" + 15 + ".png").getImage(), (int) (xTransfer + ((double) (i * Constant.MIN_WIDTH_OF_EACH_GROUND) / scaleScreen)), (int) (yTransfer + ((double) (j * Constant.MIN_HEIGHT_OF_EACH_GROUND) / scaleScreen)), (int) ((double) (Constant.MIN_WIDTH_OF_EACH_GROUND) / scaleScreen), (int) ((double) (Constant.MIN_HEIGHT_OF_EACH_GROUND) / scaleScreen), null);
