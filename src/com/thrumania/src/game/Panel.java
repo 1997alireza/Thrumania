@@ -3,6 +3,7 @@ package com.thrumania.src.game;
 import com.thrumania.src.GraphicHandler;
 import com.thrumania.src.Tools.Division;
 import com.thrumania.src.game.objects.Human;
+import com.thrumania.src.gameSpace.*;
 import com.thrumania.src.objects.GameObject;
 import res.values.Constant;
 
@@ -18,12 +19,12 @@ import java.util.concurrent.TimeUnit;
  * Created by AliReza on 23/05/2016.
  */
 public class Panel  implements GraphicHandler{
-    private ArrayList<Human> humans = new ArrayList<>();
     private com.thrumania.src.draw.GamePanel drawPanel;
     private LinkedList<LinkedList<Object[/* Constant.GROUND , Constant.OBJECT*/]>> ground;
     private  Constant.PLAYER_TYPE playerType;
     private int playerNumbers;
     private static boolean isRunningGame;
+
 
     private int season = 0; // 0->spring , 1->summer , 2->autumn , 3->winter
     private float scale;
@@ -41,14 +42,17 @@ public class Panel  implements GraphicHandler{
     private int yRecFill;
     // mini map -->
 
+    private LinkedList <Human> humans ;
+
+    private boolean aHumanIsSelected;
+
     public Panel(LinkedList<LinkedList<Object[/* Constant.GROUND , Constant.OBJECT*/]>> ground , Constant.PLAYER_TYPE playerType , int playerNumbers , com.thrumania.src.draw.GamePanel drawPanel){
         this.drawPanel = drawPanel;
+        isRunningGame = true;
         this.drawPanel.game_panel = this;
         this.ground = ground;
         this.playerNumbers = playerNumbers;
         this.playerType = playerType;
-
-        isRunningGame = true;
 
 
 
@@ -68,16 +72,21 @@ public class Panel  implements GraphicHandler{
         y0_inDefaultScale = y0;
 
 
-        boolean t = true;
-        for(int i=0;i<ground.size() && t;i++)
-            for(int j=0;j<ground.get(0).size() && t;j++){
-                if(ground.get(i).get(j)[0] == Constant.GROUND.LOWLAND && ground.get(i).get(j)[1] == null){
-                    humans.add(new Human(ground,i*Constant.MIN_WIDTH_OF_EACH_GROUND + Constant.MIN_WIDTH_OF_EACH_GROUND/2, j*Constant.MIN_HEIGHT_OF_EACH_GROUND + Constant.MIN_HEIGHT_OF_EACH_GROUND/2));
-                    t = false;
+        aHumanIsSelected = false;
+
+        humans = new LinkedList<>();
+
+        for(int i=0;i<ground.size();i++)
+            for(int j=0;j<ground.get(0).size();j++)
+            {
+                if(ground.get(i).get(j)[1] == Constant.OBJECT.CASTLE_ONE || ground.get(i).get(j)[1] == Constant.OBJECT.CASTLE_TWO || ground.get(i).get(j)[1] == Constant.OBJECT.CASTLE_THREE || ground.get(i).get(j)[1] == Constant.OBJECT.CASTLE_FOUR)
+                {
+                    humans.add(new Human(ground,i*3 + 1 , j*3 + 1));
                 }
             }
 
 
+        new Thread(this :: changeSeason).start();
     }
 
     @Override
@@ -89,10 +98,35 @@ public class Panel  implements GraphicHandler{
         Graphics2D g2d = (Graphics2D) g;
         g2d.scale(scale, scale);
 
+
+        // for SEA ground
         for (int i = 0; i < Constant.NUM_OF_SEA_IN_EACH_ROW; i++)
             for (int j = 0; j < Constant.NUM_OF_SEA_IN_EACH_COLUMN; j++) {
                 g.drawImage(new ImageIcon("src/res/images/map/ground/sea.jpg").getImage(), -(x0 % Constant.MIN_WIDTH_OF_EACH_SEA) + i * Constant.MIN_WIDTH_OF_EACH_SEA, -(y0 % Constant.MIN_HEIGHT_OF_EACH_SEA) + j * Constant.MIN_HEIGHT_OF_EACH_SEA, Constant.MIN_WIDTH_OF_EACH_SEA, Constant.MIN_HEIGHT_OF_EACH_SEA, null);
             }
+
+
+        // for LOWLAND and HIGHLAND ground
+        for (int i = x0 / Constant.MIN_WIDTH_OF_EACH_GROUND; i </*Division.division*/ (Constant.DEFAULT_SCREEN_SIZE.width / (scale * Constant.MIN_WIDTH_OF_EACH_GROUND)) + x0 / Constant.MIN_WIDTH_OF_EACH_GROUND + 1 && i < ground.size(); i++)
+            for (int j = y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND; j < Division.division(Constant.DEFAULT_SCREEN_SIZE.height - Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/, scale * Constant.MIN_HEIGHT_OF_EACH_GROUND) + Division.division(y0, Constant.MIN_HEIGHT_OF_EACH_GROUND) + 1 + 1/*for tall objects*/ && j < ground.get(i).size(); j++) {
+                Constant.GROUND thisGround = (Constant.GROUND) ground.get(i).get(j)[0];
+                switch (thisGround) {
+                    case LOWLAND:
+                        int imageNum = chooseLandImageNumber(Constant.GROUND.LOWLAND, i, j);
+                        g.drawImage(new ImageIcon("src/res/images/map/ground/lowLand/" + season + "-" + imageNum + ".png").getImage(), -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, Constant.MIN_WIDTH_OF_EACH_GROUND, Constant.MIN_HEIGHT_OF_EACH_GROUND, null);
+                        break;
+
+                    case HIGHLAND:
+                        g.drawImage(new ImageIcon("src/res/images/map/ground/lowLand/" + season + "-" + 15 + ".png").getImage(), -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, Constant.MIN_WIDTH_OF_EACH_GROUND, Constant.MIN_HEIGHT_OF_EACH_GROUND, null);
+                        //for the lowLand under the highLand
+
+                        int imageNum2 = chooseLandImageNumber(Constant.GROUND.HIGHLAND, i, j);
+                        g.drawImage(new ImageIcon("src/res/images/map/ground/highLand/" + imageNum2 + ".png").getImage(), -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, Constant.MIN_WIDTH_OF_EACH_GROUND, Constant.MIN_HEIGHT_OF_EACH_GROUND, null);
+                        break;
+
+                }
+            }
+
         for (int i = x0 / Constant.MIN_WIDTH_OF_EACH_GROUND; i </*Division.division*/ (Constant.DEFAULT_SCREEN_SIZE.width / (scale * Constant.MIN_WIDTH_OF_EACH_GROUND)) + x0 / Constant.MIN_WIDTH_OF_EACH_GROUND + 1 && i < ground.size(); i++)
 
             for (int j = y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND; j < Division.division(Constant.DEFAULT_SCREEN_SIZE.height - Constant.BOTTOM_FRAME_HEIGHT/* for bottom panel*/, scale * Constant.MIN_HEIGHT_OF_EACH_GROUND) + Division.division(y0, Constant.MIN_HEIGHT_OF_EACH_GROUND) + 1 + 1/*for tall objects*/ && j < ground.get(i).size(); j++) {
@@ -111,12 +145,15 @@ public class Panel  implements GraphicHandler{
                         }
                         break;
                     case LOWLAND:
-                        int imageNum = chooseLandImageNumber(Constant.GROUND.LOWLAND, i, j);
-                        g.drawImage(new ImageIcon("src/res/images/map/ground/lowLand/" + season + "-" + imageNum + ".png").getImage(), -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, Constant.MIN_WIDTH_OF_EACH_GROUND, Constant.MIN_HEIGHT_OF_EACH_GROUND, null);
+
+                        ArrayList <Human> thisHumans = getHuman(i,j,false);
+                        for(Human human : thisHumans)
+                            g.drawImage(human.getImage() , human.getX() - x0, human.getY() - y0 , null);
 
                         if (ground.get(i).get(j)[1] != null) {
                             switch ((Constant.OBJECT) ground.get(i).get(j)[1]) {
                                 case TREE1:
+
                                     switch (season) {        // shadow for tree 1
                                         case 0:
                                         case 1:
@@ -154,16 +191,16 @@ public class Panel  implements GraphicHandler{
                                     g.drawImage(new ImageIcon("src/res/images/map/castle/4.png").getImage(), 35 - x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -10 - y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, 129, 100, null);
                                     break;
                             }
+
                         }
+
+                        thisHumans = getHuman(i,j,true);
+                        for(Human human : thisHumans)
+                            g.drawImage(human.getImage() , human.getX() - x0, human.getY() - y0 , null);
+
 
                         break;
                     case HIGHLAND:
-                        g.drawImage(new ImageIcon("src/res/images/map/ground/lowLand/" + season + "-" + 15 + ".png").getImage(), -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, Constant.MIN_WIDTH_OF_EACH_GROUND, Constant.MIN_HEIGHT_OF_EACH_GROUND, null);
-                        //for the lowLand under the highLand
-
-                        int imageNum2 = chooseLandImageNumber(Constant.GROUND.HIGHLAND, i, j);
-                        g.drawImage(new ImageIcon("src/res/images/map/ground/highLand/" + imageNum2 + ".png").getImage(), -x0 % Constant.MIN_WIDTH_OF_EACH_GROUND + (i - x0 / Constant.MIN_WIDTH_OF_EACH_GROUND) * Constant.MIN_WIDTH_OF_EACH_GROUND, -y0 % Constant.MIN_HEIGHT_OF_EACH_GROUND + (j - y0 / Constant.MIN_HEIGHT_OF_EACH_GROUND) * Constant.MIN_HEIGHT_OF_EACH_GROUND, Constant.MIN_WIDTH_OF_EACH_GROUND, Constant.MIN_HEIGHT_OF_EACH_GROUND, null);
-
 
                         if (ground.get(i).get(j)[1] != null) {
                             switch ((Constant.OBJECT) ground.get(i).get(j)[1]) {
@@ -184,6 +221,7 @@ public class Panel  implements GraphicHandler{
 
             }
 
+
         g2d.scale((1f) / scale, (1f) / scale);
 
         drawMiniMap(g);
@@ -191,14 +229,6 @@ public class Panel  implements GraphicHandler{
         ImageIcon bottomFrame = new ImageIcon("src/res/images/map/editor/frame.png");
         g.drawImage(bottomFrame.getImage(), 0, 0, Constant.DEFAULT_SCREEN_SIZE.width, Constant.DEFAULT_SCREEN_SIZE.height, null);
 
-//        for (GameObject GO : gameObjects) {
-//            g.drawImage(GO.getImage(), GO.getX(), GO.getY(), GO.getWidth(), GO.getHeight(), null);
-//        }
-
-
-        for(Human human : humans){
-           // g.drawImage(human, human.getLoction().getWidth() , human.getLoction().getHeight())
-        }
 
 
         repaint();
@@ -228,26 +258,55 @@ public class Panel  implements GraphicHandler{
         if ((x >= 24 && x <= 24 + 420) && (y >= Constant.Screen_Height - 260 && y <= Constant.Screen_Height - 12))
             miniMapMovingRect(x, y);
 
-//        else if (y >= Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT) {
+        else if (y >= Constant.Screen_Height - Constant.BOTTOM_FRAME_HEIGHT) {
 //            for (GameObject GO : gameObjects) {
 //                if (GO.isInArea(x, y)) {
 //                    GO.mouseClicked();
 //                    break;
 //                }
 //            }
-//        } else {
-//
-//            if (SwingUtilities.isRightMouseButton(e)) {
-//                int temp = selectedDrawTool;
-//                selectedDrawTool = 8;
-//                drawIntoGround(x, y);
-//                dragstate++;
-//                selectedDrawTool = temp;
-//            } else if (SwingUtilities.isLeftMouseButton(e)) {
-//                drawIntoGround(x, y);
-//                dragstate++;
-//            }
-//        }
+        }
+        else {
+
+            int xInMAp = (x0 + (int) (x / scale)) ;
+            int yInMap = (y0 + (int) (y / scale)) ;
+
+            boolean t = false;
+            for(Human human : humans){
+                if(human.isInArea(xInMAp,yInMap))
+                {
+                    if(human.isSelected()){
+                        human.setSelected(false);
+                        aHumanIsSelected = false;
+                    }
+
+                    else{
+
+                        for(Human human2 : humans){
+                            human2.setSelected(false);
+                        }
+
+                        human.setSelected(true);
+                        aHumanIsSelected = true;
+                    }
+                    t = true;
+                    break;
+                }
+
+            }
+
+            if(!t && aHumanIsSelected){
+                for(Human human : humans){
+                    if(human.isSelected()){
+                        human.findWay(xInMAp*3/Constant.MIN_WIDTH_OF_EACH_GROUND,yInMap*3/Constant.MIN_HEIGHT_OF_EACH_GROUND);
+                        break;
+                    }
+                }
+            }
+
+
+
+        }
 
     }
 
@@ -548,4 +607,34 @@ public class Panel  implements GraphicHandler{
     public static void setRunningGame(boolean isRunningGame) {
         Panel.isRunningGame = isRunningGame;
     }
+
+    private void changeSeason(){
+        while(isRunningGame) {
+            try {
+                Thread.sleep(20000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            season = (season + 1) % 4;
+
+            repaint();
+        }
+    }
+
+    private ArrayList<Human> getHuman(int i,int j , boolean isDownerThanTree) {
+        i *= 3;
+        j *= 3;
+
+        ArrayList<Human> thisHumans = new ArrayList<>();
+
+        for (Human human : humans) {
+            if (isDownerThanTree && ((human.getlocation().width == i || human.getlocation().width == i + 1 || human.getlocation().width == i + 2) && human.getlocation().height == j + 2))
+                thisHumans.add(human);
+            else if (!isDownerThanTree && ((human.getlocation().width == i || human.getlocation().width == i + 1 || human.getlocation().width == i + 2) && (human.getlocation().height == j || human.getlocation().height == j + 1)))
+                thisHumans.add(human);
+        }
+
+        return thisHumans;
+    }
+
 }

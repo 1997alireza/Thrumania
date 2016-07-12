@@ -53,7 +53,6 @@ public class GamePanel extends JPanel implements MouseListener,MouseMotionListen
         BufferedImage BI = new BufferedImage(Constant.Screen_Width,Constant.Screen_Height,BufferedImage.TYPE_3BYTE_BGR);
         Graphics BG = BI.getGraphics();
         if(isJustChangedState){
-            System.out.println("aaaa");
             BG.setColor(Color.BLACK);
             BG.fillRect(0,0,Constant.Screen_Width,Constant.Screen_Height);
             isJustChangedState = false;

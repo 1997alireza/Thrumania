@@ -7,7 +7,7 @@ import java.util.Collections;
 
 class Vertex implements Comparable<Vertex>
 {
-    public final String name;
+    public final String name;    // i+" "+j
     public Edge[] adjacencies;
     public double minDistance = Double.POSITIVE_INFINITY;
     public Vertex previous;
@@ -18,6 +18,15 @@ class Vertex implements Comparable<Vertex>
         return Double.compare(minDistance, other.minDistance);
     }
 
+
+    public int getX(){
+        String [] splited = name.split(" ");
+        return Integer.parseInt(splited[0]);
+    }
+    public int getY(){
+        String [] splited = name.split(" ");
+        return Integer.parseInt(splited[1]);
+    }
 }
 
 
@@ -41,6 +50,7 @@ public class Dijkstra
         Vertex u = vertexQueue.poll();
 
             // Visit each edge exiting u
+        if(u.adjacencies != null)
             for (Edge e : u.adjacencies)
             {
                 Vertex v = e.target;
